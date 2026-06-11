@@ -28,10 +28,14 @@ class DataSourcesConfigTest(unittest.TestCase):
 
         self.assertEqual(prices["us_stock"]["primary"], "yfinance")
         self.assertEqual(prices["crypto"]["primary"], "yfinance")
-        self.assertEqual(prices["taiwan_stock"]["primary"], "finmind")
+        self.assertEqual(prices["taiwan_stock"]["primary"], "yfinance")
+        self.assertIn("finmind", prices["taiwan_stock"]["fallback"])
         self.assertIn("twse", prices["taiwan_stock"]["fallback"])
         self.assertEqual(prices["taiwan_futures"]["primary"], "taifex")
         self.assertIn("finmind", prices["taiwan_futures"]["fallback"])
+        options = self.config["datasets"]["derivatives"]["taiwan_options"]
+        self.assertEqual(options["primary"], "finmind")
+        self.assertIn("taifex", options["fallback"])
 
     def test_future_dataset_categories_are_reserved(self):
         datasets = self.config["datasets"]

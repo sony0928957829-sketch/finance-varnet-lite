@@ -2,10 +2,14 @@ from __future__ import annotations
 
 import argparse
 from datetime import date, datetime
+import json
 from zoneinfo import ZoneInfo
 from pathlib import Path
 
+import pandas as pd
+
 from src.fetchers.factory import create_fetcher
+from src.fetchers.router import fetch_prices_with_fallback
 from src.health.data_health import (
     evaluate_price_health,
     raise_for_health_errors,
@@ -16,7 +20,10 @@ from src.features.basic import add_basic_features
 from src.features.fourier import add_fourier_features
 from src.features.wavelet import add_wavelet_features
 from src.features.relative_strength import add_relative_strength
+from src.features.macro_context import add_macro_context
 from src.features.labels import add_future_range_labels
+from src.models.range_forecast import add_range_forecasts
+from src.pipeline.supplemental import collect_supplemental_data
 from src.scoring.scores import add_scores
 from src.report.daily_report import generate_daily_report
 from src.utils.config import DATA_DIR, ensure_dirs, load_config
@@ -49,18 +56,32 @@ def save_frame(frame, path: Path, *, parquet_required: bool = False) -> Path:
         return csv_path
 
 
+def _iter_price_compatible_routes(config: dict):
+    datasets = config.get("datasets", {})
+    yield from datasets.get("prices", {}).values()
+    yield from datasets.get("macro", {}).values()
+
+
 def provider_price_settings(config: dict, provider: str) -> tuple[list[str], int]:
     selected_symbols: list[str] = []
     history_years = 0
-    price_routes = config.get("datasets", {}).get("prices", {})
 
-    for route in price_routes.values():
+    for route in _iter_price_compatible_routes(config):
         if not route.get("enabled", False) or route.get("primary") != provider:
             continue
         selected_symbols.extend(route.get("symbols", []))
         history_years = max(history_years, int(route.get("history_years", 0)))
 
     return list(dict.fromkeys(selected_symbols)), history_years
+
+
+def provider_symbol_aliases(config: dict, provider: str) -> dict[str, str]:
+    aliases: dict[str, str] = {}
+    for route in _iter_price_compatible_routes(config):
+        if not route.get("enabled", False) or route.get("primary") != provider:
+            continue
+        aliases.update(route.get("provider_symbols", {}).get(provider, {}))
+    return aliases
 
 
 def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None = None) -> Path:
@@ -90,8 +111,36 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     if end is None:
         end = current_taipei_date().isoformat()
 
-    fetcher = create_fetcher(mode)
-    raw = fetcher.fetch_price_history(all_symbols, start=start, end=end, interval="1d")
+    price_route_status = {}
+    if mode == "yfinance":
+        raw, price_route_status = fetch_prices_with_fallback(
+            data_sources_config,
+            primary_provider=mode,
+            start=start,
+            end=end,
+            interval="1d",
+        )
+        optional_prices, optional_route_status = fetch_prices_with_fallback(
+            data_sources_config,
+            primary_provider="taifex",
+            start=start,
+            end=end,
+            interval="1d",
+        )
+        price_route_status.update(optional_route_status)
+        if not optional_prices.empty:
+            raw = pd.concat([raw, optional_prices], ignore_index=True).drop_duplicates(
+                subset=["datetime", "symbol", "timeframe"],
+                keep="first",
+            )
+            all_symbols.extend(
+                symbol
+                for symbol in optional_prices["symbol"].unique()
+                if symbol not in all_symbols
+            )
+    else:
+        fetcher = create_fetcher(mode)
+        raw = fetcher.fetch_price_history(all_symbols, start=start, end=end, interval="1d")
     report_date = current_taipei_date()
     health_report = evaluate_price_health(
         raw,
@@ -126,6 +175,19 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
 
     benchmark_map = {instrument.symbol: instrument.benchmark for instrument in instruments}
     features = add_relative_strength(features, benchmark_map)
+    features = add_macro_context(features)
+    forecast_config = feature_config.get("range_forecast", {})
+    features = add_range_forecasts(
+        features,
+        horizons=feature_config.get("prediction_targets_reserved", {}).get(
+            "horizons",
+            [1, 5, 10],
+        ),
+        window=int(forecast_config.get("window", 252)),
+        min_periods=int(forecast_config.get("min_periods", 60)),
+        lower_quantile=float(forecast_config.get("lower_quantile", 0.20)),
+        upper_quantile=float(forecast_config.get("upper_quantile", 0.80)),
+    )
     features = add_scores(features)
 
     features_path = DATA_DIR / "features" / f"features_{mode}.parquet"
@@ -142,12 +204,39 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     labels_path = DATA_DIR / "labels" / f"labels_{mode}.parquet"
     save_frame(labeled_features, labels_path, parquet_required=mode == "yfinance")
 
+    supplemental_status = {}
+    if mode == "yfinance":
+        supplemental_status["price_routes"] = {
+            "status": (
+                "ok"
+                if all(item["status"] == "ok" for item in price_route_status.values())
+                else "warning"
+            ),
+            "rows": int(len(raw)),
+            "routes": price_route_status,
+        }
+        supplemental_status = collect_supplemental_data(
+            data_sources_config,
+            symbols=all_symbols,
+            start=start,
+            end=end,
+            output_dir=DATA_DIR / "alternative",
+        ) | supplemental_status
+        supplemental_path = (
+            DATA_DIR / "reports" / f"{report_date.isoformat()}_supplemental_health.json"
+        )
+        supplemental_path.write_text(
+            json.dumps(supplemental_status, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
     report_path = DATA_DIR / "reports" / f"{report_date.isoformat()}_market_report.md"
     generate_daily_report(
         features,
         report_path,
         title_date=report_date,
         health_report=health_report,
+        supplemental_status=supplemental_status,
     )
     return report_path
 

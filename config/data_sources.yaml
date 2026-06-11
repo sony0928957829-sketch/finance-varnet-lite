@@ -15,18 +15,19 @@ providers:
 
   finmind:
     adapter: finmind
-    enabled: false
-    requires_auth: true
+    enabled: true
+    requires_auth: false
+    optional_token: true
     token_env: FINMIND_TOKEN
 
   twse:
     adapter: twse
-    enabled: false
+    enabled: true
     requires_auth: false
 
   taifex:
     adapter: taifex
-    enabled: false
+    enabled: true
     requires_auth: false
 
   polygon:
@@ -53,7 +54,7 @@ providers:
 
   yahoo_finance_news:
     adapter: yahoo_finance_news
-    enabled: false
+    enabled: true
     requires_auth: false
 
   reuters:
@@ -74,9 +75,8 @@ providers:
 
   fred:
     adapter: fred
-    enabled: false
-    requires_auth: true
-    token_env: FRED_API_KEY
+    enabled: true
+    requires_auth: false
 
   stooq:
     adapter: stooq
@@ -117,9 +117,10 @@ datasets:
       history_years: 5
 
     taiwan_stock:
-      enabled: false
-      primary: finmind
+      enabled: true
+      primary: yfinance
       fallback:
+        - finmind
         - twse
       symbols:
         - 2330.TW
@@ -129,23 +130,29 @@ datasets:
       history_years: 5
 
     taiwan_index:
-      enabled: false
-      primary: twse
+      enabled: true
+      primary: yfinance
       fallback:
+        - twse
         - finmind
       symbols:
         - TAIEX
       timeframe: 1d
       history_years: 5
+      provider_symbols:
+        yfinance:
+          TAIEX: ^TWII
 
     taiwan_futures:
-      enabled: false
+      enabled: true
       primary: taifex
       fallback:
         - finmind
       symbols:
         - TX
       timeframe: 1d
+      history_years: 5
+      minimum_rows: 60
       continuous_contract:
         enabled: false
         roll_rule: volume
@@ -153,9 +160,10 @@ datasets:
 
   news:
     market_events:
-      enabled: false
+      enabled: true
       primary: yahoo_finance_news
       fallback:
+        - finmind
         - reuters
         - cna
         - moneydj
@@ -167,10 +175,11 @@ datasets:
         - earnings
         - guidance
         - macro
+      history_days: 30
 
   chip:
     taiwan_institutional:
-      enabled: false
+      enabled: true
       primary: finmind
       fallback:
         - twse
@@ -178,9 +187,10 @@ datasets:
         - foreign_net_buy
         - investment_trust_net_buy
         - dealer_net_buy
+      history_days: 730
 
     taiwan_margin_short:
-      enabled: false
+      enabled: true
       primary: finmind
       fallback:
         - twse
@@ -188,10 +198,11 @@ datasets:
         - margin_balance
         - short_balance
         - securities_lending
+      history_days: 730
 
   derivatives:
     taiwan_futures_open_interest:
-      enabled: false
+      enabled: true
       primary: taifex
       fallback:
         - finmind
@@ -201,12 +212,13 @@ datasets:
         - settlement
         - open_interest
         - basis
+      history_days: 365
 
     taiwan_options:
-      enabled: false
-      primary: taifex
+      enabled: true
+      primary: finmind
       fallback:
-        - finmind
+        - taifex
       symbols:
         - TXO
       fields:
@@ -214,41 +226,45 @@ datasets:
         - open_interest
         - implied_volatility
         - strike_distribution
+      history_days: 90
 
   macro:
     vix:
-      enabled: false
+      enabled: true
       primary: yfinance
       fallback:
         - fred
       symbols:
         - ^VIX
+      history_years: 5
 
     us_treasury_yield:
-      enabled: false
-      primary: fred
+      enabled: true
+      primary: yfinance
       fallback:
-        - yfinance
-      series:
-        - DGS10
-      fallback_symbols:
+        - fred
+      symbols:
         - ^TNX
+      history_years: 5
 
     us_dollar_index:
-      enabled: false
+      enabled: true
       primary: yfinance
       fallback:
         - stooq
       symbols:
         - DX-Y.NYB
+      history_years: 5
 
     foreign_exchange:
-      enabled: false
+      enabled: true
       primary: yfinance
       fallback:
+        - finmind
         - central_bank_taiwan
       symbols:
         - TWD=X
+      history_years: 5
 
 runtime:
   failover:

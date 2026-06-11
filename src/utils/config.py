@@ -25,6 +25,7 @@ def ensure_dirs() -> None:
         DATA_DIR / "normalized",
         DATA_DIR / "features",
         DATA_DIR / "labels",
+        DATA_DIR / "alternative",
         DATA_DIR / "models",
         DATA_DIR / "reports",
     ]:

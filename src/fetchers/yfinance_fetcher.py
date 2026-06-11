@@ -25,6 +25,9 @@ YFINANCE_COLUMNS = [
 class YFinanceFetcher(BaseFetcher):
     source_name = "yfinance"
 
+    def __init__(self, symbol_aliases: dict[str, str] | None = None):
+        self.symbol_aliases = symbol_aliases or {}
+
     def fetch_price_history(
         self,
         symbols: list[str],
@@ -42,8 +45,9 @@ class YFinanceFetcher(BaseFetcher):
 
         frames: list[pd.DataFrame] = []
         for symbol in symbols:
+            provider_symbol = self.symbol_aliases.get(symbol, symbol)
             data = yf.download(
-                symbol,
+                provider_symbol,
                 start=str(start),
                 end=str(end) if end else None,
                 interval=interval,
@@ -93,6 +97,16 @@ class YFinanceFetcher(BaseFetcher):
 
     @staticmethod
     def _infer_market(symbol: str) -> str:
+        if symbol == "TAIEX" or symbol.endswith(".TW"):
+            return "TW"
         if symbol.endswith("-USD"):
             return "CRYPTO"
+        if symbol == "^VIX":
+            return "US_VOLATILITY"
+        if symbol == "^TNX":
+            return "US_RATE"
+        if symbol == "DX-Y.NYB":
+            return "US_DOLLAR"
+        if symbol.endswith("=X"):
+            return "FX"
         return "US"

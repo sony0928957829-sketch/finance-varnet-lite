@@ -39,6 +39,7 @@ def generate_daily_report(
     output_path: Path,
     title_date: date | None = None,
     health_report: dict | None = None,
+    supplemental_status: dict | None = None,
 ) -> Path:
     title_date = title_date or date.today()
     latest = latest_rows(features)
@@ -124,9 +125,46 @@ def generate_daily_report(
         lines.append(f"- {point}")
     lines.append("")
 
-    lines.append("## 6. v0.2 預留：高低區間預測")
+    lines.append("## 6. 未來高低區間模型")
     lines.append("")
-    lines.append("訓練與回測資料已預留 1、5、10 個交易日的未來高低區間標籤；每日推論特徵不包含這些欄位，避免偷看未來資料。")
+    lines.append("> 區間為歷史條件分布估計，不是價格方向或買賣建議。")
+    lines.append("")
+    lines.append("| 標的 | 1日低/高 | 5日低/高 | 10日低/高 | 10日信心 |")
+    lines.append("|---|---:|---:|---:|---:|")
+    for _, row in latest.iterrows():
+        lines.append(
+            "| {symbol} | {low1} / {high1} | {low5} / {high5} | "
+            "{low10} / {high10} | {confidence} |".format(
+                symbol=row["symbol"],
+                low1=_fmt_pct(row.get("pred_next_1d_low_pct")),
+                high1=_fmt_pct(row.get("pred_next_1d_high_pct")),
+                low5=_fmt_pct(row.get("pred_next_5d_low_pct")),
+                high5=_fmt_pct(row.get("pred_next_5d_high_pct")),
+                low10=_fmt_pct(row.get("pred_next_10d_low_pct")),
+                high10=_fmt_pct(row.get("pred_next_10d_high_pct")),
+                confidence=_fmt_pct(row.get("pred_next_10d_range_confidence")),
+            )
+        )
+    lines.append("")
+    lines.append(
+        "訓練與回測標籤仍獨立保存在 labels 資料層；每日推論只輸出預測欄位，"
+        "不會把尚未發生的未來價格放入特徵。"
+    )
+
+    if supplemental_status:
+        lines.append("")
+        lines.append("## 7. 外部資料來源狀態")
+        lines.append("")
+        for dataset, item in sorted(supplemental_status.items()):
+            status = item.get("status", "unknown")
+            rows = item.get("rows", 0)
+            provider = item.get("provider")
+            fallback_text = "（備援）" if item.get("fallback_used") else ""
+            provider_text = f"，來源 {provider}{fallback_text}" if provider else ""
+            lines.append(f"- **{dataset}**：{status}，{rows} 筆{provider_text}")
+            for title in item.get("latest_titles", []):
+                lines.append(f"  - 新聞觀察：{title}")
+        lines.append("")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text("\n".join(lines), encoding="utf-8")

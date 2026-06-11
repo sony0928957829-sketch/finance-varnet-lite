@@ -80,10 +80,16 @@ finance-varnet-lite/
     └── reports/
 ```
 
-## 後續擴充
+## v0.2 資料範圍
 
-- 新增 TWSE/TAIFEX/FinMind fetcher
-- 新增法人、融資融券、選擇權 Put/Call、期貨未平倉資料
-- 新增新聞情緒與事件風險分數
-- 新增高低區間預測標籤與模型
-- 新增 GitHub Actions / cron 每日自動排程
+- 美國股票：NVDA、TSLA、AMD
+- 加密貨幣：BTC-USD
+- 台灣股票：2330.TW、2317.TW、2382.TW
+- 台灣加權指數：TAIEX（yfinance 代號 `^TWII`）
+- 總體風險：VIX、美國 10 年期公債殖利率、美元指數、USD/TWD
+- 可選資料：TX 台指期、台灣三大法人、融資融券、選擇權與新聞
+
+價格來源會依 `config/data_sources.yaml` 的 primary / fallback 順序切換。
+完整分層與欄位說明請見 `DATA_ARCHITECTURE.md`。
+
+報告只提供市場觀察、風險分數、異常訊號與未來區間估計，不提供買賣建議。

@@ -41,3 +41,9 @@ prediction_targets_reserved:
     - next_5d_low_pct
     - next_10d_high_pct
     - next_10d_low_pct
+
+range_forecast:
+  window: 252
+  min_periods: 60
+  lower_quantile: 0.20
+  upper_quantile: 0.80

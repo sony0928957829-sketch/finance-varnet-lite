@@ -5,7 +5,12 @@ import json
 import pandas as pd
 
 from src.features.labels import range_label_columns
-from src.main import provider_price_settings, run_pipeline, years_before
+from src.main import (
+    provider_price_settings,
+    provider_symbol_aliases,
+    run_pipeline,
+    years_before,
+)
 from src.utils.config import DATA_DIR, load_config
 
 
@@ -18,8 +23,25 @@ class PipelineSmokeTest(unittest.TestCase):
 
         symbols, history_years = provider_price_settings(config, "yfinance")
 
-        self.assertEqual(symbols, ["NVDA", "TSLA", "AMD", "BTC-USD"])
+        self.assertEqual(
+            symbols,
+            [
+                "NVDA",
+                "TSLA",
+                "AMD",
+                "BTC-USD",
+                "2330.TW",
+                "2317.TW",
+                "2382.TW",
+                "TAIEX",
+                "^VIX",
+                "^TNX",
+                "DX-Y.NYB",
+                "TWD=X",
+            ],
+        )
         self.assertEqual(history_years, 5)
+        self.assertEqual(provider_symbol_aliases(config, "yfinance"), {"TAIEX": "^TWII"})
 
     def test_mock_pipeline_runs(self):
         path = run_pipeline(mode="mock", start="2025-01-01", end="2025-12-31")
@@ -31,6 +53,8 @@ class PipelineSmokeTest(unittest.TestCase):
         self.assertIn("## 0. 今日自動摘要", report)
         self.assertIn("**市場狀態：**", report)
         self.assertIn("**資料品質：**", report)
+        self.assertIn("## 6. 未來高低區間模型", report)
+        self.assertIn("不是價格方向或買賣建議", report)
 
         health_path = Path(path).with_name(
             Path(path).name.replace("_market_report.md", "_data_health.json")
@@ -44,6 +68,7 @@ class PipelineSmokeTest(unittest.TestCase):
 
         self.assertTrue(set(label_columns).isdisjoint(features.columns))
         self.assertTrue(set(label_columns).issubset(labels.columns))
+        self.assertIn("pred_next_5d_high_pct", features.columns)
 
 
 if __name__ == "__main__":

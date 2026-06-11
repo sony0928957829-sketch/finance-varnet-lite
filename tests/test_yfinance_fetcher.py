@@ -86,6 +86,17 @@ class YFinanceFetcherTest(unittest.TestCase):
         self.assertTrue(result.empty)
         self.assertEqual(result.columns.tolist(), YFINANCE_COLUMNS)
 
+    def test_supports_taiwan_aliases_and_macro_markets(self):
+        fetcher = YFinanceFetcher(symbol_aliases={"TAIEX": "^TWII"})
+
+        self.assertEqual(fetcher.symbol_aliases["TAIEX"], "^TWII")
+        self.assertEqual(fetcher._infer_market("2330.TW"), "TW")
+        self.assertEqual(fetcher._infer_market("TAIEX"), "TW")
+        self.assertEqual(fetcher._infer_market("^VIX"), "US_VOLATILITY")
+        self.assertEqual(fetcher._infer_market("^TNX"), "US_RATE")
+        self.assertEqual(fetcher._infer_market("DX-Y.NYB"), "US_DOLLAR")
+        self.assertEqual(fetcher._infer_market("TWD=X"), "FX")
+
 
 if __name__ == "__main__":
     unittest.main()

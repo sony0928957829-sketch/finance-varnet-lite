@@ -8,9 +8,11 @@ data/raw/*
 data/normalized/*
 data/features/*
 data/labels/*
+data/alternative/*
 data/models/*
 !data/raw/.gitkeep
 !data/normalized/.gitkeep
 !data/features/.gitkeep
 !data/labels/.gitkeep
+!data/alternative/.gitkeep
 !data/models/.gitkeep

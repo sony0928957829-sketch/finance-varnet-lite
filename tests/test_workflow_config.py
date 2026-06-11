@@ -15,6 +15,8 @@ class DailyMarketReportWorkflowTests(unittest.TestCase):
 
     def test_schedule_and_manual_trigger_are_configured(self):
         self.assertIn("workflow_dispatch:", self.workflow)
+        self.assertIn("push:", self.workflow)
+        self.assertIn('"src/**"', self.workflow)
         self.assertIn('cron: "30 23 * * *"', self.workflow)
         self.assertIn('cron: "30 7 * * 1-5"', self.workflow)
 
@@ -28,6 +30,13 @@ class DailyMarketReportWorkflowTests(unittest.TestCase):
         self.assertIn("test_failure_notification:", self.workflow)
         self.assertIn("inputs.test_failure_notification", self.workflow)
         self.assertIn('exit 1', self.workflow)
+
+    def test_alternative_data_and_supplemental_health_are_artifacts(self):
+        self.assertIn("data/alternative/*.parquet", self.workflow)
+        self.assertIn("data/reports/*_supplemental_health.json", self.workflow)
+        self.assertIn('"2330.TW"', self.workflow)
+        self.assertIn('"TAIEX"', self.workflow)
+        self.assertIn('"derivatives.taiwan_options"', self.workflow)
 
 
 if __name__ == "__main__":

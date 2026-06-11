@@ -96,8 +96,15 @@ def add_scores(df: pd.DataFrame) -> pd.DataFrame:
     out["anomaly_risk_score"] = out.apply(_anomaly_risk_score, axis=1)
 
     # Overall risk focuses on downside/instability signals, not bullishness.
+    risk_columns = [
+        "volatility_risk_score",
+        "anomaly_risk_score",
+        "macro_risk_score",
+        "cross_market_divergence_score",
+    ]
+    available_risk_columns = [column for column in risk_columns if column in out.columns]
     out["risk_score"] = (
-        out[["volatility_risk_score", "anomaly_risk_score"]]
+        out[available_risk_columns]
         .mean(axis=1, skipna=True)
         .clip(0, 100)
     )

@@ -9,6 +9,16 @@ on:
         default: false
         type: boolean
 
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/daily-market-report.yml"
+      - "config/**"
+      - "src/**"
+      - "tests/**"
+      - "requirements.txt"
+
   schedule:
     # 台灣時間 07:30，美股收盤後
     # UTC 時間 23:30
@@ -84,6 +94,16 @@ jobs:
               "市場狀態",
               "平均風險分數",
               "今日異常訊號",
+              "未來高低區間模型",
+              "外部資料來源狀態",
+              "2330.TW",
+              "2317.TW",
+              "2382.TW",
+              "TAIEX",
+              "^VIX",
+              "^TNX",
+              "DX-Y.NYB",
+              "TWD=X",
               "不構成買賣建議",
               "不做交易決策",
           ]
@@ -100,6 +120,29 @@ jobs:
           if health.get("status") == "error":
               raise SystemExit(f"Data health failed: {health.get('issues', [])}")
           print(f"Validated health report: {health_reports[-1]}")
+
+          supplemental_reports = sorted(
+              Path("data/reports").glob("*_supplemental_health.json")
+          )
+          if not supplemental_reports:
+              raise SystemExit("No supplemental data health report was generated.")
+          supplemental = json.loads(
+              supplemental_reports[-1].read_text(encoding="utf-8")
+          )
+          required_routes = {
+              "price_routes",
+              "news.market_events",
+              "chip.taiwan_institutional",
+              "chip.taiwan_margin_short",
+              "derivatives.taiwan_futures_open_interest",
+              "derivatives.taiwan_options",
+          }
+          missing_routes = sorted(required_routes - set(supplemental))
+          if missing_routes:
+              raise SystemExit(
+                  f"Supplemental health is missing routes: {missing_routes}"
+              )
+          print(f"Validated supplemental health: {supplemental_reports[-1]}")
           PY
 
       - name: Upload generated data
@@ -112,6 +155,8 @@ jobs:
             data/normalized/prices_yfinance.parquet
             data/features/features_yfinance.parquet
             data/labels/labels_yfinance.parquet
+            data/alternative/*.parquet
+            data/reports/*_supplemental_health.json
           if-no-files-found: error
           retention-days: 30
 
