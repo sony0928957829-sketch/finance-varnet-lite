@@ -28,6 +28,9 @@ class PipelineSmokeTest(unittest.TestCase):
         report = Path(path).read_text(encoding="utf-8")
         self.assertTrue(report.startswith("# VARnet-lite"))
         self.assertIn("不構成買賣建議", report)
+        self.assertIn("## 0. 今日自動摘要", report)
+        self.assertIn("**市場狀態：**", report)
+        self.assertIn("**資料品質：**", report)
 
         health_path = Path(path).with_name(
             Path(path).name.replace("_market_report.md", "_data_health.json")

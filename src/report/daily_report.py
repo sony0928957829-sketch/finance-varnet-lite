@@ -4,6 +4,8 @@ from datetime import date
 from pathlib import Path
 import pandas as pd
 
+from .market_summary import build_market_summary
+
 
 def _fmt_pct(x: float) -> str:
     if pd.isna(x):
@@ -28,7 +30,16 @@ def latest_rows(features: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def generate_daily_report(features: pd.DataFrame, output_path: Path, title_date: date | None = None) -> Path:
+def _fmt_symbols(symbols: list[str]) -> str:
+    return "、".join(symbols) if symbols else "資料不足"
+
+
+def generate_daily_report(
+    features: pd.DataFrame,
+    output_path: Path,
+    title_date: date | None = None,
+    health_report: dict | None = None,
+) -> Path:
     title_date = title_date or date.today()
     latest = latest_rows(features)
 
@@ -46,7 +57,21 @@ def generate_daily_report(features: pd.DataFrame, output_path: Path, title_date:
         output_path.write_text("\n".join(lines), encoding="utf-8")
         return output_path
 
-    overall_risk = latest["risk_score"].mean(skipna=True)
+    summary = build_market_summary(latest, health_report)
+    lines.append("## 0. 今日自動摘要")
+    lines.append("")
+    lines.append(f"- **市場狀態：** {summary['market_state']}")
+    lines.append(f"- **平均風險：** {_fmt_num(summary['overall_risk'])}")
+    lines.append(f"- **異常標的：** {_fmt_symbols(summary['abnormal_symbols'])}")
+    lines.append(f"- **相對強勢：** {_fmt_symbols(summary['strong_symbols'])}")
+    lines.append(f"- **相對弱勢：** {_fmt_symbols(summary['weak_symbols'])}")
+    lines.append(f"- **資料品質：** {summary['data_health']}")
+    lines.append("- **觀察重點：**")
+    for point in summary["watch_points"]:
+        lines.append(f"  - {point}")
+    lines.append("")
+
+    overall_risk = summary["overall_risk"]
     lines.append("## 1. 市場總覽")
     lines.append("")
     lines.append(f"- 平均風險分數：{_fmt_num(overall_risk)}")
@@ -88,18 +113,15 @@ def generate_daily_report(features: pd.DataFrame, output_path: Path, title_date:
 
     lines.append("## 4. 相對強弱排序")
     lines.append("")
-    strong = latest.sort_values("condition_score", ascending=False).head(3)
-    weak = latest.sort_values("condition_score", ascending=True).head(3)
-    lines.append("**相對強勢：** " + "、".join(strong["symbol"].astype(str).tolist()))
+    lines.append("**相對強勢：** " + _fmt_symbols(summary["strong_symbols"]))
     lines.append("")
-    lines.append("**相對弱勢：** " + "、".join(weak["symbol"].astype(str).tolist()))
+    lines.append("**相對弱勢：** " + _fmt_symbols(summary["weak_symbols"]))
     lines.append("")
 
     lines.append("## 5. 隔日觀察重點")
     lines.append("")
-    lines.append("- 先觀察風險分數最高的標的是否連續升高。")
-    lines.append("- 觀察強勢標的是否能維持相對強弱，而不是只出現單日反彈。")
-    lines.append("- 觀察台股、美股 AI、BTC 是否同步轉弱或出現背離。")
+    for point in summary["watch_points"]:
+        lines.append(f"- {point}")
     lines.append("")
 
     lines.append("## 6. v0.2 預留：高低區間預測")

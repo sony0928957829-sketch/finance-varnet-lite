@@ -143,7 +143,12 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     save_frame(labeled_features, labels_path, parquet_required=mode == "yfinance")
 
     report_path = DATA_DIR / "reports" / f"{report_date.isoformat()}_market_report.md"
-    generate_daily_report(features, report_path, title_date=report_date)
+    generate_daily_report(
+        features,
+        report_path,
+        title_date=report_date,
+        health_report=health_report,
+    )
     return report_path
 
 

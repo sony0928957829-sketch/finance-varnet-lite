@@ -67,6 +67,8 @@ jobs:
           report = reports[-1].read_text(encoding="utf-8")
           required_text = [
               "每日市場觀察報告",
+              "今日自動摘要",
+              "市場狀態",
               "平均風險分數",
               "今日異常訊號",
               "不構成買賣建議",
