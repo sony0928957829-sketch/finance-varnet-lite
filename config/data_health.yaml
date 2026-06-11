@@ -1,0 +1,37 @@
+required_columns:
+  - datetime
+  - symbol
+  - market
+  - timeframe
+  - open
+  - high
+  - low
+  - close
+  - volume
+  - source
+
+minimum_rows_per_symbol: 2
+
+freshness_max_age_days:
+  US: 4
+  CRYPTO: 2
+  TW: 4
+  default: 4
+
+long_gap_days:
+  US: 4
+  CRYPTO: 2
+  TW: 4
+  default: 4
+
+fail_on:
+  - empty_data
+  - missing_columns
+  - missing_symbol
+  - insufficient_rows
+  - invalid_datetime
+  - null_price
+  - non_positive_price
+  - invalid_ohlc
+  - duplicate_bar
+  - stale_data

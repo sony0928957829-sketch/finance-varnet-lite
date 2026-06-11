@@ -1,6 +1,7 @@
 from pathlib import Path
 import unittest
 from datetime import date
+import json
 import pandas as pd
 
 from src.features.labels import range_label_columns
@@ -27,6 +28,12 @@ class PipelineSmokeTest(unittest.TestCase):
         report = Path(path).read_text(encoding="utf-8")
         self.assertTrue(report.startswith("# VARnet-lite"))
         self.assertIn("不構成買賣建議", report)
+
+        health_path = Path(path).with_name(
+            Path(path).name.replace("_market_report.md", "_data_health.json")
+        )
+        health = json.loads(health_path.read_text(encoding="utf-8"))
+        self.assertNotEqual(health["status"], "error")
 
         features = pd.read_parquet(DATA_DIR / "features" / "features_mock.parquet")
         labels = pd.read_parquet(DATA_DIR / "labels" / "labels_mock.parquet")

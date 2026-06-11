@@ -6,6 +6,11 @@ from zoneinfo import ZoneInfo
 from pathlib import Path
 
 from src.fetchers.factory import create_fetcher
+from src.health.data_health import (
+    evaluate_price_health,
+    raise_for_health_errors,
+    write_health_report,
+)
 from src.normalizers.price_normalizer import normalize_price_frame
 from src.features.basic import add_basic_features
 from src.features.fourier import add_fourier_features
@@ -63,6 +68,7 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     watchlist_config = load_config("watchlist.yaml")
     feature_config = load_config("feature_config.yaml")
     data_sources_config = load_config("data_sources.yaml")
+    data_health_config = load_config("data_health.yaml")
     instruments = flatten_watchlist(watchlist_config)
     all_symbols = symbols(instruments)
 
@@ -86,6 +92,18 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
 
     fetcher = create_fetcher(mode)
     raw = fetcher.fetch_price_history(all_symbols, start=start, end=end, interval="1d")
+    report_date = current_taipei_date()
+    health_report = evaluate_price_health(
+        raw,
+        expected_symbols=all_symbols,
+        as_of=date.fromisoformat(end),
+        primary_source=mode,
+        config=data_health_config,
+    )
+    health_path = DATA_DIR / "reports" / f"{report_date.isoformat()}_data_health.json"
+    write_health_report(health_report, health_path)
+    raise_for_health_errors(health_report)
+
     normalized = normalize_price_frame(raw)
 
     # Save normalized data for inspection.
@@ -124,7 +142,6 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     labels_path = DATA_DIR / "labels" / f"labels_{mode}.parquet"
     save_frame(labeled_features, labels_path, parquet_required=mode == "yfinance")
 
-    report_date = current_taipei_date()
     report_path = DATA_DIR / "reports" / f"{report_date.isoformat()}_market_report.md"
     generate_daily_report(features, report_path, title_date=report_date)
     return report_path

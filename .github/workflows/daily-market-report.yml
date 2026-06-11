@@ -45,9 +45,19 @@ jobs:
       - name: Run market report
         run: python -m src.main --mode yfinance
 
+      - name: Upload data health diagnostics
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: data-health-${{ github.run_id }}
+          path: data/reports/*_data_health.json
+          if-no-files-found: warn
+          retention-days: 30
+
       - name: Validate market report
         run: |
           python - <<'PY'
+          import json
           from pathlib import Path
 
           reports = sorted(Path("data/reports").glob("*_market_report.md"))
@@ -67,6 +77,14 @@ jobs:
               raise SystemExit(f"Report is missing required text: {missing}")
 
           print(f"Validated report: {reports[-1]}")
+
+          health_reports = sorted(Path("data/reports").glob("*_data_health.json"))
+          if not health_reports:
+              raise SystemExit("No data health report was generated.")
+          health = json.loads(health_reports[-1].read_text(encoding="utf-8"))
+          if health.get("status") == "error":
+              raise SystemExit(f"Data health failed: {health.get('issues', [])}")
+          print(f"Validated health report: {health_reports[-1]}")
           PY
 
       - name: Upload generated data
@@ -75,6 +93,7 @@ jobs:
           name: market-report-${{ github.run_id }}
           path: |
             data/reports/*_market_report.md
+            data/reports/*_data_health.json
             data/normalized/prices_yfinance.parquet
             data/features/features_yfinance.parquet
             data/labels/labels_yfinance.parquet
