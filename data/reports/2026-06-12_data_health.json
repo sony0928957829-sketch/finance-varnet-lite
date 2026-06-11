@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-06-11T16:59:08.126252+00:00",
+  "as_of": "2026-06-12",
+  "primary_source": "yfinance",
+  "status": "healthy",
+  "summary": {
+    "expected_symbol_count": 4,
+    "observed_symbol_count": 4,
+    "error_count": 0,
+    "warning_count": 0
+  },
+  "symbols": {
+    "NVDA": {
+      "market": "US",
+      "row_count": 1255,
+      "first_datetime": "2021-06-14T00:00:00",
+      "latest_datetime": "2026-06-11T00:00:00",
+      "age_days": 1,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 4,
+      "status": "healthy"
+    },
+    "TSLA": {
+      "market": "US",
+      "row_count": 1255,
+      "first_datetime": "2021-06-14T00:00:00",
+      "latest_datetime": "2026-06-11T00:00:00",
+      "age_days": 1,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 4,
+      "status": "healthy"
+    },
+    "AMD": {
+      "market": "US",
+      "row_count": 1255,
+      "first_datetime": "2021-06-14T00:00:00",
+      "latest_datetime": "2026-06-11T00:00:00",
+      "age_days": 1,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 4,
+      "status": "healthy"
+    },
+    "BTC-USD": {
+      "market": "CRYPTO",
+      "row_count": 1826,
+      "first_datetime": "2021-06-12T00:00:00",
+      "latest_datetime": "2026-06-11T00:00:00",
+      "age_days": 1,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 1,
+      "status": "healthy"
+    }
+  },
+  "issues": []
+}
