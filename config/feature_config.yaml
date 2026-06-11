@@ -1,0 +1,43 @@
+lookbacks:
+  short: 5
+  mid: 20
+  long: 60
+  annual: 240
+
+moving_averages:
+  - 5
+  - 20
+  - 60
+  - 120
+  - 240
+
+volatility:
+  rolling_window: 20
+  atr_window: 14
+
+volume:
+  volume_ratio_window: 20
+
+fourier:
+  window: 120
+  min_period: 5
+  max_period: 80
+  top_k_cycles: 3
+
+wavelet:
+  wavelet_name: db4
+  level: 3
+  window: 120
+
+prediction_targets_reserved:
+  horizons:
+    - 1
+    - 5
+    - 10
+  fields:
+    - next_1d_high_pct
+    - next_1d_low_pct
+    - next_5d_high_pct
+    - next_5d_low_pct
+    - next_10d_high_pct
+    - next_10d_low_pct

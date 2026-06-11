@@ -1,0 +1,263 @@
+version: 1
+
+# Provider metadata lives here so fetchers and routing code do not hard-code
+# credentials, adapter names, or source availability.
+providers:
+  mock:
+    adapter: mock
+    enabled: true
+    requires_auth: false
+
+  yfinance:
+    adapter: yfinance
+    enabled: true
+    requires_auth: false
+
+  finmind:
+    adapter: finmind
+    enabled: false
+    requires_auth: true
+    token_env: FINMIND_TOKEN
+
+  twse:
+    adapter: twse
+    enabled: false
+    requires_auth: false
+
+  taifex:
+    adapter: taifex
+    enabled: false
+    requires_auth: false
+
+  polygon:
+    adapter: polygon
+    enabled: false
+    requires_auth: true
+    token_env: POLYGON_API_KEY
+
+  alpha_vantage:
+    adapter: alpha_vantage
+    enabled: false
+    requires_auth: true
+    token_env: ALPHA_VANTAGE_API_KEY
+
+  binance:
+    adapter: binance
+    enabled: false
+    requires_auth: false
+
+  coingecko:
+    adapter: coingecko
+    enabled: false
+    requires_auth: false
+
+  yahoo_finance_news:
+    adapter: yahoo_finance_news
+    enabled: false
+    requires_auth: false
+
+  reuters:
+    adapter: reuters
+    enabled: false
+    requires_auth: true
+    token_env: REUTERS_API_KEY
+
+  cna:
+    adapter: cna
+    enabled: false
+    requires_auth: false
+
+  moneydj:
+    adapter: moneydj
+    enabled: false
+    requires_auth: false
+
+  fred:
+    adapter: fred
+    enabled: false
+    requires_auth: true
+    token_env: FRED_API_KEY
+
+  stooq:
+    adapter: stooq
+    enabled: false
+    requires_auth: false
+
+  central_bank_taiwan:
+    adapter: central_bank_taiwan
+    enabled: false
+    requires_auth: false
+
+# Every dataset declares one primary source and an ordered fallback list.
+# Enabling a provider does not automatically enable its dataset.
+datasets:
+  prices:
+    us_stock:
+      enabled: true
+      primary: yfinance
+      fallback:
+        - polygon
+        - alpha_vantage
+      symbols:
+        - NVDA
+        - TSLA
+        - AMD
+      timeframe: 1d
+      history_years: 5
+
+    crypto:
+      enabled: true
+      primary: yfinance
+      fallback:
+        - binance
+        - coingecko
+      symbols:
+        - BTC-USD
+      timeframe: 1d
+      history_years: 5
+
+    taiwan_stock:
+      enabled: false
+      primary: finmind
+      fallback:
+        - twse
+      symbols:
+        - 2330.TW
+        - 2317.TW
+        - 2382.TW
+      timeframe: 1d
+      history_years: 5
+
+    taiwan_index:
+      enabled: false
+      primary: twse
+      fallback:
+        - finmind
+      symbols:
+        - TAIEX
+      timeframe: 1d
+      history_years: 5
+
+    taiwan_futures:
+      enabled: false
+      primary: taifex
+      fallback:
+        - finmind
+      symbols:
+        - TX
+      timeframe: 1d
+      continuous_contract:
+        enabled: false
+        roll_rule: volume
+        adjustment: back_adjusted
+
+  news:
+    market_events:
+      enabled: false
+      primary: yahoo_finance_news
+      fallback:
+        - reuters
+        - cna
+        - moneydj
+      languages:
+        - en
+        - zh-TW
+      topics:
+        - company
+        - earnings
+        - guidance
+        - macro
+
+  chip:
+    taiwan_institutional:
+      enabled: false
+      primary: finmind
+      fallback:
+        - twse
+      fields:
+        - foreign_net_buy
+        - investment_trust_net_buy
+        - dealer_net_buy
+
+    taiwan_margin_short:
+      enabled: false
+      primary: finmind
+      fallback:
+        - twse
+      fields:
+        - margin_balance
+        - short_balance
+        - securities_lending
+
+  derivatives:
+    taiwan_futures_open_interest:
+      enabled: false
+      primary: taifex
+      fallback:
+        - finmind
+      symbols:
+        - TX
+      fields:
+        - settlement
+        - open_interest
+        - basis
+
+    taiwan_options:
+      enabled: false
+      primary: taifex
+      fallback:
+        - finmind
+      symbols:
+        - TXO
+      fields:
+        - put_call_ratio
+        - open_interest
+        - implied_volatility
+        - strike_distribution
+
+  macro:
+    vix:
+      enabled: false
+      primary: yfinance
+      fallback:
+        - fred
+      symbols:
+        - ^VIX
+
+    us_treasury_yield:
+      enabled: false
+      primary: fred
+      fallback:
+        - yfinance
+      series:
+        - DGS10
+      fallback_symbols:
+        - ^TNX
+
+    us_dollar_index:
+      enabled: false
+      primary: yfinance
+      fallback:
+        - stooq
+      symbols:
+        - DX-Y.NYB
+
+    foreign_exchange:
+      enabled: false
+      primary: yfinance
+      fallback:
+        - central_bank_taiwan
+      symbols:
+        - TWD=X
+
+runtime:
+  failover:
+    enabled: true
+    continue_on_empty: true
+    continue_on_error: true
+  cache:
+    raw_enabled: true
+    normalized_enabled: true
+  provenance:
+    include_source: true
+    include_created_at: true

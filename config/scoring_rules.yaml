@@ -1,0 +1,28 @@
+score_weights:
+  trend: 0.25
+  momentum: 0.15
+  volume: 0.15
+  volatility: 0.15
+  relative_strength: 0.15
+  anomaly: 0.15
+
+risk_levels:
+  low_max: 35
+  medium_max: 60
+  high_max: 80
+
+trend_score:
+  close_above_ma20: 20
+  close_above_ma60: 25
+  ma20_above_ma60: 25
+  positive_20d_return: 15
+  positive_60d_return: 15
+
+volume_score:
+  normal_volume_ratio_low: 0.8
+  normal_volume_ratio_high: 1.5
+  abnormal_volume_ratio: 2.0
+
+volatility_score:
+  high_volatility_percentile: 0.8
+  extreme_volatility_percentile: 0.95

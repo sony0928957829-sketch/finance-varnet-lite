@@ -1,0 +1,51 @@
+watchlist:
+  taiwan:
+    - symbol: 2330.TW
+      name: 台積電
+      group: 台股權值
+      benchmark: TAIEX
+      enabled: true
+    - symbol: 2317.TW
+      name: 鴻海
+      group: AI伺服器
+      benchmark: TAIEX
+      enabled: true
+    - symbol: 2382.TW
+      name: 廣達
+      group: AI伺服器
+      benchmark: TAIEX
+      enabled: true
+  index:
+    - symbol: TAIEX
+      name: 加權指數
+      group: 台股大盤
+      benchmark: null
+      enabled: true
+  futures:
+    - symbol: TX
+      name: 台指期
+      group: 台股期貨
+      benchmark: TAIEX
+      enabled: true
+  us:
+    - symbol: NVDA
+      name: NVIDIA
+      group: 美股AI半導體
+      benchmark: NASDAQ
+      enabled: true
+    - symbol: TSLA
+      name: Tesla
+      group: 美股高波動科技
+      benchmark: NASDAQ
+      enabled: true
+    - symbol: AMD
+      name: AMD
+      group: 美股AI半導體
+      benchmark: NASDAQ
+      enabled: true
+  crypto:
+    - symbol: BTC-USD
+      name: Bitcoin
+      group: 加密貨幣
+      benchmark: CRYPTO_TOTAL
+      enabled: true
