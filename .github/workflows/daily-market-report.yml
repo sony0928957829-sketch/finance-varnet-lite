@@ -45,6 +45,30 @@ jobs:
       - name: Run market report
         run: python -m src.main --mode yfinance
 
+      - name: Validate market report
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          reports = sorted(Path("data/reports").glob("*_market_report.md"))
+          if not reports:
+              raise SystemExit("No Markdown market report was generated.")
+
+          report = reports[-1].read_text(encoding="utf-8")
+          required_text = [
+              "每日市場觀察報告",
+              "平均風險分數",
+              "今日異常訊號",
+              "不構成買賣建議",
+              "不做交易決策",
+          ]
+          missing = [text for text in required_text if text not in report]
+          if missing:
+              raise SystemExit(f"Report is missing required text: {missing}")
+
+          print(f"Validated report: {reports[-1]}")
+          PY
+
       - name: Upload generated data
         uses: actions/upload-artifact@v4
         with:
@@ -63,10 +87,9 @@ jobs:
           git config user.email "market-report-bot@example.com"
 
           git add data/reports
-          git add -f data/normalized data/features
 
           if git diff --cached --quiet; then
-            echo "No generated data changes to commit."
+            echo "No report changes to commit."
           else
             git commit -m "chore: daily market report [skip ci]"
             git push
