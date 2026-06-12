@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Dollar steadies on ceasefire prospects, PPI eases pressure on Fed",
-      "SpaceX Is About to Be Worth More Than $1.7 Trillion. Here's Whether That Valuation Makes Sense.",
-      "Stocks extend rally on Gulf breakthrough hopes, oil hits two-month lows"
+      "SpaceX Is Going Public. Here's What a $25,000 Investment Could Be Worth by 2030.",
+      "SpaceX Is Going Public. Here's What a $25,000 Investment Could Be Worth by 2030.",
+      "Cramer Calls Intel the “Number One Name” and “More Important Than NVIDIA.” The Stock Soars Today After a Massive Double Upgrade."
     ]
   },
   "chip.taiwan_institutional": {
@@ -92,7 +92,7 @@
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16860,
+    "rows": 16861,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1363
             }
           }
         ],
