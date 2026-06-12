@@ -43,7 +43,9 @@ def _wavelet_energy(values: np.ndarray, wavelet_name: str = "db4", level: int = 
         return short / total, mid / total, long / total
 
 
-def add_wavelet_features(df: pd.DataFrame, window: int = 120, wavelet_name: str = "db4", level: int = 3) -> pd.DataFrame:
+def add_wavelet_features(df: pd.DataFrame, window: int = 120, wavelet_name: str = "db4", level: int = 3, stride: int = 1) -> pd.DataFrame:
+    """stride > 1 recomputes wavelet energy every `stride` rows and reuses the
+    last value in between; an O(stride) speedup for wide watchlists."""
     if df.empty:
         return df.copy()
     out = df.sort_values(["symbol", "datetime"]).copy()
@@ -56,17 +58,25 @@ def add_wavelet_features(df: pd.DataFrame, window: int = 120, wavelet_name: str 
         symbol_df = out.loc[idx].sort_values("datetime")
         returns = symbol_df["return_1d"].to_numpy()
         short_e, mid_e, long_e, anomaly = [], [], [], []
-        rolling_energy = []
+        baseline_energy = []
+        # Energies computed over short warmup windows are unstable; keeping
+        # them in the z-score baseline contaminates early anomaly scores.
+        min_window_for_baseline = min(window, 64)
+        last = (np.nan, np.nan, np.nan)
         for i in range(len(symbol_df)):
             start = max(0, i - window + 1)
-            es, em, el = _wavelet_energy(returns[start : i + 1], wavelet_name=wavelet_name, level=level)
+            effective_window = i + 1 - start
+            if i % stride == 0 or i == len(symbol_df) - 1:
+                last = _wavelet_energy(returns[start : i + 1], wavelet_name=wavelet_name, level=level)
+            es, em, el = last
             short_e.append(es)
             mid_e.append(em)
             long_e.append(el)
             current_energy = np.nansum([es, em])
-            rolling_energy.append(current_energy)
-            z = _rolling_zscore(current_energy, np.asarray(rolling_energy[:-1], dtype=float))
+            z = _rolling_zscore(current_energy, np.asarray(baseline_energy, dtype=float))
             anomaly.append(np.clip(abs(z) * 20, 0, 100) if np.isfinite(z) else np.nan)
+            if effective_window >= min_window_for_baseline:
+                baseline_energy.append(current_energy)
 
         out.loc[symbol_df.index, "wavelet_energy_short"] = short_e
         out.loc[symbol_df.index, "wavelet_energy_mid"] = mid_e

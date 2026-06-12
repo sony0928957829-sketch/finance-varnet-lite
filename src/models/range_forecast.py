@@ -26,11 +26,21 @@ def add_range_forecasts(
     min_periods: int = 60,
     lower_quantile: float = 0.2,
     upper_quantile: float = 0.8,
+    volatility_conditioning: bool = False,
+    volatility_column: str = "atr_pct",
+    volatility_window: int = 252,
 ) -> pd.DataFrame:
     """Add trailing empirical range forecasts without using unavailable labels.
 
     A label for row t and horizon h only becomes available at t+h. Shifting
     labels by h before rolling keeps current-day forecasts strictly causal.
+
+    When volatility_conditioning is enabled, the unconditional rolling-quantile
+    band is scaled by the ratio of current volatility (volatility_column,
+    default atr_pct) to its own rolling mean. This turns the climatology
+    baseline into a regime-aware band: calm regimes get narrower bands, high
+    volatility regimes get wider ones. The scaling factor only uses data up to
+    and including row t, so causality is preserved.
     """
     if frame.empty:
         output = frame.copy()
@@ -62,6 +72,17 @@ def add_range_forecasts(
         observations = available_high.groupby(output["symbol"]).transform(
             lambda values: values.rolling(window, min_periods=1).count()
         )
+
+        if volatility_conditioning and volatility_column in output.columns:
+            vol = output[volatility_column]
+            vol_mean = vol.groupby(output["symbol"]).transform(
+                lambda values: values.rolling(
+                    volatility_window, min_periods=min_periods
+                ).mean()
+            )
+            scale = (vol / vol_mean).clip(lower=0.5, upper=2.5)
+            predicted_low = predicted_low * scale
+            predicted_high = predicted_high * scale
 
         output[f"pred_next_{horizon}d_low_pct"] = predicted_low
         output[f"pred_next_{horizon}d_high_pct"] = predicted_high

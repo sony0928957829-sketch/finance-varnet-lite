@@ -11,26 +11,37 @@ def _clip_score(value: float) -> float:
 
 
 def _trend_score(row: pd.Series) -> float:
+    # Return NaN (-> "資料不足") instead of a fake-low score during warmup.
+    required = ["close", "ma_20", "ma_60", "return_20d", "return_60d"]
+    values = [row.get(name, np.nan) for name in required]
+    if not all(np.isfinite(v) for v in values):
+        return np.nan
+    close, ma_20, ma_60, return_20d, return_60d = values
     score = 0
-    close = row.get("close", np.nan)
-    if close > row.get("ma_20", np.inf):
+    if close > ma_20:
         score += 25
-    if close > row.get("ma_60", np.inf):
+    if close > ma_60:
         score += 25
-    if row.get("ma_20", -np.inf) > row.get("ma_60", np.inf):
+    if ma_20 > ma_60:
         score += 20
-    if row.get("return_20d", -np.inf) > 0:
+    if return_20d > 0:
         score += 15
-    if row.get("return_60d", -np.inf) > 0:
+    if return_60d > 0:
         score += 15
     return _clip_score(score)
 
 
 def _momentum_score(row: pd.Series) -> float:
-    r1 = row.get("return_1d", 0.0)
-    r5 = row.get("return_5d", 0.0)
-    r20 = row.get("return_20d", 0.0)
-    raw = 50 + 500 * r1 + 250 * r5 + 100 * r20
+    # Use non-overlapping windows so one large day is not triple-counted:
+    # r1 = day 1, r_2_5 = days 2-5, r_6_20 = days 6-20.
+    r1 = row.get("return_1d", np.nan)
+    r5 = row.get("return_5d", np.nan)
+    r20 = row.get("return_20d", np.nan)
+    if not all(np.isfinite(v) for v in (r1, r5, r20)):
+        return np.nan
+    r_2_5 = (1 + r5) / (1 + r1) - 1
+    r_6_20 = (1 + r20) / (1 + r5) - 1
+    raw = 50 + 500 * r1 + 300 * r_2_5 + 150 * r_6_20
     return _clip_score(raw)
 
 
@@ -84,6 +95,11 @@ def _anomaly_risk_score(row: pd.Series) -> float:
     return _clip_score(np.nanmean(parts))
 
 
+# Index/macro daily volume from free sources is frequently zero or unreliable;
+# a volume score computed from it is noise, so it is suppressed for these symbols.
+SYMBOLS_WITHOUT_RELIABLE_VOLUME = {"TAIEX", "^TWII", "^VIX", "^TNX", "DX-Y.NYB", "TWD=X"}
+
+
 def add_scores(df: pd.DataFrame) -> pd.DataFrame:
     if df.empty:
         return df.copy()
@@ -91,6 +107,7 @@ def add_scores(df: pd.DataFrame) -> pd.DataFrame:
     out["trend_score"] = out.apply(_trend_score, axis=1)
     out["momentum_score"] = out.apply(_momentum_score, axis=1)
     out["volume_score"] = out.apply(_volume_score, axis=1)
+    out.loc[out["symbol"].isin(SYMBOLS_WITHOUT_RELIABLE_VOLUME), "volume_score"] = np.nan
     out["volatility_risk_score"] = out.apply(_volatility_risk_score, axis=1)
     out["relative_strength_score"] = out.apply(_relative_strength_score, axis=1)
     out["anomaly_risk_score"] = out.apply(_anomaly_risk_score, axis=1)
