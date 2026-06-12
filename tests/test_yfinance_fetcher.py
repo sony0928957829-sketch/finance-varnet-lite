@@ -41,6 +41,39 @@ class YFinanceFetcherTest(unittest.TestCase):
         self.assertEqual(result.loc[0, "volume"], 12345.0)
         self.assertEqual(result.columns.tolist(), YFINANCE_COLUMNS)
 
+    def test_repairs_ohlc_bounds_without_changing_open_or_close(self):
+        index = pd.DatetimeIndex(["2026-06-01"], name="Date")
+        downloaded = pd.DataFrame(
+            {
+                "Open": [101.0],
+                "High": [100.0],
+                "Low": [100.5],
+                "Close": [99.0],
+                "Volume": [12345.0],
+            },
+            index=index,
+        )
+        download_kwargs = {}
+
+        def fake_download(*args, **kwargs):
+            download_kwargs.update(kwargs)
+            return downloaded
+
+        fake_yfinance = types.SimpleNamespace(download=fake_download)
+
+        with patch.dict(sys.modules, {"yfinance": fake_yfinance}):
+            result = YFinanceFetcher().fetch_price_history(
+                ["2330.TW"],
+                start=date(2026, 6, 1),
+                end=date(2026, 6, 2),
+            )
+
+        self.assertTrue(download_kwargs["repair"])
+        self.assertEqual(result.loc[0, "open"], 101.0)
+        self.assertEqual(result.loc[0, "close"], 99.0)
+        self.assertEqual(result.loc[0, "high"], 101.0)
+        self.assertEqual(result.loc[0, "low"], 99.0)
+
     def test_supports_priority_us_and_crypto_symbols(self):
         requested: list[str] = []
 

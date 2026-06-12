@@ -115,6 +115,21 @@ class DataHealthTest(unittest.TestCase):
         self.assertIn("stale_data", codes)
         self.assertIn("fallback_source", codes)
 
+    def test_health_error_names_the_failing_symbol(self):
+        frame = healthy_frame()
+        nvda_index = frame.index[frame["symbol"].eq("NVDA")][0]
+        frame.loc[nvda_index, "high"] = 1
+        report = evaluate_price_health(
+            frame,
+            expected_symbols=["NVDA", "BTC-USD"],
+            as_of=date(2026, 6, 11),
+            primary_source="yfinance",
+            config=HEALTH_CONFIG,
+        )
+
+        with self.assertRaisesRegex(DataHealthError, "NVDA: .*OHLC"):
+            raise_for_health_errors(report)
+
 
 if __name__ == "__main__":
     unittest.main()

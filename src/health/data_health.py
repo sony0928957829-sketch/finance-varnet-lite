@@ -241,7 +241,11 @@ def raise_for_health_errors(report: dict[str, Any]) -> None:
     if report.get("status") != "error":
         return
     errors = [
-        issue["message"]
+        (
+            f"{issue['symbol']}: {issue['message']}"
+            if issue.get("symbol")
+            else issue["message"]
+        )
         for issue in report.get("issues", [])
         if issue.get("severity") == "error"
     ]

@@ -52,6 +52,7 @@ class YFinanceFetcher(BaseFetcher):
                 end=str(end) if end else None,
                 interval=interval,
                 auto_adjust=True,
+                repair=True,
                 progress=False,
                 threads=False,
             )
@@ -76,6 +77,7 @@ class YFinanceFetcher(BaseFetcher):
                     "created_at": pd.Timestamp.now(tz="UTC"),
                 }
             )
+            frame = self._enforce_ohlc_bounds(frame)
             frames.append(frame[YFINANCE_COLUMNS])
         if not frames:
             return pd.DataFrame(columns=YFINANCE_COLUMNS)
@@ -94,6 +96,16 @@ class YFinanceFetcher(BaseFetcher):
                 flattened.columns = data.columns.get_level_values(level)
                 return flattened
         raise ValueError("yfinance response does not contain recognizable OHLCV columns.")
+
+    @staticmethod
+    def _enforce_ohlc_bounds(frame: pd.DataFrame) -> pd.DataFrame:
+        """Repair provider bars whose high/low do not contain open and close."""
+        output = frame.copy()
+        price_columns = ["open", "high", "low", "close"]
+        numeric = output[price_columns].apply(pd.to_numeric, errors="coerce")
+        output["high"] = numeric.max(axis=1, skipna=False)
+        output["low"] = numeric.min(axis=1, skipna=False)
+        return output
 
     @staticmethod
     def _infer_market(symbol: str) -> str:
