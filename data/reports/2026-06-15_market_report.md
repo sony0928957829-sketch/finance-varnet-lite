@@ -7,7 +7,7 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 偏多
-- **平均風險：** 47.97
+- **平均風險：** 48.09
 - **異常標的：** 2382.TW、^VIX、AMD
 - **相對強勢：** AMD、2382.TW、TX
 - **相對弱勢：** ^VIX、BTC-USD、TWD=X
@@ -20,7 +20,7 @@
 
 ## 1. 市場總覽
 
-- 平均風險分數：47.97
+- 平均風險分數：48.09
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -32,7 +32,7 @@
 | 2382.TW | 372.00 | 0.54% | 21.57% | 100.00 | 78.38 | 100.00 | 67.02 | 強勢/高 |
 | AMD | 511.57 | 4.73% | 13.76% | 100.00 | 93.43 | — | 61.97 | 強勢/高 |
 | BTC-USD | 65,707.50 | 2.00% | -14.97% | 0.00 | 43.15 | — | 57.90 | 偏弱/中 |
-| DX-Y.NYB | 99.51 | -0.24% | 0.40% | 85.00 | 49.33 | — | 21.54 | 偏多/低 |
+| DX-Y.NYB | 99.51 | -0.24% | 0.40% | 85.00 | 49.33 | — | 23.03 | 偏多/低 |
 | NVDA | 205.19 | 0.16% | -12.86% | 60.00 | 31.10 | — | 53.00 | 中性/中 |
 | TAIEX | 44,169.04 | 2.36% | 7.28% | 100.00 | 63.23 | — | 50.05 | 強勢/中 |
 | TSLA | 406.43 | 1.82% | -8.32% | 60.00 | 47.68 | — | 60.44 | 中性/高 |
@@ -71,7 +71,7 @@
 | 2382.TW | -2.15% / 2.49% | -4.92% / 6.09% | -6.08% / 9.32% | 100.00% |
 | AMD | -3.98% / 4.69% | -8.09% / 13.50% | -10.78% / 20.75% | 100.00% |
 | BTC-USD | -3.17% / 2.54% | -7.75% / 5.70% | -11.38% / 7.87% | 100.00% |
-| DX-Y.NYB | -0.37% / 0.44% | -0.86% / 0.95% | -1.22% / 1.29% | 100.00% |
+| DX-Y.NYB | -0.37% / 0.43% | -0.86% / 0.95% | -1.22% / 1.29% | 100.00% |
 | NVDA | -2.80% / 2.85% | -5.85% / 6.52% | -7.32% / 9.68% | 100.00% |
 | TAIEX | -1.21% / 1.84% | -2.93% / 4.39% | -3.35% / 7.01% | 100.00% |
 | TSLA | -3.52% / 3.99% | -7.39% / 7.90% | -9.94% / 11.25% | 100.00% |
@@ -84,12 +84,12 @@
 
 ## 7. 外部資料來源狀態
 
-- **chip.taiwan_institutional**：ok，7245 筆，來源 finmind
+- **chip.taiwan_institutional**：ok，7255 筆，來源 finmind
 - **chip.taiwan_margin_short**：ok，2898 筆，來源 finmind
 - **derivatives.taiwan_futures_open_interest**：ok，6146 筆，來源 finmind（備援）
 - **derivatives.taiwan_options**：ok，331094 筆，來源 finmind
 - **news.market_events**：ok，94 筆，來源 yahoo_finance_news
-  - 新聞觀察：Exclusive-Tesla presented misleading ‘Full Self-Driving’ safety data to European regulators
-  - 新聞觀察：Is This the Next Cryptocurrency to Go Mainstream?
-  - 新聞觀察：Dollar, Treasury Yields Fall After U.S.-Iran Deal
-- **price_routes**：ok，16864 筆
+  - 新聞觀察：Microsoft (MSFT) Is A Value Stock To Benefit From The New Cloud Boom
+  - 新聞觀察：As Demand Continues To Grow, Nvidia (NVDA) Has 46% Upside According To Analysts
+  - 新聞觀察：As Demand Continues To Grow, Nvidia (NVDA) Has 46% Upside According To Analysts
+- **price_routes**：ok，16865 筆

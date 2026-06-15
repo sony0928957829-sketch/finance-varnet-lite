@@ -13,21 +13,21 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Exclusive-Tesla presented misleading ‘Full Self-Driving’ safety data to European regulators",
-      "Is This the Next Cryptocurrency to Go Mainstream?",
-      "Dollar, Treasury Yields Fall After U.S.-Iran Deal"
+      "Microsoft (MSFT) Is A Value Stock To Benefit From The New Cloud Boom",
+      "As Demand Continues To Grow, Nvidia (NVDA) Has 46% Upside According To Analysts",
+      "As Demand Continues To Grow, Nvidia (NVDA) Has 46% Upside According To Analysts"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7245,
+    "rows": 7255,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7245
+        "rows": 7255
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -92,7 +92,7 @@
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16864,
+    "rows": 16865,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1363
             }
           }
         ],
