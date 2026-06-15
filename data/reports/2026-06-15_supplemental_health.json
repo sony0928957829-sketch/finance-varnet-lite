@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "5 Potential Buyers of Roku That Actually Make Sense",
-      "Stock Market Investors Get an Urgent Warning From the Bond Market. History Says This Will Happen Next.",
-      "Market Chatter: Tesla Self-Driving Safety Claims Misleading, Says Reuters"
+      "Bitcoin Jumps Above $65,000 As Fed Risk Looms",
+      "This Under-the-Radar AI Chip Leader Just Became a No-Brainer Buy This Week",
+      "This Under-the-Radar AI Chip Leader Just Became a No-Brainer Buy This Week"
     ]
   },
   "chip.taiwan_institutional": {
@@ -43,12 +43,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2898,
+    "rows": 2904,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2898
+        "rows": 2904
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",

@@ -31,7 +31,7 @@
 | 2330.TW | 2,310.00 | 2.67% | 2.26% | 100.00 | 56.13 | 24.90 | 38.70 | 偏多/中 |
 | 2382.TW | 372.00 | 0.54% | 21.57% | 100.00 | 78.38 | 100.00 | 67.02 | 強勢/高 |
 | AMD | 511.57 | 4.73% | 13.76% | 100.00 | 93.43 | — | 61.97 | 強勢/高 |
-| BTC-USD | 65,707.50 | 2.00% | -14.97% | 0.00 | 43.15 | — | 57.90 | 偏弱/中 |
+| BTC-USD | 65,710.40 | 2.00% | -14.97% | 0.00 | 43.17 | — | 57.86 | 偏弱/中 |
 | DX-Y.NYB | 99.51 | -0.24% | 0.40% | 85.00 | 49.33 | — | 21.54 | 偏多/低 |
 | NVDA | 205.19 | 0.16% | -12.86% | 60.00 | 31.10 | — | 53.00 | 中性/中 |
 | TAIEX | 44,169.04 | 2.36% | 7.28% | 100.00 | 63.23 | — | 50.05 | 強勢/中 |
@@ -85,11 +85,11 @@
 ## 7. 外部資料來源狀態
 
 - **chip.taiwan_institutional**：ok，7255 筆，來源 finmind
-- **chip.taiwan_margin_short**：ok，2898 筆，來源 finmind
+- **chip.taiwan_margin_short**：ok，2904 筆，來源 finmind
 - **derivatives.taiwan_futures_open_interest**：ok，6146 筆，來源 finmind（備援）
 - **derivatives.taiwan_options**：ok，331094 筆，來源 finmind
 - **news.market_events**：ok，94 筆，來源 yahoo_finance_news
-  - 新聞觀察：5 Potential Buyers of Roku That Actually Make Sense
-  - 新聞觀察：Stock Market Investors Get an Urgent Warning From the Bond Market. History Says This Will Happen Next.
-  - 新聞觀察：Market Chatter: Tesla Self-Driving Safety Claims Misleading, Says Reuters
+  - 新聞觀察：Bitcoin Jumps Above $65,000 As Fed Risk Looms
+  - 新聞觀察：This Under-the-Radar AI Chip Leader Just Became a No-Brainer Buy This Week
+  - 新聞觀察：This Under-the-Radar AI Chip Leader Just Became a No-Brainer Buy This Week
 - **price_routes**：ok，16864 筆
