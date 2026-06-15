@@ -1,0 +1,41 @@
+version: 1
+
+# The market pipeline always writes a local, partitioned data lake first.
+# Remote synchronization is a separate step so mock mode remains offline-safe.
+data_lake:
+  local_root: data/lake
+  manifest_path: data/manifests/data-lake-manifest.json
+  partition_time_column: datetime
+  model_version: range-forecast-v1
+  archive_modes:
+    - yfinance
+
+remote:
+  backend: google_drive
+  manifest_path: manifests/data-lake-manifest.json
+
+  google_drive:
+    root_folder_name: VARnet-lite-data
+    root_folder_id_env: GOOGLE_DRIVE_ROOT_FOLDER_ID
+    credentials_json_env: GOOGLE_DRIVE_OAUTH_JSON
+    oauth_scope: https://www.googleapis.com/auth/drive.file
+
+  local:
+    root: data/cloud_mirror
+
+sync:
+  enabled_layers:
+    - raw
+    - normalized
+    - features
+    - labels
+    - predictions
+    - alternative
+    - evaluation
+    - models
+  delete_remote_files: false
+  verify_sha256: true
+  exclude_globs:
+    - "**/*_mock/**"
+    - "**/*_mock.*"
+    - "evaluation/mock/**"

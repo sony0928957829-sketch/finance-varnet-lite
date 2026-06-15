@@ -3,6 +3,7 @@
 __pycache__/
 *.pyc
 .env
+.secrets/
 .DS_Store
 data/raw/*
 data/normalized/*
@@ -10,9 +11,14 @@ data/features/*
 data/labels/*
 data/alternative/*
 data/models/*
+data/lake/*
+data/manifests/*
+data/cloud_mirror/*
 !data/raw/.gitkeep
 !data/normalized/.gitkeep
 !data/features/.gitkeep
 !data/labels/.gitkeep
 !data/alternative/.gitkeep
 !data/models/.gitkeep
+!data/lake/.gitkeep
+!data/manifests/.gitkeep
