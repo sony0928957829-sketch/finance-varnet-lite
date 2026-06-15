@@ -127,7 +127,17 @@ def add_scores(df: pd.DataFrame) -> pd.DataFrame:
     )
 
     # Market condition score is directional/quality, not a buy signal.
-    out["condition_score"] = out[["trend_score", "momentum_score", "relative_strength_score"]].mean(axis=1, skipna=True)
+    # Chip/options sentiment signals are directional too (0-100, 50 neutral),
+    # so they join the average when present; absent -> NaN -> skipped.
+    directional_columns = [
+        "trend_score",
+        "momentum_score",
+        "relative_strength_score",
+        "institutional_flow_score",
+        "options_sentiment_score",
+    ]
+    available_directional = [c for c in directional_columns if c in out.columns]
+    out["condition_score"] = out[available_directional].mean(axis=1, skipna=True)
     out["risk_level"] = out["risk_score"].apply(classify_risk)
     out["condition_label"] = out["condition_score"].apply(classify_condition)
     return out
