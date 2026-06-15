@@ -2,6 +2,11 @@ name: Daily Market Report
 
 on:
   workflow_dispatch:
+    inputs:
+      test_failure_notification:
+        description: "Force a failure to verify the issue-notification path"
+        type: boolean
+        default: false
 
   push:
     branches:
@@ -24,6 +29,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: daily-market-report
@@ -37,6 +43,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+
+      - name: Exercise failure notification (manual)
+        if: ${{ inputs.test_failure_notification }}
+        run: |
+          echo "Forcing a failure to exercise the issue-notification path."
+          exit 1
 
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -82,6 +94,24 @@ jobs:
           print(f"Validated report: {reports[-1]}")
           PY
 
+      - name: Smoke check expected supplemental datasets
+        if: always()
+        run: |
+          python - <<'PY'
+          import glob, sys
+          expected = ["2330.TW", "TAIEX", "derivatives.taiwan_options"]
+          files = sorted(glob.glob("data/reports/*_supplemental_health.json"))
+          if not files:
+              print("No supplemental health report yet; skipping dataset smoke check.")
+              sys.exit(0)
+          text = open(files[-1], encoding="utf-8").read()
+          missing = [k for k in expected if k not in text]
+          if missing:
+              print(f"::warning::Supplemental report missing expected keys: {missing}")
+          else:
+              print("All expected supplemental symbols/datasets present.")
+          PY
+
       - name: Upload generated data
         if: always()
         uses: actions/upload-artifact@v7
@@ -111,4 +141,18 @@ jobs:
           else
             git commit -m "chore: daily market report [skip ci]"
             git push
+          fi
+
+      - name: Notify on failure via issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="❌ Daily market report failed"
+          body="Run failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          existing=$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
           fi
