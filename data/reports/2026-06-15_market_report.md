@@ -9,12 +9,12 @@
 - **市場狀態：** 偏多
 - **平均風險：** 48.09
 - **異常標的：** 2382.TW、^VIX、AMD
-- **相對強勢：** AMD、2382.TW、TX
-- **相對弱勢：** ^VIX、BTC-USD、TWD=X
+- **相對強勢：** AMD、2382.TW、TAIEX
+- **相對弱勢：** BTC-USD、^VIX、TWD=X
 - **資料品質：** 警告（6 項）
 - **觀察重點：**
   - 優先追蹤 2382.TW 的波動與異常風險是否持續升高。
-  - 觀察 ^VIX 能否停止轉弱，並修復短中期動能。
+  - 觀察 BTC-USD 能否停止轉弱，並修復短中期動能。
   - TW_DERIVATIVES 與 US_VOLATILITY 單日表現差距約 11.75%，留意跨市場背離。
   - 資料健康檢查有警告，解讀訊號時需保留不確定性。
 
@@ -31,15 +31,15 @@
 | 2330.TW | 2,310.00 | 2.67% | 2.26% | 100.00 | 56.13 | 24.90 | 38.70 | 偏多/中 |
 | 2382.TW | 372.00 | 0.54% | 21.57% | 100.00 | 78.38 | 100.00 | 67.02 | 強勢/高 |
 | AMD | 511.57 | 4.73% | 13.76% | 100.00 | 93.43 | — | 61.97 | 強勢/高 |
-| BTC-USD | 65,707.50 | 2.00% | -14.97% | 0.00 | 43.15 | — | 57.90 | 偏弱/中 |
+| BTC-USD | 65,707.50 | 2.00% | -14.97% | 0.00 | 43.15 | — | 57.88 | 偏弱/中 |
 | DX-Y.NYB | 99.51 | -0.24% | 0.40% | 85.00 | 49.33 | — | 23.03 | 偏多/低 |
 | NVDA | 205.19 | 0.16% | -12.86% | 60.00 | 31.10 | — | 53.00 | 中性/中 |
 | TAIEX | 44,169.04 | 2.36% | 7.28% | 100.00 | 63.23 | — | 50.05 | 強勢/中 |
 | TSLA | 406.43 | 1.82% | -8.32% | 60.00 | 47.68 | — | 60.44 | 中性/高 |
-| TWD=X | 31.58 | -0.22% | 0.05% | 40.00 | 49.99 | — | 21.48 | 轉弱/低 |
-| TX | 45,580.00 | 2.70% | 11.70% | 100.00 | 80.92 | — | 48.80 | 強勢/中 |
+| TWD=X | 31.58 | -0.22% | 0.05% | 40.00 | 49.99 | — | 21.48 | 中性/低 |
+| TX | 45,580.00 | 2.70% | 11.70% | 100.00 | 80.92 | — | 48.80 | 偏多/中 |
 | ^TNX | 4.49 | 0.54% | 0.58% | 75.00 | 50.38 | — | 30.95 | 偏多/低 |
-| ^VIX | 17.68 | -9.05% | -4.07% | 25.00 | 0.93 | — | 62.01 | 偏弱/高 |
+| ^VIX | 17.68 | -9.05% | -4.07% | 25.00 | 0.93 | — | 62.01 | 轉弱/高 |
 
 ## 3. 今日異常訊號
 
@@ -49,14 +49,14 @@
 
 ## 4. 相對強弱排序
 
-**相對強勢：** AMD、2382.TW、TX
+**相對強勢：** AMD、2382.TW、TAIEX
 
-**相對弱勢：** ^VIX、BTC-USD、TWD=X
+**相對弱勢：** BTC-USD、^VIX、TWD=X
 
 ## 5. 隔日觀察重點
 
 - 優先追蹤 2382.TW 的波動與異常風險是否持續升高。
-- 觀察 ^VIX 能否停止轉弱，並修復短中期動能。
+- 觀察 BTC-USD 能否停止轉弱，並修復短中期動能。
 - TW_DERIVATIVES 與 US_VOLATILITY 單日表現差距約 11.75%，留意跨市場背離。
 - 資料健康檢查有警告，解讀訊號時需保留不確定性。
 
@@ -89,7 +89,7 @@
 - **derivatives.taiwan_futures_open_interest**：ok，6146 筆，來源 finmind（備援）
 - **derivatives.taiwan_options**：ok，331094 筆，來源 finmind
 - **news.market_events**：ok，94 筆，來源 yahoo_finance_news
-  - 新聞觀察：Microsoft (MSFT) Is A Value Stock To Benefit From The New Cloud Boom
-  - 新聞觀察：As Demand Continues To Grow, Nvidia (NVDA) Has 46% Upside According To Analysts
-  - 新聞觀察：As Demand Continues To Grow, Nvidia (NVDA) Has 46% Upside According To Analysts
+  - 新聞觀察：This Artificial Intelligence (AI) Stock Hit $1 Trillion in Record Time. Wall Street Says This Will Happen Next.
+  - 新聞觀察：This Artificial Intelligence (AI) Stock Hit $1 Trillion in Record Time. Wall Street Says This Will Happen Next.
+  - 新聞觀察：3 High-Yield Dividend Stocks to Buy Hand Over Fist in June
 - **price_routes**：ok，16865 筆
