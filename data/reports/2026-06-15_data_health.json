@@ -1,0 +1,312 @@
+{
+  "generated_at": "2026-06-15T08:19:19.559828+00:00",
+  "as_of": "2026-06-15",
+  "primary_source": "yfinance",
+  "status": "warning",
+  "summary": {
+    "expected_symbol_count": 13,
+    "observed_symbol_count": 13,
+    "error_count": 0,
+    "warning_count": 6
+  },
+  "symbols": {
+    "NVDA": {
+      "market": "US",
+      "row_count": 1255,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 4,
+      "status": "healthy"
+    },
+    "TSLA": {
+      "market": "US",
+      "row_count": 1255,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 4,
+      "status": "healthy"
+    },
+    "AMD": {
+      "market": "US",
+      "row_count": 1255,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 4,
+      "status": "healthy"
+    },
+    "BTC-USD": {
+      "market": "CRYPTO",
+      "row_count": 1826,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-14T00:00:00",
+      "age_days": 1,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 1,
+      "status": "healthy"
+    },
+    "2330.TW": {
+      "market": "TW",
+      "row_count": 1215,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 14,
+      "max_gap_days": 13,
+      "status": "warning"
+    },
+    "2317.TW": {
+      "market": "TW",
+      "row_count": 1215,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 14,
+      "max_gap_days": 13,
+      "status": "warning"
+    },
+    "2382.TW": {
+      "market": "TW",
+      "row_count": 1215,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 14,
+      "max_gap_days": 13,
+      "status": "warning"
+    },
+    "TAIEX": {
+      "market": "TW",
+      "row_count": 1215,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 14,
+      "max_gap_days": 13,
+      "status": "warning"
+    },
+    "^VIX": {
+      "market": "US_VOLATILITY",
+      "row_count": 1270,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 4,
+      "status": "healthy"
+    },
+    "^TNX": {
+      "market": "US_RATE",
+      "row_count": 1255,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 4,
+      "status": "healthy"
+    },
+    "DX-Y.NYB": {
+      "market": "US_DOLLAR",
+      "row_count": 1362,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-14T00:00:00",
+      "age_days": 1,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 4,
+      "status": "healthy"
+    },
+    "TWD=X": {
+      "market": "FX",
+      "row_count": 1304,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-12T00:00:00",
+      "age_days": 3,
+      "sources": [
+        "yfinance"
+      ],
+      "fallback_used": false,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 0,
+      "max_gap_days": 3,
+      "status": "healthy"
+    },
+    "TX": {
+      "market": "TW_DERIVATIVES",
+      "row_count": 1222,
+      "first_datetime": "2021-06-15T00:00:00",
+      "latest_datetime": "2026-06-15T00:00:00",
+      "age_days": 0,
+      "sources": [
+        "finmind"
+      ],
+      "fallback_used": true,
+      "duplicate_bar_count": 0,
+      "null_price_count": 0,
+      "non_positive_price_count": 0,
+      "invalid_ohlc_count": 0,
+      "null_volume_count": 0,
+      "negative_volume_count": 0,
+      "long_gap_count": 14,
+      "max_gap_days": 13,
+      "status": "warning"
+    }
+  },
+  "issues": [
+    {
+      "code": "long_gap",
+      "severity": "warning",
+      "message": "14 gaps exceed 4 days; maximum is 13.",
+      "symbol": "2330.TW"
+    },
+    {
+      "code": "long_gap",
+      "severity": "warning",
+      "message": "14 gaps exceed 4 days; maximum is 13.",
+      "symbol": "2317.TW"
+    },
+    {
+      "code": "long_gap",
+      "severity": "warning",
+      "message": "14 gaps exceed 4 days; maximum is 13.",
+      "symbol": "2382.TW"
+    },
+    {
+      "code": "long_gap",
+      "severity": "warning",
+      "message": "14 gaps exceed 4 days; maximum is 13.",
+      "symbol": "TAIEX"
+    },
+    {
+      "code": "long_gap",
+      "severity": "warning",
+      "message": "14 gaps exceed 4 days; maximum is 13.",
+      "symbol": "TX"
+    },
+    {
+      "code": "fallback_source",
+      "severity": "warning",
+      "message": "Observed sources ['finmind']; expected primary source is yfinance.",
+      "symbol": "TX"
+    }
+  ]
+}
