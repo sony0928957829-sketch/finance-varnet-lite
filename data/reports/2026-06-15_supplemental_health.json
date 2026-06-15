@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "This Artificial Intelligence (AI) Stock Hit $1 Trillion in Record Time. Wall Street Says This Will Happen Next.",
-      "This Artificial Intelligence (AI) Stock Hit $1 Trillion in Record Time. Wall Street Says This Will Happen Next.",
-      "3 High-Yield Dividend Stocks to Buy Hand Over Fist in June"
+      "5 Potential Buyers of Roku That Actually Make Sense",
+      "Stock Market Investors Get an Urgent Warning From the Bond Market. History Says This Will Happen Next.",
+      "Market Chatter: Tesla Self-Driving Safety Claims Misleading, Says Reuters"
     ]
   },
   "chip.taiwan_institutional": {
@@ -92,7 +92,7 @@
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16865,
+    "rows": 16864,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1363
+              "DX-Y.NYB": 1362
             }
           }
         ],

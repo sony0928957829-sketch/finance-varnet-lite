@@ -7,7 +7,7 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 偏多
-- **平均風險：** 48.09
+- **平均風險：** 47.97
 - **異常標的：** 2382.TW、^VIX、AMD
 - **相對強勢：** AMD、2382.TW、TAIEX
 - **相對弱勢：** BTC-USD、^VIX、TWD=X
@@ -20,7 +20,7 @@
 
 ## 1. 市場總覽
 
-- 平均風險分數：48.09
+- 平均風險分數：47.97
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -31,8 +31,8 @@
 | 2330.TW | 2,310.00 | 2.67% | 2.26% | 100.00 | 56.13 | 24.90 | 38.70 | 偏多/中 |
 | 2382.TW | 372.00 | 0.54% | 21.57% | 100.00 | 78.38 | 100.00 | 67.02 | 強勢/高 |
 | AMD | 511.57 | 4.73% | 13.76% | 100.00 | 93.43 | — | 61.97 | 強勢/高 |
-| BTC-USD | 65,707.50 | 2.00% | -14.97% | 0.00 | 43.15 | — | 57.88 | 偏弱/中 |
-| DX-Y.NYB | 99.51 | -0.24% | 0.40% | 85.00 | 49.33 | — | 23.03 | 偏多/低 |
+| BTC-USD | 65,707.50 | 2.00% | -14.97% | 0.00 | 43.15 | — | 57.90 | 偏弱/中 |
+| DX-Y.NYB | 99.51 | -0.24% | 0.40% | 85.00 | 49.33 | — | 21.54 | 偏多/低 |
 | NVDA | 205.19 | 0.16% | -12.86% | 60.00 | 31.10 | — | 53.00 | 中性/中 |
 | TAIEX | 44,169.04 | 2.36% | 7.28% | 100.00 | 63.23 | — | 50.05 | 強勢/中 |
 | TSLA | 406.43 | 1.82% | -8.32% | 60.00 | 47.68 | — | 60.44 | 中性/高 |
@@ -71,7 +71,7 @@
 | 2382.TW | -2.15% / 2.49% | -4.92% / 6.09% | -6.08% / 9.32% | 100.00% |
 | AMD | -3.98% / 4.69% | -8.09% / 13.50% | -10.78% / 20.75% | 100.00% |
 | BTC-USD | -3.17% / 2.54% | -7.75% / 5.70% | -11.38% / 7.87% | 100.00% |
-| DX-Y.NYB | -0.37% / 0.43% | -0.86% / 0.95% | -1.22% / 1.29% | 100.00% |
+| DX-Y.NYB | -0.37% / 0.44% | -0.86% / 0.95% | -1.22% / 1.29% | 100.00% |
 | NVDA | -2.80% / 2.85% | -5.85% / 6.52% | -7.32% / 9.68% | 100.00% |
 | TAIEX | -1.21% / 1.84% | -2.93% / 4.39% | -3.35% / 7.01% | 100.00% |
 | TSLA | -3.52% / 3.99% | -7.39% / 7.90% | -9.94% / 11.25% | 100.00% |
@@ -89,7 +89,7 @@
 - **derivatives.taiwan_futures_open_interest**：ok，6146 筆，來源 finmind（備援）
 - **derivatives.taiwan_options**：ok，331094 筆，來源 finmind
 - **news.market_events**：ok，94 筆，來源 yahoo_finance_news
-  - 新聞觀察：This Artificial Intelligence (AI) Stock Hit $1 Trillion in Record Time. Wall Street Says This Will Happen Next.
-  - 新聞觀察：This Artificial Intelligence (AI) Stock Hit $1 Trillion in Record Time. Wall Street Says This Will Happen Next.
-  - 新聞觀察：3 High-Yield Dividend Stocks to Buy Hand Over Fist in June
-- **price_routes**：ok，16865 筆
+  - 新聞觀察：5 Potential Buyers of Roku That Actually Make Sense
+  - 新聞觀察：Stock Market Investors Get an Urgent Warning From the Bond Market. History Says This Will Happen Next.
+  - 新聞觀察：Market Chatter: Tesla Self-Driving Safety Claims Misleading, Says Reuters
+- **price_routes**：ok，16864 筆
