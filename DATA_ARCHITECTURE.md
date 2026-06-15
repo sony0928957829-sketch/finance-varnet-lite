@@ -67,6 +67,14 @@ FinMind accepts an optional `FINMIND_TOKEN`. Without a token, the public API
 quota applies. External-source errors are recorded without suppressing the core
 price report.
 
+## Publication-time alignment
+
+Taiwan institutional, margin, futures-position, and option observations are
+published after the cash-market close. A source row dated `t` is therefore
+made available to live features from the next business observation date, not
+the same date. Taiwan option sentiment is scoped to Taiwan instruments and is
+not attached to US stocks or BTC.
+
 ## Leakage boundary
 
 `next_1d_*`, `next_5d_*`, and `next_10d_*` are labels and only belong in

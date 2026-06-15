@@ -62,8 +62,7 @@ jobs:
           python -m pip install -r requirements.txt
 
       - name: Run tests
-        continue-on-error: true
-        run: python -m unittest discover -s tests -v
+        run: python -m pytest tests -q
 
       - name: Run market report
         run: python -m src.main --mode yfinance
