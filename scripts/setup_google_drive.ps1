@@ -90,6 +90,28 @@ if (-not $ghPath -or -not (Test-Path -LiteralPath $ghPath)) {
 
 Push-Location $projectRoot
 try {
+    & $ghPath auth status --hostname github.com *> $null
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "GitHub authorization is required. Complete the browser sign-in..."
+        & $ghPath auth login `
+            --hostname github.com `
+            --git-protocol https `
+            --web
+        if ($LASTEXITCODE -ne 0) {
+            throw "GitHub authorization failed."
+        }
+    }
+
+    $branch = (& git branch --show-current).Trim()
+    if (-not $branch) {
+        throw "The current Git branch could not be determined."
+    }
+    Write-Host "Publishing the current setup branch..."
+    & git push --set-upstream origin $branch
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to publish the current Git branch."
+    }
+
     & $pythonPath -c "import googleapiclient, google_auth_oauthlib" 2>$null
     if ($LASTEXITCODE -ne 0) {
         Write-Host "Installing Google Drive dependencies..."
@@ -145,6 +167,27 @@ try {
     Write-Host "Google Drive historical storage is configured."
     Write-Host "Repository: $Repository"
     Write-Host "Drive folder ID: $rootId"
+
+    if ($branch -ne "main") {
+        $pullRequestUrl = & $ghPath pr list `
+            --repo $Repository `
+            --head $branch `
+            --state open `
+            --json url `
+            --jq ".[0].url"
+        if (-not $pullRequestUrl) {
+            $pullRequestUrl = & $ghPath pr create `
+                --repo $Repository `
+                --base main `
+                --head $branch `
+                --title "feat: add Google Drive historical data lake" `
+                --body "Adds partitioned Google Drive historical storage, incremental synchronization, integrity checks, and GitHub Actions integration."
+            if ($LASTEXITCODE -ne 0) {
+                throw "Google Drive setup finished, but the pull request could not be created."
+            }
+        }
+        Write-Host "Pull request: $pullRequestUrl"
+    }
 }
 finally {
     Remove-Item Env:\GOOGLE_DRIVE_OAUTH_JSON -ErrorAction SilentlyContinue
