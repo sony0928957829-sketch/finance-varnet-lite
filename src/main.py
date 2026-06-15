@@ -24,6 +24,8 @@ from src.features.macro_context import add_macro_context
 from src.features.labels import add_future_range_labels
 from src.models.range_forecast import add_range_forecasts
 from src.pipeline.supplemental import collect_supplemental_data
+from src.features.chip_flow import add_chip_flow_features
+from src.evaluation.signal_validation import evaluate_signals, update_track_record
 from src.scoring.scores import add_scores
 from src.report.daily_report import generate_daily_report
 from src.utils.config import DATA_DIR, ensure_dirs, load_config
@@ -82,6 +84,43 @@ def provider_symbol_aliases(config: dict, provider: str) -> dict[str, str]:
             continue
         aliases.update(route.get("provider_symbols", {}).get(provider, {}))
     return aliases
+
+
+def _validate_signals(features, *, mode: str, report_date) -> None:
+    """Score how well each signal predicts 5-day forward returns and persist it.
+
+    Writes a dated scorecard snapshot and appends to a per-mode track record.
+    Never raises into the main pipeline: validation is observability, not a
+    gate, so any failure is swallowed after the data products are already saved.
+    """
+    try:
+        candidate_signals = [
+            "trend_score",
+            "momentum_score",
+            "relative_strength_score",
+            "condition_score",
+            "institutional_flow_score",
+            "options_sentiment_score",
+        ]
+        signals = [c for c in candidate_signals if c in features.columns]
+        if not signals:
+            return
+        scorecard = evaluate_signals(features, signals, horizons=(5,))
+
+        eval_dir = DATA_DIR / "evaluation"
+        eval_dir.mkdir(parents=True, exist_ok=True)
+        scorecard.to_csv(
+            eval_dir / f"{report_date.isoformat()}_signal_scorecard_{mode}.csv",
+            index=False,
+            encoding="utf-8-sig",
+        )
+        update_track_record(
+            scorecard,
+            eval_dir / f"signal_track_record_{mode}.parquet",
+            as_of=pd.Timestamp(report_date),
+        )
+    except Exception as exc:  # pragma: no cover - observability must not break runs
+        print(f"[warn] signal validation skipped: {exc}")
 
 
 def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None = None) -> Path:
@@ -159,6 +198,34 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     normalized_path = DATA_DIR / "normalized" / f"prices_{mode}.parquet"
     save_frame(normalized, normalized_path, parquet_required=mode == "yfinance")
 
+    # Collect chip/options supplemental data BEFORE feature engineering so the
+    # chip_flow features can read today's freshly downloaded files (not yesterday's).
+    supplemental_status = {}
+    if mode == "yfinance":
+        supplemental_status["price_routes"] = {
+            "status": (
+                "ok"
+                if all(item["status"] == "ok" for item in price_route_status.values())
+                else "warning"
+            ),
+            "rows": int(len(raw)),
+            "routes": price_route_status,
+        }
+        supplemental_status = collect_supplemental_data(
+            data_sources_config,
+            symbols=all_symbols,
+            start=start,
+            end=end,
+            output_dir=DATA_DIR / "alternative",
+        ) | supplemental_status
+        supplemental_path = (
+            DATA_DIR / "reports" / f"{report_date.isoformat()}_supplemental_health.json"
+        )
+        supplemental_path.write_text(
+            json.dumps(supplemental_status, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
     features = add_basic_features(normalized)
     features = add_fourier_features(
         features,
@@ -188,6 +255,7 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
         lower_quantile=float(forecast_config.get("lower_quantile", 0.20)),
         upper_quantile=float(forecast_config.get("upper_quantile", 0.80)),
     )
+    features = add_chip_flow_features(features, alt_dir=DATA_DIR / "alternative")
     features = add_scores(features)
 
     features_path = DATA_DIR / "features" / f"features_{mode}.parquet"
@@ -204,31 +272,10 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     labels_path = DATA_DIR / "labels" / f"labels_{mode}.parquet"
     save_frame(labeled_features, labels_path, parquet_required=mode == "yfinance")
 
-    supplemental_status = {}
-    if mode == "yfinance":
-        supplemental_status["price_routes"] = {
-            "status": (
-                "ok"
-                if all(item["status"] == "ok" for item in price_route_status.values())
-                else "warning"
-            ),
-            "rows": int(len(raw)),
-            "routes": price_route_status,
-        }
-        supplemental_status = collect_supplemental_data(
-            data_sources_config,
-            symbols=all_symbols,
-            start=start,
-            end=end,
-            output_dir=DATA_DIR / "alternative",
-        ) | supplemental_status
-        supplemental_path = (
-            DATA_DIR / "reports" / f"{report_date.isoformat()}_supplemental_health.json"
-        )
-        supplemental_path.write_text(
-            json.dumps(supplemental_status, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+    # Self-validation: does each 0-100 signal actually predict 5-day forward
+    # returns? Append today's scorecard to a track record so the edge (or lack
+    # of it) accumulates over time. This measures the signals; it is not advice.
+    _validate_signals(features, mode=mode, report_date=report_date)
 
     report_path = DATA_DIR / "reports" / f"{report_date.isoformat()}_market_report.md"
     generate_daily_report(
