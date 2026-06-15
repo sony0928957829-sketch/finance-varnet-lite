@@ -88,6 +88,10 @@ if (-not $ghPath -or -not (Test-Path -LiteralPath $ghPath)) {
     throw "GitHub CLI is required and must be authenticated before setup."
 }
 
+# Windows PowerShell converts stderr from native programs into error records.
+# Use explicit exit-code checks below so harmless warnings do not abort setup.
+$ErrorActionPreference = "Continue"
+
 Push-Location $projectRoot
 try {
     & $ghPath auth status --hostname github.com *> $null
