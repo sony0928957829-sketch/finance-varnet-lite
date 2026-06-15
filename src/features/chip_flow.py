@@ -26,6 +26,8 @@ import pandas as pd
 
 logger = logging.getLogger(__name__)
 
+TAIWAN_SYMBOLS = {"TAIEX", "TX"}
+
 # 用來在 chip 資料的 metric/dataset 欄位裡，認出「法人淨買賣」這類列。
 # 不分大小寫、中英都比。
 #
@@ -113,7 +115,12 @@ def _institutional_flow_score(
     min_periods: int = 20,
 ) -> pd.DataFrame:
     """每檔台股每天一個 institutional_flow_score（0~100，50=中性）。"""
-    cols = ["symbol", "datetime", "institutional_flow_score"]
+    cols = [
+        "symbol",
+        "datetime",
+        "institutional_flow_score",
+        "available_from",
+    ]
     if chip.empty:
         return pd.DataFrame(columns=cols)
 
@@ -167,6 +174,10 @@ def _institutional_flow_score(
     daily["institutional_flow_score"] = (
         100.0 / (1.0 + np.exp(-0.9 * daily["z"]))
     ).clip(0, 100)
+    # Taiwan institutional data is published after the cash close. A date-t
+    # observation therefore becomes a feature no earlier than the next
+    # business observation date.
+    daily["available_from"] = daily["datetime"] + pd.offsets.BDay(1)
     return daily[cols]
 
 
@@ -213,7 +224,25 @@ def _options_sentiment(derivatives: pd.DataFrame) -> pd.DataFrame:
         lambda x: (x.iloc[-1] >= x).mean() * 100.0, raw=False
     )
     ratio["options_sentiment_score"] = (100.0 - rank).clip(0, 100)
-    return ratio[["datetime", "put_call_ratio", "options_sentiment_score"]]
+    ratio["available_from"] = ratio["datetime"] + pd.offsets.BDay(1)
+    return ratio[
+        [
+            "datetime",
+            "available_from",
+            "put_call_ratio",
+            "options_sentiment_score",
+        ]
+    ]
+
+
+def _is_taiwan_instrument(frame: pd.DataFrame) -> pd.Series:
+    symbol = frame.get("symbol", pd.Series("", index=frame.index)).astype(str)
+    market = frame.get("market", pd.Series("", index=frame.index)).astype(str)
+    return (
+        symbol.str.endswith(".TW")
+        | symbol.isin(TAIWAN_SYMBOLS)
+        | market.str.upper().str.startswith("TW")
+    )
 
 
 def add_chip_flow_features(
@@ -253,8 +282,34 @@ def add_chip_flow_features(
                 output["datetime"].dtype, flow["datetime"].dtype,
             )
         else:
-            output = output.drop(columns=["institutional_flow_score"]).merge(
-                flow, on=["symbol", "datetime"], how="left"
+            flow_context = flow[
+                ["symbol", "available_from", "institutional_flow_score"]
+            ].rename(columns={"available_from": "datetime"})
+            frames = []
+            for symbol, symbol_frame in output.groupby("symbol", sort=False):
+                source = flow_context.loc[
+                    flow_context["symbol"].eq(symbol),
+                    ["datetime", "institutional_flow_score"],
+                ]
+                left = symbol_frame.drop(
+                    columns=["institutional_flow_score"],
+                    errors="ignore",
+                ).sort_values("datetime")
+                if source.empty:
+                    left["institutional_flow_score"] = np.nan
+                    frames.append(left)
+                    continue
+                frames.append(
+                    pd.merge_asof(
+                        left,
+                        source.sort_values("datetime"),
+                        on="datetime",
+                        direction="backward",
+                        tolerance=pd.Timedelta(days=7),
+                    )
+                )
+            output = pd.concat(frames, ignore_index=True).sort_values(
+                ["symbol", "datetime"]
             )
 
     sentiment = _options_sentiment(derivatives)
@@ -268,8 +323,29 @@ def add_chip_flow_features(
                 output["datetime"].dtype, sentiment["datetime"].dtype,
             )
         else:
-            output = output.drop(
-                columns=["put_call_ratio", "options_sentiment_score"]
-            ).merge(sentiment, on="datetime", how="left")
+            taiwan_mask = _is_taiwan_instrument(output)
+            taiwan = output.loc[taiwan_mask].drop(
+                columns=["put_call_ratio", "options_sentiment_score"],
+                errors="ignore",
+            )
+            other = output.loc[~taiwan_mask].copy()
+            source = sentiment[
+                [
+                    "available_from",
+                    "put_call_ratio",
+                    "options_sentiment_score",
+                ]
+            ].rename(columns={"available_from": "datetime"})
+            if not taiwan.empty:
+                taiwan = pd.merge_asof(
+                    taiwan.sort_values("datetime"),
+                    source.sort_values("datetime"),
+                    on="datetime",
+                    direction="backward",
+                    tolerance=pd.Timedelta(days=7),
+                )
+            output = pd.concat([taiwan, other], ignore_index=True).sort_values(
+                ["symbol", "datetime"]
+            )
 
-    return output
+    return output.reset_index(drop=True)

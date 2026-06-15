@@ -28,7 +28,8 @@ from src.features.chip_flow import add_chip_flow_features
 from src.evaluation.signal_validation import evaluate_signals, update_track_record
 from src.scoring.scores import add_scores
 from src.report.daily_report import generate_daily_report
-from src.utils.config import DATA_DIR, ensure_dirs, load_config
+from src.storage.lake import archive_pipeline_run
+from src.utils.config import DATA_DIR, PROJECT_ROOT, ensure_dirs, load_config
 from src.utils.watchlist import flatten_watchlist, symbols
 
 
@@ -129,6 +130,7 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     feature_config = load_config("feature_config.yaml")
     data_sources_config = load_config("data_sources.yaml")
     data_health_config = load_config("data_health.yaml")
+    storage_config = load_config("storage.yaml")
     instruments = flatten_watchlist(watchlist_config)
     all_symbols = symbols(instruments)
 
@@ -285,6 +287,24 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
         health_report=health_report,
         supplemental_status=supplemental_status,
     )
+
+    lake_config = storage_config.get("data_lake", {})
+    if mode in lake_config.get("archive_modes", ["yfinance"]):
+        lake_root = Path(lake_config.get("local_root", "data/lake"))
+        if not lake_root.is_absolute():
+            lake_root = PROJECT_ROOT / lake_root
+        archive_pipeline_run(
+            lake_root=lake_root,
+            raw=raw,
+            normalized=normalized,
+            features=features,
+            labels=labeled_features,
+            alternative_dir=DATA_DIR / "alternative",
+            evaluation_dir=DATA_DIR / "evaluation",
+            report_date=report_date,
+            mode=mode,
+            model_version=lake_config.get("model_version", "range-forecast-v1"),
+        )
     return report_path
 
 

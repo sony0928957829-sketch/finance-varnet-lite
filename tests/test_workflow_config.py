@@ -38,6 +38,10 @@ class DailyMarketReportWorkflowTests(unittest.TestCase):
         self.assertIn('"TAIEX"', self.workflow)
         self.assertIn('"derivatives.taiwan_options"', self.workflow)
 
+    def test_tests_are_required_and_use_pytest(self):
+        self.assertIn("python -m pytest tests -q", self.workflow)
+        self.assertNotIn("continue-on-error: true", self.workflow)
+
 
 if __name__ == "__main__":
     unittest.main()
