@@ -28,5 +28,6 @@ def ensure_dirs() -> None:
         DATA_DIR / "alternative",
         DATA_DIR / "models",
         DATA_DIR / "reports",
+        DATA_DIR / "evaluation",
     ]:
         subdir.mkdir(parents=True, exist_ok=True)
