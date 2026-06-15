@@ -83,7 +83,17 @@ If the variable is omitted, the integration finds or creates its app-owned
 
 On Windows, the repository includes a setup helper that performs the
 authorization, GitHub Secret creation, initial upload, and repository-variable
-creation in one run:
+creation in one run. The simplest option is to double-click:
+
+```text
+FINISH_GOOGLE_DRIVE_SETUP.cmd
+```
+
+The helper automatically uses the newest `client_secret*.json` in the Windows
+Downloads folder. If none exists, it opens a file picker. The selected OAuth
+client must have application type `Desktop app`.
+
+The PowerShell helper can also be run directly:
 
 ```powershell
 .\scripts\setup_google_drive.ps1 `
