@@ -95,6 +95,7 @@ jobs:
             data/features/*.parquet
             data/labels/*.parquet
             data/alternative/*.parquet
+            data/evaluation/*
           if-no-files-found: warn
           retention-days: 30
 
@@ -103,7 +104,7 @@ jobs:
           git config user.name "market-report-bot"
           git config user.email "market-report-bot@example.com"
 
-          git add data/reports data/normalized data/features data/labels data/alternative || true
+          git add data/reports data/normalized data/features data/labels data/alternative data/evaluation || true
 
           if git diff --cached --quiet; then
             echo "No generated changes to commit."
