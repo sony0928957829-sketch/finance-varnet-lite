@@ -29,6 +29,8 @@ from src.features.chip_flow import add_chip_flow_features
 from src.features.factor_standardize import add_standardized_factors, standardized_columns
 from src.models.ml_forecast import add_ml_forecast, ml_forecast_column
 from src.evaluation.signal_validation import evaluate_signals, update_track_record
+from src.evaluation.backtest import run_backtest, write_backtest_report
+from src.report.validation_summary import write_validation_summary
 from src.scoring.scores import add_scores
 from src.report.daily_report import generate_daily_report
 from src.utils.config import DATA_DIR, PROJECT_ROOT, ensure_dirs, load_config
@@ -320,6 +322,38 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     # returns? Append today's scorecard to a track record so the edge (or lack
     # of it) accumulates over time. This measures the signals; it is not advice.
     _validate_signals(features, mode=mode, report_date=report_date)
+
+    # Readable weekly summary of the accumulating validation track record.
+    try:
+        write_validation_summary(
+            DATA_DIR / "evaluation" / f"signal_track_record_{mode}.parquet",
+            DATA_DIR / "reports" / f"{report_date.isoformat()}_validation_summary_{mode}.md",
+            as_of=report_date,
+        )
+    except Exception as exc:  # pragma: no cover - reporting must not break runs
+        print(f"[warn] validation summary skipped: {exc}")
+
+    # Cost-aware backtest: would acting on each signal have beaten buy-and-hold?
+    try:
+        backtest_signals = [
+            ml_forecast_column(ML_HORIZON),
+            "condition_score",
+            "momentum_score",
+        ]
+        results = [
+            run_backtest(features, col, horizon=ML_HORIZON, top_k=3, cost_bps=10.0)
+            for col in backtest_signals
+            if col in features.columns
+        ]
+        if results:
+            write_backtest_report(
+                results,
+                DATA_DIR / "reports" / f"{report_date.isoformat()}_backtest_{mode}.md",
+                cost_bps=10.0,
+                top_k=3,
+            )
+    except Exception as exc:  # pragma: no cover - reporting must not break runs
+        print(f"[warn] backtest skipped: {exc}")
 
     report_path = DATA_DIR / "reports" / f"{report_date.isoformat()}_market_report.md"
     generate_daily_report(
