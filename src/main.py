@@ -25,6 +25,8 @@ from src.features.labels import add_future_range_labels
 from src.models.range_forecast import add_range_forecasts
 from src.pipeline.supplemental import collect_supplemental_data
 from src.features.chip_flow import add_chip_flow_features
+from src.features.factor_standardize import add_standardized_factors, standardized_columns
+from src.models.ml_forecast import add_ml_forecast, ml_forecast_column
 from src.evaluation.signal_validation import evaluate_signals, update_track_record
 from src.scoring.scores import add_scores
 from src.report.daily_report import generate_daily_report
@@ -86,6 +88,22 @@ def provider_symbol_aliases(config: dict, provider: str) -> dict[str, str]:
     return aliases
 
 
+ML_FACTOR_COLUMNS = [
+    "return_5d",
+    "return_20d",
+    "return_60d",
+    "volume_ratio",
+    "atr_pct",
+    "relative_strength_20d",
+    "fourier_cycle_strength",
+    "wavelet_anomaly_score",
+    "institutional_flow_score",
+    "options_sentiment_score",
+    "condition_score",
+]
+ML_HORIZON = 5
+
+
 def _validate_signals(features, *, mode: str, report_date) -> None:
     """Score how well each signal predicts 5-day forward returns and persist it.
 
@@ -103,9 +121,19 @@ def _validate_signals(features, *, mode: str, report_date) -> None:
             "options_sentiment_score",
         ]
         signals = [c for c in candidate_signals if c in features.columns]
-        if not signals:
+        scorecards = []
+        if signals:
+            scorecards.append(evaluate_signals(features, signals, horizons=(5,)))
+        ml_col = ml_forecast_column(ML_HORIZON)
+        if ml_col in features.columns:
+            # The ML forecast is a predicted return centred at 0, so its
+            # "direction" pivot is 0 (not 50 like the 0-100 scores).
+            scorecards.append(
+                evaluate_signals(features, [ml_col], horizons=(ML_HORIZON,), neutral=0.0)
+            )
+        if not scorecards:
             return
-        scorecard = evaluate_signals(features, signals, horizons=(5,))
+        scorecard = pd.concat(scorecards, ignore_index=True)
 
         eval_dir = DATA_DIR / "evaluation"
         eval_dir.mkdir(parents=True, exist_ok=True)
@@ -257,6 +285,20 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     )
     features = add_chip_flow_features(features, alt_dir=DATA_DIR / "alternative")
     features = add_scores(features)
+
+    # Learned layer: standardize factors cross-sectionally (per market/day), then
+    # let a walk-forward model learn how to combine them into a 5-day return
+    # forecast. This replaces hand-picked weights with data-learned ones; the
+    # forecast is measured by the validation layer, not treated as advice.
+    features = add_standardized_factors(
+        features, ML_FACTOR_COLUMNS, group_columns=("datetime", "market")
+    )
+    features = add_ml_forecast(
+        features,
+        standardized_columns(ML_FACTOR_COLUMNS),
+        horizon=ML_HORIZON,
+        model="auto",  # uses LightGBM if installed, else numpy ridge
+    )
 
     features_path = DATA_DIR / "features" / f"features_{mode}.parquet"
     save_frame(features, features_path, parquet_required=mode == "yfinance")
