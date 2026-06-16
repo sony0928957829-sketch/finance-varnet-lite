@@ -165,11 +165,14 @@ class GoogleDriveObjectStorage(ObjectStorageBackend):
 
         parent_id, name = self._resolve_parent(remote_path)
         existing = self._find_child(parent_id, name)
+        # Simple (non-resumable) upload: the data-lake objects are small
+        # Parquet files, and resumable sessions add a per-file round-trip that
+        # made the first full-history seed exceed the job time limit.
         media = MediaFileUpload(
             str(local_path),
             mimetype=mimetypes.guess_type(local_path.name)[0]
             or "application/octet-stream",
-            resumable=True,
+            resumable=False,
         )
         if existing:
             request = self.service.files().update(
