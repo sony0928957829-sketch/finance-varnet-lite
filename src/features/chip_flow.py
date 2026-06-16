@@ -128,41 +128,47 @@ def _institutional_flow_score(
     if flow.empty:
         return pd.DataFrame(columns=cols)
 
-    # 跨主體加總前的單位/符號健全性檢查。
-    # 本步驟「假設」同一 symbol+datetime 下各列已是可相加的同單位、同符號慣例
-    # （買超為正、賣超為負）。若上游混用股數與金額，這裡的加總會失真——
-    # 無法在資料層面 100% 驗證，至少把假設標明，並偵測明顯異常（量級跨度過大）。
     flow["value"] = pd.to_numeric(flow["value"], errors="coerce")
     flow = flow.dropna(subset=["value"])
     if flow.empty:
         return pd.DataFrame(columns=cols)
 
-    nz = flow["value"].abs()
-    nz = nz[nz > 0]
-    if not nz.empty:
-        span = nz.max() / nz.min()
-        if span > 1e6:
-            # 量級橫跨百萬倍，極可能是股數與金額混在一起，加總無意義。
-            logger.warning(
-                "institutional flow values span %.2g orders of magnitude; "
-                "likely mixed units (shares vs value). Skipping flow score.",
-                span,
-            )
-            return pd.DataFrame(columns=cols)
+    # Unit-invariant aggregation (why): different institutional metrics can be in
+    # different units (foreign in shares, dealer in value, etc.). Summing raw
+    # values across them is meaningless. Instead, standardize EACH metric series
+    # on its own (rolling z-score, which is unitless), then average the z-scores
+    # per symbol/day. Mixed units no longer corrupt the score, so no skip needed.
+    metric_col = "metric" if "metric" in flow.columns else (
+        "dataset" if "dataset" in flow.columns else None
+    )
+    if metric_col is None:
+        flow["_metric"] = "all"
+        metric_col = "_metric"
+    flow[metric_col] = flow[metric_col].astype(str)
 
-    # 同一天同一檔可能有多列（外資/投信/自營），加總成「總淨買賣」。
-    daily = (
-        flow.groupby(["symbol", "datetime"], as_index=False)["value"]
+    # Same metric on the same symbol/day shares a unit, so summing within it is safe.
+    per_metric = (
+        flow.groupby(["symbol", "datetime", metric_col], as_index=False)["value"]
         .sum()
+        .sort_values(["symbol", metric_col, "datetime"])
+    )
+    if per_metric.empty:
+        return pd.DataFrame(columns=cols)
+
+    per_metric["z"] = (
+        per_metric.groupby(["symbol", metric_col])["value"]
+        .transform(lambda s: _rolling_z(s, window, min_periods))
+    )
+    # Average the per-metric z-scores into one signal per symbol/day.
+    daily = (
+        per_metric.dropna(subset=["z"])
+        .groupby(["symbol", "datetime"], as_index=False)["z"]
+        .mean()
         .sort_values(["symbol", "datetime"])
     )
     if daily.empty:
         return pd.DataFrame(columns=cols)
 
-    daily["z"] = (
-        daily.groupby("symbol")["value"]
-        .transform(lambda s: _rolling_z(s, window, min_periods))
-    )
     # z 用 logistic 壓到 0~100；z=0 -> 50。係數 0.9 讓 ±2σ 大約落在 ~85 / ~15。
     daily["institutional_flow_score"] = (
         100.0 / (1.0 + np.exp(-0.9 * daily["z"]))
