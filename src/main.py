@@ -29,8 +29,8 @@ from src.features.chip_flow import add_chip_flow_features
 from src.features.factor_standardize import add_standardized_factors, standardized_columns
 from src.models.ml_forecast import add_ml_forecast, ml_forecast_column
 from src.evaluation.signal_validation import evaluate_signals, update_track_record
-from src.evaluation.backtest import run_backtest, write_backtest_report
-from src.report.validation_summary import write_validation_summary
+from src.evaluation.backtest import run_backtest, build_backtest_report
+from src.report.validation_summary import build_validation_summary
 from src.scoring.scores import add_scores
 from src.report.daily_report import generate_daily_report
 from src.utils.config import DATA_DIR, PROJECT_ROOT, ensure_dirs, load_config
@@ -323,17 +323,21 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
     # of it) accumulates over time. This measures the signals; it is not advice.
     _validate_signals(features, mode=mode, report_date=report_date)
 
-    # Readable weekly summary of the accumulating validation track record.
+    # Reports for the phone-friendly dashboard: validation summary + backtest.
+    # Each is also folded into a single stable DASHBOARD.md (real-data runs only)
+    # so there is one bookmarkable, always-current page.
+    dashboard_parts: list[str] = []
     try:
-        write_validation_summary(
-            DATA_DIR / "evaluation" / f"signal_track_record_{mode}.parquet",
-            DATA_DIR / "reports" / f"{report_date.isoformat()}_validation_summary_{mode}.md",
-            as_of=report_date,
+        track_record = DATA_DIR / "evaluation" / f"signal_track_record_{mode}.parquet"
+        history = pd.read_parquet(track_record) if track_record.exists() else pd.DataFrame()
+        summary_text = build_validation_summary(history, as_of=report_date)
+        (DATA_DIR / "reports" / f"{report_date.isoformat()}_validation_summary_{mode}.md").write_text(
+            summary_text, encoding="utf-8"
         )
+        dashboard_parts.append(summary_text)
     except Exception as exc:  # pragma: no cover - reporting must not break runs
         print(f"[warn] validation summary skipped: {exc}")
 
-    # Cost-aware backtest: would acting on each signal have beaten buy-and-hold?
     try:
         backtest_signals = [
             ml_forecast_column(ML_HORIZON),
@@ -346,14 +350,29 @@ def run_pipeline(mode: str = "mock", start: str | None = None, end: str | None =
             if col in features.columns
         ]
         if results:
-            write_backtest_report(
-                results,
-                DATA_DIR / "reports" / f"{report_date.isoformat()}_backtest_{mode}.md",
-                cost_bps=10.0,
-                top_k=3,
+            backtest_text = build_backtest_report(results, cost_bps=10.0, top_k=3)
+            (DATA_DIR / "reports" / f"{report_date.isoformat()}_backtest_{mode}.md").write_text(
+                backtest_text, encoding="utf-8"
             )
+            dashboard_parts.append(backtest_text)
     except Exception as exc:  # pragma: no cover - reporting must not break runs
         print(f"[warn] backtest skipped: {exc}")
+
+    # Stable, bookmarkable dashboard (only for real-data mode so it never shows
+    # mock numbers). Overwritten every run -> one URL always shows the latest.
+    try:
+        if mode == "yfinance" and dashboard_parts:
+            header = (
+                "# 模型儀表板(每日自動更新)\n\n"
+                f"更新時間:{report_date.isoformat()}\n\n"
+                "本頁每天自動更新,可加入手機書籤隨時查看。數字僅為驗證/回測結果,"
+                "**不構成投資建議**。\n\n---\n\n"
+            )
+            (DATA_DIR / "reports" / "DASHBOARD.md").write_text(
+                header + "\n\n---\n\n".join(dashboard_parts), encoding="utf-8"
+            )
+    except Exception as exc:  # pragma: no cover - reporting must not break runs
+        print(f"[warn] dashboard skipped: {exc}")
 
     report_path = DATA_DIR / "reports" / f"{report_date.isoformat()}_market_report.md"
     generate_daily_report(
