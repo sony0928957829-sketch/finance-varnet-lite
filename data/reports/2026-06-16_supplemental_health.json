@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Dow Jones Futures: Trump, Iran Deal Spark Stock Market Surge; Nvidia, Micron, Sandisk, SpaceX Are Big Winners",
-      "Intel gets a $170 billion AI reason to matter again",
-      "Intel gets a $170 billion AI reason to matter again"
+      "Why SpaceX Stock Skyrocketed Today",
+      "Why Summer Is the Best Time to Review Your Estate Plan",
+      "Applied Optoelectronics (AAOI) Soars 13% as US-Iran Peace Deal Propels AI Stocks"
     ]
   },
   "chip.taiwan_institutional": {
@@ -92,7 +92,7 @@
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16866,
+    "rows": 16865,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1363
+              "DX-Y.NYB": 1362
             }
           }
         ],
