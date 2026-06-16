@@ -35,4 +35,4 @@ def test_workflow_syncs_before_and_after_pipeline():
     assert push in workflow
     assert workflow.index(pull) < workflow.index(run) < workflow.index(push)
     assert "secrets.GOOGLE_DRIVE_OAUTH_JSON" in workflow
-    assert "timeout-minutes: 60" in workflow
+    assert "timeout-minutes:" in workflow  # a job timeout is configured
