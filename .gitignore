@@ -16,3 +16,10 @@ data/models/*
 !data/labels/.gitkeep
 !data/alternative/.gitkeep
 !data/models/.gitkeep
+
+.secrets/
+data/lake/*
+data/manifests/*
+data/cloud_mirror/*
+!data/lake/.gitkeep
+!data/manifests/.gitkeep
