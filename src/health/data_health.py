@@ -28,6 +28,44 @@ def _threshold(config: dict[str, Any], section: str, market: str) -> int:
     return int(values.get(market, values.get("default", 4)))
 
 
+def _market_trading_calendars(
+    data: pd.DataFrame, *, min_symbols: int = 2
+) -> dict[str, list[pd.Timestamp]]:
+    """Infer each market's trading days from the data itself.
+
+    A date counts as a market trading day when at least `min_symbols` distinct
+    symbols of that market have a bar on it. Market-wide closures (weekends,
+    Lunar New Year, national holidays) therefore drop out automatically: on
+    those days *no* symbol trades, so the date never enters the calendar and
+    cannot be mistaken for a per-symbol data hole.
+
+    Markets with fewer than 2 symbols return no calendar (None via missing key),
+    so callers fall back to plain calendar-day checks for them. This keeps the
+    behaviour identical for single-symbol markets while making multi-symbol
+    markets (e.g. the live TW watchlist) holiday-aware. It needs no hard-coded
+    holiday list and self-calibrates to whatever the market actually traded.
+    """
+    calendars: dict[str, list[pd.Timestamp]] = {}
+    if "market" not in data.columns:
+        return calendars
+    valid = data.dropna(subset=["datetime"])
+    for market, group in valid.groupby("market"):
+        if group["symbol"].nunique() < 2:
+            continue  # not enough symbols to tell a holiday from a data hole
+        per_day = group.groupby("datetime")["symbol"].nunique()
+        days = sorted(per_day[per_day >= min_symbols].index)
+        if days:
+            calendars[str(market)] = days
+    return calendars
+
+
+def _trading_days_between(calendar: list[pd.Timestamp], start, end, *, inclusive_end: bool) -> int:
+    """Count market trading days in (start, end] or (start, end) from a calendar."""
+    if inclusive_end:
+        return sum(1 for d in calendar if start < d <= end)
+    return sum(1 for d in calendar if start < d < end)
+
+
 def evaluate_price_health(
     frame: pd.DataFrame,
     *,
@@ -58,6 +96,8 @@ def evaluate_price_health(
         price_columns = ["open", "high", "low", "close"]
         for column in [*price_columns, "volume"]:
             data[column] = pd.to_numeric(data[column], errors="coerce")
+
+        market_calendars = _market_trading_calendars(data)
 
         minimum_rows = int(config.get("minimum_rows_per_symbol", 2))
         for symbol in expected_symbols:
@@ -152,21 +192,49 @@ def evaluate_price_health(
                         symbol,
                     )
                 freshness_limit = _threshold(config, "freshness_max_age_days", market)
-                if age_days > freshness_limit:
+                calendar = market_calendars.get(market)
+                if calendar is not None:
+                    # Trading-day age: how many market sessions this symbol has
+                    # missed at the tail. During a market-wide closure (e.g. CNY)
+                    # no session exists, so a symbol current through the last
+                    # pre-holiday session ages 0 and is not flagged stale.
+                    effective_age = _trading_days_between(
+                        calendar, latest, pd.Timestamp(as_of), inclusive_end=True
+                    )
+                    age_unit = "trading days"
+                else:
+                    effective_age = age_days
+                    age_unit = "days"
+                if effective_age > freshness_limit:
                     add_issue(
                         "stale_data",
-                        f"Latest bar is {age_days} days old; limit is {freshness_limit}.",
+                        f"Latest bar is {effective_age} {age_unit} old; limit is {freshness_limit}.",
                         symbol,
                     )
 
             gap_limit = _threshold(config, "long_gap_days", market)
-            gaps = valid_dates.sort_values().drop_duplicates().diff().dt.days.dropna()
-            long_gap_count = int(gaps.gt(gap_limit).sum())
-            max_gap_days = int(gaps.max()) if not gaps.empty else 0
+            calendar = market_calendars.get(market)
+            observed = valid_dates.sort_values().drop_duplicates().tolist()
+            if calendar is not None and len(observed) >= 2:
+                # Gap = market sessions the symbol skipped between two of its own
+                # bars. Holidays are absent from the calendar, so only genuine
+                # holes (the market traded, this symbol did not) are counted.
+                per_gap = [
+                    _trading_days_between(calendar, a, b, inclusive_end=False)
+                    for a, b in zip(observed[:-1], observed[1:])
+                ]
+                long_gap_count = int(sum(1 for g in per_gap if g > gap_limit))
+                max_gap_days = int(max(per_gap)) if per_gap else 0
+                gap_unit = "trading days"
+            else:
+                gaps = valid_dates.sort_values().drop_duplicates().diff().dt.days.dropna()
+                long_gap_count = int(gaps.gt(gap_limit).sum())
+                max_gap_days = int(gaps.max()) if not gaps.empty else 0
+                gap_unit = "days"
             if long_gap_count:
                 add_issue(
                     "long_gap",
-                    f"{long_gap_count} gaps exceed {gap_limit} days; maximum is {max_gap_days}.",
+                    f"{long_gap_count} gaps exceed {gap_limit} {gap_unit}; maximum is {max_gap_days}.",
                     symbol,
                 )
 
