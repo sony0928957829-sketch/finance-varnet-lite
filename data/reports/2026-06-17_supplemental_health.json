@@ -1,0 +1,288 @@
+{
+  "news.market_events": {
+    "status": "ok",
+    "provider": "yahoo_finance_news",
+    "fallback_used": false,
+    "rows": 98,
+    "attempts": [
+      {
+        "provider": "yahoo_finance_news",
+        "status": "ok",
+        "rows": 98
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
+    "latest_titles": [
+      "SK hynix (KOSE:A000660) Partners With Nvidia On AI Memory And Autonomous Fabs",
+      "Bitcoin, Ethereum, XRP, Dogecoin Cool Off As 'Extreme Fear' Prevails: Analyst Says 'We'll Be Testing New Lows' If BTC Fails To Hold This Level",
+      "Elon Musk Is Unleashing SpaceX’s New War Chest to Solve His AI Problem"
+    ]
+  },
+  "chip.taiwan_institutional": {
+    "status": "ok",
+    "provider": "finmind",
+    "fallback_used": false,
+    "rows": 7270,
+    "attempts": [
+      {
+        "provider": "finmind",
+        "status": "ok",
+        "rows": 7270
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
+    "metrics": [
+      "Foreign_Dealer_Self",
+      "dealer_hedging_net_buy",
+      "dealer_net_buy",
+      "foreign_net_buy",
+      "investment_trust_net_buy"
+    ]
+  },
+  "chip.taiwan_margin_short": {
+    "status": "ok",
+    "provider": "finmind",
+    "fallback_used": false,
+    "rows": 2910,
+    "attempts": [
+      {
+        "provider": "finmind",
+        "status": "ok",
+        "rows": 2910
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
+    "metrics": [
+      "margin_balance",
+      "short_balance"
+    ]
+  },
+  "derivatives.taiwan_futures_open_interest": {
+    "status": "ok",
+    "provider": "finmind",
+    "fallback_used": true,
+    "rows": 6159,
+    "attempts": [
+      {
+        "provider": "taifex",
+        "status": "empty",
+        "rows": 0
+      },
+      {
+        "provider": "finmind",
+        "status": "ok",
+        "rows": 6159
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
+  },
+  "derivatives.taiwan_options": {
+    "status": "ok",
+    "provider": "finmind",
+    "fallback_used": false,
+    "rows": 331694,
+    "attempts": [
+      {
+        "provider": "finmind",
+        "status": "ok",
+        "rows": 331694
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
+  },
+  "price_routes": {
+    "status": "ok",
+    "rows": 16865,
+    "routes": {
+      "prices.us_stock": {
+        "expected_symbols": [
+          "NVDA",
+          "TSLA",
+          "AMD"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "AMD",
+              "NVDA",
+              "TSLA"
+            ],
+            "row_counts": {
+              "NVDA": 1255,
+              "TSLA": 1255,
+              "AMD": 1255
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "prices.crypto": {
+        "expected_symbols": [
+          "BTC-USD"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "BTC-USD"
+            ],
+            "row_counts": {
+              "BTC-USD": 1826
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "prices.taiwan_stock": {
+        "expected_symbols": [
+          "2330.TW",
+          "2317.TW",
+          "2382.TW"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "2317.TW",
+              "2330.TW",
+              "2382.TW"
+            ],
+            "row_counts": {
+              "2330.TW": 1215,
+              "2317.TW": 1215,
+              "2382.TW": 1215
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "prices.taiwan_index": {
+        "expected_symbols": [
+          "TAIEX"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "TAIEX"
+            ],
+            "row_counts": {
+              "TAIEX": 1215
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "macro.vix": {
+        "expected_symbols": [
+          "^VIX"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "^VIX"
+            ],
+            "row_counts": {
+              "^VIX": 1270
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "macro.us_treasury_yield": {
+        "expected_symbols": [
+          "^TNX"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "^TNX"
+            ],
+            "row_counts": {
+              "^TNX": 1255
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "macro.us_dollar_index": {
+        "expected_symbols": [
+          "DX-Y.NYB"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "DX-Y.NYB"
+            ],
+            "row_counts": {
+              "DX-Y.NYB": 1362
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "macro.foreign_exchange": {
+        "expected_symbols": [
+          "TWD=X"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "TWD=X"
+            ],
+            "row_counts": {
+              "TWD=X": 1305
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "prices.taiwan_futures": {
+        "expected_symbols": [
+          "TX"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "taifex",
+            "status": "empty",
+            "symbols": [],
+            "row_counts": {}
+          },
+          {
+            "provider": "finmind",
+            "status": "ok",
+            "symbols": [
+              "TX"
+            ],
+            "row_counts": {
+              "TX": 1222
+            }
+          }
+        ],
+        "status": "ok"
+      }
+    }
+  }
+}
