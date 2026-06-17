@@ -3,31 +3,31 @@
     "status": "ok",
     "provider": "yahoo_finance_news",
     "fallback_used": false,
-    "rows": 98,
+    "rows": 100,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
         "status": "ok",
-        "rows": 98
+        "rows": 100
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "SK hynix (KOSE:A000660) Partners With Nvidia On AI Memory And Autonomous Fabs",
-      "Bitcoin, Ethereum, XRP, Dogecoin Cool Off As 'Extreme Fear' Prevails: Analyst Says 'We'll Be Testing New Lows' If BTC Fails To Hold This Level",
-      "Elon Musk Is Unleashing SpaceX’s New War Chest to Solve His AI Problem"
+      "Latest News In Electric Vehicles - Rivian Joins ChargeScape For Grid Resilience And Energy Savings",
+      "SpaceX Opened at $150: What Else Happened on Day 1?",
+      "If You Buy Dutch Bros Today, Here's Where It Could Be in 5 Years"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7270,
+    "rows": 7285,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7270
+        "rows": 7285
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6159,
+    "rows": 6170,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,21 +71,27 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6159
+        "rows": 6170
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
   },
   "derivatives.taiwan_options": {
     "status": "ok",
-    "provider": "finmind",
-    "fallback_used": false,
-    "rows": 331694,
+    "provider": "taifex",
+    "fallback_used": true,
+    "rows": 46,
     "attempts": [
       {
         "provider": "finmind",
+        "status": "error",
+        "rows": 0,
+        "error": "IncompleteRead(41938722 bytes read, 37139858 more expected)"
+      },
+      {
+        "provider": "taifex",
         "status": "ok",
-        "rows": 331694
+        "rows": 46
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
