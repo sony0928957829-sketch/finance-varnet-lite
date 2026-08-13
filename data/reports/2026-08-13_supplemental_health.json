@@ -13,21 +13,21 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Prediction: Greg Abel Will Continue Holding This Berkshire Hathaway Stock That Warren Buffett Backed for Decades",
-      "Iran to join BRICS development bank soon, central bank governor says",
-      "European Indexes Mostly Higher; London’s FTSE 100 Hit by Antofagasta Guidance Cut"
+      "Jensen Huang Just Signed 7 Japanese Industrial Giants Into Nvidia's Physical AI Coalition. Here's Why $1 Trillion in Confirmed Demand Should Matter to Investors.",
+      "The Next Big AI Market Bottleneck Is Here: 8 Stocks to Play the Boom in Optics",
+      "There's No Denying Macy's Is a Great Buy Now, but This Stock Could Be an Even Better Buy Over the Next 10 Years"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7275,
+    "rows": 7285,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7275
+        "rows": 7285
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -92,7 +92,7 @@
   },
   "price_routes": {
     "status": "ok",
-    "rows": 15614,
+    "rows": 16854,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -214,7 +214,7 @@
               "^TNX"
             ],
             "row_counts": {
-              "^TNX": 15
+              "^TNX": 1254
             }
           }
         ],
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1361
+              "DX-Y.NYB": 1362
             }
           }
         ],
