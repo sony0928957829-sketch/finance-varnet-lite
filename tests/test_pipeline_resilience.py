@@ -257,3 +257,20 @@ def test_empty_market_still_fails():
 
     assert report["degraded"]["active"] is False
     assert report["status"] == "error"
+
+
+def test_healthy_run_is_not_labelled_degraded():
+    """A clean run must not report itself as degraded (run #181 said 13/13)."""
+    frame = _price_frame(EXPECTED)
+
+    report = evaluate_price_health(
+        frame,
+        expected_symbols=EXPECTED,
+        as_of=date(2026, 1, 10),
+        primary_source="yfinance",
+        config=HEALTH_CONFIG,
+    )
+
+    assert report["degraded"]["active"] is False
+    assert report["degraded"]["missing_symbols"] == []
+    assert report["status"] in {"healthy", "warning"}
