@@ -116,6 +116,12 @@ def _apply_degraded_mode(
     critical = [str(symbol) for symbol in settings.get("critical_symbols", [])]
 
     error_issues = [issue for issue in issues if issue["severity"] == "error"]
+    if not error_issues:
+        # Nothing to tolerate: a clean run must not be labelled "degraded",
+        # or the report cries wolf on a day when every symbol arrived.
+        result["reason"] = "no availability errors"
+        return result
+
     global_errors = [issue for issue in error_issues if not issue.get("symbol")]
     if global_errors:
         result["reason"] = "; ".join(issue["code"] for issue in global_errors)
