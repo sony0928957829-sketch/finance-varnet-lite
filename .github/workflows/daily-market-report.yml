@@ -61,6 +61,38 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
+      # Guard rail for the class of failure that silently killed this job for
+      # weeks: yfinance's repair path imports scikit-learn, which yfinance does
+      # not declare, so a missing transitive import turned every download into
+      # an empty frame. Fail here, loudly and in 2 seconds, instead of 2 minutes
+      # later behind a wall of "1 Failed download" lines.
+      - name: Verify runtime dependencies
+        run: |
+          python - <<'PY'
+          import importlib
+
+          required = [
+              "pandas",
+              "numpy",
+              "yaml",
+              "scipy",
+              "pywt",
+              "pyarrow",
+              "yfinance",
+              "sklearn",  # yfinance repair=True -> sklearn.cluster.DBSCAN
+          ]
+          missing = []
+          for name in required:
+              try:
+                  module = importlib.import_module(name)
+              except Exception as exc:
+                  missing.append(f"{name}: {exc}")
+              else:
+                  print(f"{name} {getattr(module, '__version__', 'unknown')}")
+          if missing:
+              raise SystemExit("Missing runtime dependencies: " + "; ".join(missing))
+          PY
+
       - name: Run tests
         run: python -m pytest tests -q
 
@@ -70,10 +102,23 @@ jobs:
           GOOGLE_DRIVE_ROOT_FOLDER_ID: ${{ vars.GOOGLE_DRIVE_ROOT_FOLDER_ID }}
         run: python -m src.storage.cli pull --if-configured
 
+      # The report step records its own exit status instead of aborting the job,
+      # so that even a failed run still uploads artifacts, commits the health
+      # report (which is the evidence needed to debug it) and files an issue
+      # with the actual error text. The job is failed deliberately at the end.
       - name: Run market report
-        run: python -m src.main --mode yfinance
+        id: report
+        run: |
+          set -o pipefail
+          status=0
+          python -m src.main --mode yfinance 2>&1 | tee "${RUNNER_TEMP}/market-report.log" || status=$?
+          echo "status=${status}" >> "$GITHUB_OUTPUT"
+          if [ "${status}" -ne 0 ]; then
+            echo "::warning::Market report exited with status ${status}; see the failure summary step."
+          fi
 
       - name: Validate market report
+        if: steps.report.outputs.status == '0'
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -97,6 +142,35 @@ jobs:
               raise SystemExit(f"Report is missing required text: {missing}")
 
           print(f"Validated report: {reports[-1]}")
+          PY
+
+      - name: Report data coverage
+        if: always()
+        run: |
+          python - <<'PY'
+          import glob, json, os, sys
+
+          files = sorted(glob.glob("data/reports/*_data_health.json"))
+          if not files:
+              print("No data health report produced.")
+              sys.exit(0)
+          health = json.load(open(files[-1], encoding="utf-8"))
+          summary = health.get("summary", {})
+          degraded = health.get("degraded", {}) or {}
+          line = (
+              f"status={health.get('status')} "
+              f"symbols={summary.get('observed_symbol_count')}/{summary.get('expected_symbol_count')} "
+              f"errors={summary.get('error_count')} warnings={summary.get('warning_count')}"
+          )
+          print(line)
+          if degraded.get("active"):
+              print(f"::warning::Degraded run - {degraded.get('reason')}")
+          step_summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if step_summary:
+              with open(step_summary, "a", encoding="utf-8") as handle:
+                  handle.write(f"### Data health\n\n`{line}`\n\n")
+                  if degraded.get("active"):
+                      handle.write(f"Degraded: {degraded.get('reason')}\n\n")
           PY
 
       - name: Smoke check expected supplemental datasets
@@ -135,12 +209,17 @@ jobs:
           retention-days: 30
 
       - name: Persist historical data lake to Google Drive
+        if: steps.report.outputs.status == '0'
         env:
           GOOGLE_DRIVE_OAUTH_JSON: ${{ secrets.GOOGLE_DRIVE_OAUTH_JSON }}
           GOOGLE_DRIVE_ROOT_FOLDER_ID: ${{ vars.GOOGLE_DRIVE_ROOT_FOLDER_ID }}
         run: python -m src.storage.cli push --if-configured
 
+      # Runs even after a failed report so the health JSON lands in the repo.
+      # It doubles as the repository activity that keeps GitHub from disabling
+      # scheduled workflows after 60 idle days.
       - name: Commit generated reports
+        if: always()
         run: |
           git config user.name "market-report-bot"
           git config user.email "market-report-bot@example.com"
@@ -151,8 +230,17 @@ jobs:
             echo "No generated changes to commit."
           else
             git commit -m "chore: daily market report [skip ci]"
+            git pull --rebase --autostash || true
             git push
           fi
+
+      - name: Fail the job if the market report failed
+        if: steps.report.outputs.status != '0'
+        run: |
+          echo "The market report step exited with status ${{ steps.report.outputs.status }}."
+          echo "--- last 60 log lines ---"
+          tail -n 60 "${RUNNER_TEMP}/market-report.log" || true
+          exit 1
 
       - name: Notify on failure via issue
         if: failure()
@@ -160,7 +248,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           title="❌ Daily market report failed"
-          body="Run failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          log_tail="$(tail -n 40 "${RUNNER_TEMP}/market-report.log" 2>/dev/null || echo 'no market report log was produced')"
+          body="$(printf 'Run failed: %s/%s/actions/runs/%s\n\n<details><summary>last log lines</summary>\n\n```\n%s\n```\n\n</details>' \
+            "${{ github.server_url }}" "${{ github.repository }}" "${{ github.run_id }}" "${log_tail}")"
           existing=$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number' 2>/dev/null || echo "")
           if [ -n "$existing" ]; then
             gh issue comment "$existing" --body "$body"

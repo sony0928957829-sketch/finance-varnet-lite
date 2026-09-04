@@ -35,3 +35,26 @@ fail_on:
   - invalid_ohlc
   - duplicate_bar
   - stale_data
+
+# Partial-outage policy.
+#
+# fail_on above is deliberately strict: any listed problem is an error. Without
+# the escape hatch below, ONE unavailable symbol (a Yahoo 429, a delisted
+# ticker, a provider outage) aborts the entire daily run and no report is
+# produced at all. degraded_mode keeps the run alive when the failure is only
+# about *availability* and the market picture is still representative.
+#
+# Integrity problems (null_price, non_positive_price, invalid_ohlc,
+# duplicate_bar, invalid_datetime, missing_columns, empty_data) are never
+# tolerated - a report built on corrupt numbers is worse than no report.
+degraded_mode:
+  enabled: true
+  minimum_symbol_coverage: 0.6
+  tolerated_codes:
+    - missing_symbol
+    - insufficient_rows
+    - stale_data
+    - long_gap
+  critical_symbols:
+    - 2330.TW
+    - TAIEX
