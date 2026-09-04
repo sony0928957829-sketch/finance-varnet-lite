@@ -1,9 +1,32 @@
 from __future__ import annotations
 
 from datetime import date
+import importlib.util
+import time
+
 import pandas as pd
 
 from .base_fetcher import BaseFetcher
+
+
+# yfinance's `repair=True` path reconstructs suspicious bars and imports
+# scikit-learn (yfinance/scrapers/history.py -> "from sklearn.cluster import
+# DBSCAN"). scikit-learn is not a declared yfinance dependency, so in an
+# environment without it EVERY download fails with ModuleNotFoundError and the
+# pipeline sees an empty market. requirements.txt now pins scikit-learn, and
+# this probe is the belt-and-braces: if it is ever missing again, we downgrade
+# to repair=False and still return prices instead of losing the whole run.
+def sklearn_available() -> bool:
+    try:
+        return importlib.util.find_spec("sklearn") is not None
+    except (ImportError, ValueError):  # pragma: no cover - defensive
+        return False
+
+
+# Transient Yahoo throttling (HTTP 429 / empty payloads) is common from CI
+# runners, so a symbol is retried a few times before it is declared missing.
+DOWNLOAD_ATTEMPTS = 3
+RETRY_BACKOFF_SECONDS = 2.0
 
 
 YFINANCE_COLUMNS = [
@@ -46,17 +69,15 @@ class YFinanceFetcher(BaseFetcher):
         frames: list[pd.DataFrame] = []
         for symbol in symbols:
             provider_symbol = self.symbol_aliases.get(symbol, symbol)
-            data = yf.download(
+            data = self._download(
+                yf,
                 provider_symbol,
-                start=str(start),
-                end=str(end) if end else None,
+                start=start,
+                end=end,
                 interval=interval,
-                auto_adjust=True,
-                repair=True,
-                progress=False,
-                threads=False,
             )
-            if data.empty:
+            if data is None or data.empty:
+                print(f"[warn] yfinance returned no rows for {symbol} after retries.")
                 continue
             data = self._flatten_columns(data)
             data = data.reset_index()
@@ -82,6 +103,56 @@ class YFinanceFetcher(BaseFetcher):
         if not frames:
             return pd.DataFrame(columns=YFINANCE_COLUMNS)
         return pd.concat(frames, ignore_index=True)
+
+    @staticmethod
+    def _download(
+        yf,
+        provider_symbol: str,
+        *,
+        start: str | date,
+        end: str | date | None,
+        interval: str,
+    ) -> pd.DataFrame | None:
+        """Download one symbol, degrading instead of failing.
+
+        Order of attempts, from best data quality to most permissive:
+        1. repair=True (needs scikit-learn) with retries for transient errors;
+        2. repair=False, which never touches the sklearn code path.
+
+        Returning None/empty is a per-symbol outcome; the caller decides whether
+        the run still has enough coverage to be worth reporting.
+        """
+        repair_modes = [True, False] if sklearn_available() else [False]
+        if not sklearn_available():
+            print(
+                "[warn] scikit-learn is missing; yfinance price repair is disabled. "
+                "Install scikit-learn (see requirements.txt) for repaired bars."
+            )
+
+        for repair in repair_modes:
+            for attempt in range(1, DOWNLOAD_ATTEMPTS + 1):
+                try:
+                    data = yf.download(
+                        provider_symbol,
+                        start=str(start),
+                        end=str(end) if end else None,
+                        interval=interval,
+                        auto_adjust=True,
+                        repair=repair,
+                        progress=False,
+                        threads=False,
+                    )
+                except Exception as exc:  # network / upstream API changes
+                    print(
+                        f"[warn] yfinance download failed for {provider_symbol} "
+                        f"(repair={repair}, attempt {attempt}/{DOWNLOAD_ATTEMPTS}): {exc}"
+                    )
+                    data = None
+                if data is not None and not data.empty:
+                    return data
+                if attempt < DOWNLOAD_ATTEMPTS:
+                    time.sleep(RETRY_BACKOFF_SECONDS * attempt)
+        return None
 
     @staticmethod
     def _flatten_columns(data: pd.DataFrame) -> pd.DataFrame:
