@@ -66,6 +66,111 @@ def _trading_days_between(calendar: list[pd.Timestamp], start, end, *, inclusive
     return sum(1 for d in calendar if start < d < end)
 
 
+DEFAULT_TOLERATED_CODES = (
+    "missing_symbol",
+    "insufficient_rows",
+    "stale_data",
+    "long_gap",
+)
+
+
+def _apply_degraded_mode(
+    config: dict[str, Any],
+    *,
+    issues: list[dict[str, Any]],
+    symbol_health: dict[str, dict[str, Any]],
+    expected_symbols: list[str],
+) -> dict[str, Any]:
+    """Let the run continue on a partial data outage instead of dying.
+
+    Before this, one unavailable symbol out of thirteen aborted the whole daily
+    job: no report, no dashboard, no track record - the single most fragile
+    thing in the pipeline, because upstream data providers fail routinely.
+
+    The trade-off is made explicit rather than removed:
+      * only *availability* problems are tolerated (missing / too few / stale /
+        gappy bars). Data-integrity problems (invalid OHLC, null or negative
+        prices, duplicated bars, missing columns) still fail hard, because a
+        report built on corrupt numbers is worse than no report at all.
+      * `critical_symbols` must always be present. Losing 2330.TW or TAIEX
+        means the report is not about the market the user cares about.
+      * at least `minimum_symbol_coverage` of the watchlist must survive.
+
+    When all three hold, the offending errors are downgraded to warnings, the
+    run proceeds with the symbols it does have, and the report says so.
+    """
+    settings = config.get("degraded_mode", {}) or {}
+    result: dict[str, Any] = {
+        "enabled": bool(settings.get("enabled", False)),
+        "active": False,
+        "coverage": None,
+        "minimum_coverage": float(settings.get("minimum_symbol_coverage", 0.6)),
+        "missing_symbols": [],
+        "reason": None,
+    }
+    if not result["enabled"] or not expected_symbols:
+        result["reason"] = "degraded mode disabled"
+        return result
+
+    tolerated = set(settings.get("tolerated_codes", DEFAULT_TOLERATED_CODES))
+    critical = [str(symbol) for symbol in settings.get("critical_symbols", [])]
+
+    error_issues = [issue for issue in issues if issue["severity"] == "error"]
+    global_errors = [issue for issue in error_issues if not issue.get("symbol")]
+    if global_errors:
+        result["reason"] = "; ".join(issue["code"] for issue in global_errors)
+        return result
+
+    affected: dict[str, set[str]] = {}
+    for issue in error_issues:
+        affected.setdefault(str(issue["symbol"]), set()).add(issue["code"])
+
+    hard_failures = sorted(
+        symbol for symbol, codes in affected.items() if codes - tolerated
+    )
+    if hard_failures:
+        result["reason"] = f"data-integrity errors on {hard_failures}"
+        return result
+
+    missing = sorted(affected)
+    result["missing_symbols"] = missing
+    coverage = 1.0 - len(missing) / len(expected_symbols)
+    result["coverage"] = round(coverage, 4)
+
+    blocked_critical = [symbol for symbol in critical if symbol in affected]
+    if blocked_critical:
+        result["reason"] = f"critical symbols unavailable: {blocked_critical}"
+        return result
+    if coverage < result["minimum_coverage"]:
+        result["reason"] = (
+            f"coverage {coverage:.0%} is below the {result['minimum_coverage']:.0%} minimum"
+        )
+        return result
+
+    for issue in error_issues:
+        issue["severity"] = "warning"
+        issue["downgraded_from"] = "error"
+
+    for symbol, details in symbol_health.items():
+        severities = [
+            issue["severity"] for issue in issues if issue.get("symbol") == symbol
+        ]
+        details["status"] = (
+            "error"
+            if "error" in severities
+            else "warning"
+            if "warning" in severities
+            else "healthy"
+        )
+
+    result["active"] = True
+    result["reason"] = (
+        f"continuing with {len(expected_symbols) - len(missing)}/"
+        f"{len(expected_symbols)} symbols; unavailable: {missing}"
+    )
+    return result
+
+
 def evaluate_price_health(
     frame: pd.DataFrame,
     *,
@@ -274,6 +379,13 @@ def evaluate_price_health(
                 ),
             }
 
+    degraded = _apply_degraded_mode(
+        config,
+        issues=issues,
+        symbol_health=symbol_health,
+        expected_symbols=expected_symbols,
+    )
+
     error_count = sum(issue["severity"] == "error" for issue in issues)
     warning_count = sum(issue["severity"] == "warning" for issue in issues)
     status = "error" if error_count else "warning" if warning_count else "healthy"
@@ -291,6 +403,7 @@ def evaluate_price_health(
             "error_count": error_count,
             "warning_count": warning_count,
         },
+        "degraded": degraded,
         "symbols": symbol_health,
         "issues": issues,
     }
