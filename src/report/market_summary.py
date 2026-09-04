@@ -124,6 +124,16 @@ def build_market_summary(
         }.get(health_status, "未知")
         if health_status == "warning":
             watch_points.append("資料健康檢查有警告，解讀訊號時需保留不確定性。")
+        degraded = health_report.get("degraded", {}) or {}
+        if degraded.get("active"):
+            missing = degraded.get("missing_symbols", []) or []
+            coverage = degraded.get("coverage")
+            coverage_text = f"{coverage:.0%}" if isinstance(coverage, (int, float)) else "未知"
+            data_health = f"降級運行（涵蓋率 {coverage_text}）"
+            watch_points.append(
+                "本次為降級運行：以下標的今日無法取得資料，"
+                f"相關訊號請視為缺漏——{'、'.join(map(str, missing)) or '無'}。"
+            )
 
     return {
         "market_state": classify_market_state(overall_risk, overall_condition),
