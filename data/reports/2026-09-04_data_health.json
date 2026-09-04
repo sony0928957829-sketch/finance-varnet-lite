@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T03:07:01.524078+00:00",
+  "generated_at": "2026-09-04T03:22:22.601570+00:00",
   "as_of": "2026-09-04",
   "primary_source": "yfinance",
   "status": "warning",
@@ -11,11 +11,11 @@
   },
   "degraded": {
     "enabled": true,
-    "active": true,
-    "coverage": 1.0,
+    "active": false,
+    "coverage": null,
     "minimum_coverage": 0.6,
     "missing_symbols": [],
-    "reason": "continuing with 13/13 symbols; unavailable: []"
+    "reason": "no availability errors"
   },
   "symbols": {
     "NVDA": {
