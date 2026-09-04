@@ -2,6 +2,15 @@
 
 本檔記錄每次可運行版本的變更、原因與影響。日期為台北時間。
 
+## v0.2.2 — 修正降級旗標誤報（2026-09-04）
+
+v0.2.1 合併後的 run #181 成功了（6m45s、13/13 標的、0 錯誤），但 job summary 出現
+`Degraded: continuing with 13/13 symbols; unavailable: []`——完全正常的一天卻被標為降級運行。
+
+原因：`_apply_degraded_mode()` 在「沒有任何 error 需要降級」時仍走完整條判斷並設 `active=True`。
+修正：沒有可用性錯誤時直接回傳 `active=False`，報告的「資料品質」欄位才不會在資料齊全時
+誤顯示「降級運行」。新增 `test_healthy_run_is_not_labelled_degraded`（全套 97 項通過）。
+
 ## v0.2.1 — 每日流程穩定性修復（2026-09-04）
 
 ### 問題
