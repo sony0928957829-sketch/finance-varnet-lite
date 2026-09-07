@@ -7,7 +7,7 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 偏多
-- **平均風險：** 39.74
+- **平均風險：** 39.84
 - **異常標的：** ^VIX、AMD、TSLA
 - **相對強勢：** BTC-USD、NVDA、TAIEX
 - **相對弱勢：** DX-Y.NYB、^VIX、TWD=X
@@ -20,7 +20,7 @@
 
 ## 1. 市場總覽
 
-- 平均風險分數：39.74
+- 平均風險分數：39.84
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -31,13 +31,13 @@
 | 2330.TW | 2,410.00 | 0.84% | 1.69% | 100.00 | 53.63 | 32.15 | 27.03 | 偏多/低 |
 | 2382.TW | 345.00 | 2.99% | 15.77% | 65.00 | 84.55 | 100.00 | 44.77 | 強勢/中 |
 | AMD | 477.57 | 4.69% | -1.20% | 40.00 | 61.88 | — | 59.50 | 中性/中 |
-| BTC-USD | 79,809.99 | -0.02% | 23.72% | 100.00 | 89.28 | — | 44.04 | 強勢/中 |
-| DX-Y.NYB | 99.11 | -0.05% | -0.85% | 0.00 | 48.16 | — | 22.44 | 偏弱/低 |
+| BTC-USD | 80,350.05 | 0.66% | 24.56% | 100.00 | 92.67 | — | 45.75 | 強勢/中 |
+| DX-Y.NYB | 99.17 | 0.01% | -0.80% | 0.00 | 48.42 | — | 23.26 | 偏弱/低 |
 | NVDA | 230.36 | 0.84% | 2.86% | 100.00 | 64.92 | — | 50.38 | 強勢/中 |
 | TAIEX | 46,551.13 | 1.51% | 5.26% | 100.00 | 61.63 | — | 31.36 | 強勢/低 |
 | TSLA | 354.08 | -5.92% | 7.76% | 40.00 | 53.36 | — | 58.26 | 中性/中 |
 | TWD=X | 31.70 | -0.10% | -1.59% | 15.00 | 47.59 | — | 18.24 | 轉弱/低 |
-| TX | 47,182.00 | 1.02% | 4.88% | 100.00 | 63.14 | — | 33.36 | 中性/低 |
+| TX | 47,470.00 | 1.64% | 5.52% | 100.00 | 66.23 | — | 32.14 | 中性/低 |
 | ^TNX | 4.78 | 0.46% | 2.66% | 100.00 | 56.91 | — | 28.34 | 強勢/低 |
 | ^VIX | 14.53 | 1.47% | -2.48% | 0.00 | 50.31 | — | 59.53 | 轉弱/中 |
 
@@ -84,12 +84,12 @@
 
 ## 7. 外部資料來源狀態
 
-- **chip.taiwan_institutional**：ok，7240 筆，來源 finmind
-- **chip.taiwan_margin_short**：ok，2898 筆，來源 finmind
-- **derivatives.taiwan_futures_open_interest**：ok，6101 筆，來源 finmind（備援）
-- **derivatives.taiwan_options**：ok，395402 筆，來源 finmind
+- **chip.taiwan_institutional**：ok，7255 筆，來源 finmind
+- **chip.taiwan_margin_short**：ok，2904 筆，來源 finmind
+- **derivatives.taiwan_futures_open_interest**：ok，6113 筆，來源 finmind（備援）
+- **derivatives.taiwan_options**：ok，398220 筆，來源 finmind
 - **news.market_events**：ok，98 筆，來源 yahoo_finance_news
-  - 新聞觀察：Dow Jones Futures Fall With Iran, Apple, Inflation In Focus; Nvidia, Micron, Sandisk Flash Buy Signals
-  - 新聞觀察：Dow Jones Futures Fall With Iran, Apple, Inflation In Focus; Nvidia, Micron, Sandisk Flash Buy Signals
-  - 新聞觀察：Berkshire Hathaway's Cash Fell From $397 Billion to $366 Billion in a Single Quarter
-- **price_routes**：ok，16858 筆
+  - 新聞觀察：3 Dividend Kings You Can Buy and Never Sell
+  - 新聞觀察：Warren Buffett's Successor, Greg Abel, Sees Multiple Ways for Berkshire Hathaway to Profit From Opportunities in Artificial Intelligence
+  - 新聞觀察：If You'd Invested $10,000 in the Vanguard Information Technology ETF (VGT) 20 Years Ago, Here's What You'd Have Today. (You Might Want to Sit Down.)
+- **price_routes**：ok，16857 筆
