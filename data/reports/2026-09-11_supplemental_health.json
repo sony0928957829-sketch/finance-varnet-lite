@@ -13,21 +13,21 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Dow Jones Futures, Oracle Jumps After Oil Prices, Yields Surge; CPI Inflation Due",
-      "Dow Jones Futures, Oracle Jumps After Oil Prices, Yields Surge; CPI Inflation Due",
-      "Nvidia's Jensen Huang Claims AGI Has Arrived. Here's How to Invest."
+      "Bitcoin, Solana, XRP Tumble Ahead Of CPI – And Retail Traders Aren’t Feeling Bullish",
+      "Blockstream Refuses the 10% Cut White Hat Hackers Have Learned to Expect",
+      "Nvidia Rival Enflame Jumps 206% on Its Shanghai Debut"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7270,
+    "rows": 7285,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7270
+        "rows": 7285
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6123,
+    "rows": 6135,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6123
+        "rows": 6135
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 392404,
+    "rows": 395486,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 392404
+        "rows": 395486
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16854,
+    "rows": 16853,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1361
             }
           }
         ],
