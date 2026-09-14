@@ -3,31 +3,31 @@
     "status": "ok",
     "provider": "yahoo_finance_news",
     "fallback_used": false,
-    "rows": 90,
+    "rows": 95,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
         "status": "ok",
-        "rows": 90
+        "rows": 95
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Dow Jones Futures Fall, Techs Tumble As Anthropic Leads Call For AI Slowdown; Fed Meeting Ahead",
-      "Dow Jones Futures Fall, Techs Tumble As Anthropic Leads Call For AI Slowdown; Fed Meeting Ahead",
-      "Why Dell Stock Climbed to a New All-Time High This Week"
+      "Elon Musk: I've been 'sounding the alarm' on AI for a while",
+      "Nasdaq drags on Wall St as AI slowdown fears hammer Nvidia, chipmakers",
+      "Micron Technology Is Ramping Up Production of High-Bandwidth Memory. Here's Why That Could Send the Stock to New Heights This Year"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7240,
+    "rows": 7255,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7240
+        "rows": 7255
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -43,12 +43,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2898,
+    "rows": 2904,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2898
+        "rows": 2904
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6095,
+    "rows": 6111,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6095
+        "rows": 6111
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 392092,
+    "rows": 394926,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 392092
+        "rows": 394926
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16853,
+    "rows": 16852,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1361
             }
           }
         ],

@@ -6,11 +6,11 @@
 
 ## 0. 今日自動摘要
 
-- **市場狀態：** 偏多
-- **平均風險：** 38.98
+- **市場狀態：** 中性
+- **平均風險：** 39.14
 - **異常標的：** ^VIX、AMD、TSLA
 - **相對強勢：** ^TNX、AMD、TAIEX
-- **相對弱勢：** 2317.TW、TWD=X、DX-Y.NYB
+- **相對弱勢：** 2317.TW、TX、TWD=X
 - **資料品質：** 警告（2 項）
 - **觀察重點：**
   - 優先追蹤 ^VIX 的波動與異常風險是否持續升高。
@@ -20,7 +20,7 @@
 
 ## 1. 市場總覽
 
-- 平均風險分數：38.98
+- 平均風險分數：39.14
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -31,13 +31,13 @@
 | 2330.TW | 2,410.00 | -1.63% | 0.63% | 60.00 | 47.76 | 49.05 | 24.29 | 中性/低 |
 | 2382.TW | 336.50 | 0.15% | 2.75% | 65.00 | 50.93 | 59.66 | 39.02 | 偏多/中 |
 | AMD | 516.13 | 2.49% | 6.86% | 80.00 | 85.30 | — | 59.57 | 強勢/中 |
-| BTC-USD | 77,276.42 | 0.01% | -2.14% | 60.00 | 44.57 | — | 40.94 | 中性/中 |
-| DX-Y.NYB | 99.21 | 0.09% | 0.38% | 40.00 | 50.83 | — | 19.28 | 中性/低 |
+| BTC-USD | 76,838.16 | -0.56% | -2.69% | 60.00 | 41.74 | — | 41.22 | 中性/中 |
+| DX-Y.NYB | 99.32 | 0.20% | 0.50% | 40.00 | 51.40 | — | 19.68 | 中性/低 |
 | NVDA | 218.29 | -0.03% | -3.00% | 60.00 | 39.01 | — | 49.75 | 偏多/中 |
 | TAIEX | 46,184.85 | -1.61% | 0.82% | 100.00 | 46.88 | — | 33.96 | 強勢/低 |
 | TSLA | 365.44 | 0.52% | 7.50% | 65.00 | 58.44 | — | 54.36 | 偏多/中 |
 | TWD=X | 31.64 | 0.54% | -1.52% | 0.00 | 48.53 | — | 23.52 | 轉弱/低 |
-| TX | 46,588.00 | 0.80% | 1.53% | 85.00 | 51.26 | — | 35.92 | 中性/中 |
+| TX | 45,780.00 | -0.95% | -0.24% | 45.00 | 42.52 | — | 37.30 | 轉弱/中 |
 | ^TNX | 4.97 | 0.63% | 7.20% | 100.00 | 68.51 | — | 31.11 | 強勢/低 |
 | ^VIX | 15.84 | -11.21% | 11.16% | 40.00 | 65.23 | — | 60.24 | 偏多/高 |
 
@@ -51,7 +51,7 @@
 
 **相對強勢：** ^TNX、AMD、TAIEX
 
-**相對弱勢：** 2317.TW、TWD=X、DX-Y.NYB
+**相對弱勢：** 2317.TW、TX、TWD=X
 
 ## 5. 隔日觀察重點
 
@@ -76,7 +76,7 @@
 | TAIEX | -1.63% / 2.01% | -3.67% / 5.20% | -4.82% / 7.57% | 100.00% |
 | TSLA | -3.57% / 3.91% | -7.20% / 7.17% | -9.94% / 10.85% | 100.00% |
 | TWD=X | -0.47% / 0.49% | -0.88% / 0.99% | -1.31% / 1.32% | 100.00% |
-| TX | -1.78% / 2.19% | -3.70% / 5.41% | -4.78% / 7.73% | 100.00% |
+| TX | -1.80% / 2.19% | -3.74% / 5.41% | -4.78% / 7.73% | 100.00% |
 | ^TNX | -1.05% / 1.20% | -2.00% / 2.78% | -2.87% / 4.01% | 100.00% |
 | ^VIX | -7.42% / 12.74% | -14.06% / 25.30% | -17.78% / 38.82% | 100.00% |
 
@@ -84,12 +84,12 @@
 
 ## 7. 外部資料來源狀態
 
-- **chip.taiwan_institutional**：ok，7240 筆，來源 finmind
-- **chip.taiwan_margin_short**：ok，2898 筆，來源 finmind
-- **derivatives.taiwan_futures_open_interest**：ok，6095 筆，來源 finmind（備援）
-- **derivatives.taiwan_options**：ok，392092 筆，來源 finmind
-- **news.market_events**：ok，90 筆，來源 yahoo_finance_news
-  - 新聞觀察：Dow Jones Futures Fall, Techs Tumble As Anthropic Leads Call For AI Slowdown; Fed Meeting Ahead
-  - 新聞觀察：Dow Jones Futures Fall, Techs Tumble As Anthropic Leads Call For AI Slowdown; Fed Meeting Ahead
-  - 新聞觀察：Why Dell Stock Climbed to a New All-Time High This Week
-- **price_routes**：ok，16853 筆
+- **chip.taiwan_institutional**：ok，7255 筆，來源 finmind
+- **chip.taiwan_margin_short**：ok，2904 筆，來源 finmind
+- **derivatives.taiwan_futures_open_interest**：ok，6111 筆，來源 finmind（備援）
+- **derivatives.taiwan_options**：ok，394926 筆，來源 finmind
+- **news.market_events**：ok，95 筆，來源 yahoo_finance_news
+  - 新聞觀察：Elon Musk: I've been 'sounding the alarm' on AI for a while
+  - 新聞觀察：Nasdaq drags on Wall St as AI slowdown fears hammer Nvidia, chipmakers
+  - 新聞觀察：Micron Technology Is Ramping Up Production of High-Bandwidth Memory. Here's Why That Could Send the Stock to New Heights This Year
+- **price_routes**：ok，16852 筆
