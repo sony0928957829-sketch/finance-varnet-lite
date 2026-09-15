@@ -3,31 +3,31 @@
     "status": "ok",
     "provider": "yahoo_finance_news",
     "fallback_used": false,
-    "rows": 96,
+    "rows": 97,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
         "status": "ok",
-        "rows": 96
+        "rows": 97
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "This Index Fund Could Turn $25,000 Into $20,635,655",
-      "MARA Sees Bitcoin Mining Assets as a Fast Track to AI Data Center Growth",
-      "SpaceX Spent $15.8 Billion on AI in a Quarter. Here's What Happens to the Stock if Orbital Data Centers Don't Work."
+      "Trump Just Sent a Stark Warning to AI Critics With Nvidia CEO",
+      "Anthropic moving forward with $2 trillion IPO on Nasdaq",
+      "2 Stocks That Will Cash In When Anthropic Goes Public"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7255,
+    "rows": 7270,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7255
+        "rows": 7270
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6124,
+    "rows": 6140,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6124
+        "rows": 6140
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 391458,
+    "rows": 394316,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 391458
+        "rows": 394316
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16854,
+    "rows": 16853,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1361
             }
           }
         ],
