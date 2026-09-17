@@ -7,7 +7,7 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 中性
-- **平均風險：** 40.63
+- **平均風險：** 40.89
 - **異常標的：** ^VIX、AMD、TSLA
 - **相對強勢：** ^TNX、^VIX、2382.TW
 - **相對弱勢：** 2330.TW、TSLA、2317.TW
@@ -20,7 +20,7 @@
 
 ## 1. 市場總覽
 
-- 平均風險分數：40.63
+- 平均風險分數：40.89
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -31,13 +31,13 @@
 | 2330.TW | 2,380.00 | 0.08% | 1.57% | 35.00 | 48.02 | 45.24 | 24.89 | 轉弱/低 |
 | 2382.TW | 340.50 | 2.25% | 2.87% | 85.00 | 58.35 | 51.72 | 36.99 | 偏多/中 |
 | AMD | 512.50 | 1.65% | 5.80% | 65.00 | 59.87 | — | 62.53 | 中性/高 |
-| BTC-USD | 76,143.96 | 0.70% | -5.13% | 60.00 | 41.68 | — | 45.39 | 中性/中 |
-| DX-Y.NYB | 100.31 | 0.66% | 1.49% | 65.00 | 55.39 | — | 25.57 | 中性/低 |
+| BTC-USD | 76,150.32 | 0.71% | -5.12% | 60.00 | 41.72 | — | 45.49 | 中性/中 |
+| DX-Y.NYB | 100.31 | 0.66% | 1.49% | 65.00 | 55.39 | — | 27.72 | 中性/低 |
 | NVDA | 213.90 | 0.82% | -2.55% | 60.00 | 41.65 | — | 53.12 | 中性/中 |
 | TAIEX | 45,848.90 | 0.74% | 2.53% | 60.00 | 51.34 | — | 32.68 | 中性/低 |
 | TSLA | 358.08 | 0.42% | 6.30% | 40.00 | 56.72 | — | 59.20 | 中性/中 |
-| TWD=X | 31.87 | 0.29% | 0.16% | 55.00 | 52.75 | — | 24.12 | 中性/低 |
-| TX | 46,382.00 | 0.66% | 3.37% | 85.00 | 54.92 | — | 35.94 | 中性/中 |
+| TWD=X | 31.84 | 0.21% | 0.08% | 55.00 | 52.34 | — | 24.41 | 中性/低 |
+| TX | 46,445.00 | 0.80% | 3.51% | 85.00 | 55.61 | — | 36.81 | 中性/中 |
 | ^TNX | 5.01 | 0.20% | 6.37% | 100.00 | 65.04 | — | 33.75 | 偏多/低 |
 | ^VIX | 17.71 | 2.97% | 18.94% | 65.00 | 94.13 | — | 63.82 | 偏多/高 |
 
@@ -75,7 +75,7 @@
 | NVDA | -2.85% / 3.07% | -6.15% / 6.95% | -7.95% / 9.54% | 100.00% |
 | TAIEX | -1.65% / 2.01% | -3.72% / 5.20% | -4.82% / 7.57% | 100.00% |
 | TSLA | -3.57% / 3.60% | -7.20% / 6.94% | -9.94% / 10.60% | 100.00% |
-| TWD=X | -0.47% / 0.50% | -0.88% / 0.98% | -1.31% / 1.32% | 100.00% |
+| TWD=X | -0.47% / 0.51% | -0.88% / 0.98% | -1.31% / 1.32% | 100.00% |
 | TX | -1.80% / 2.19% | -3.76% / 5.41% | -4.78% / 7.73% | 100.00% |
 | ^TNX | -1.05% / 1.18% | -1.97% / 2.87% | -2.67% / 4.10% | 100.00% |
 | ^VIX | -7.42% / 12.79% | -14.06% / 25.30% | -17.78% / 38.82% | 100.00% |
@@ -84,12 +84,12 @@
 
 ## 7. 外部資料來源狀態
 
-- **chip.taiwan_institutional**：ok，7270 筆，來源 finmind
+- **chip.taiwan_institutional**：ok，7285 筆，來源 finmind
 - **chip.taiwan_margin_short**：ok，2910 筆，來源 finmind
-- **derivatives.taiwan_futures_open_interest**：ok，6124 筆，來源 finmind（備援）
-- **derivatives.taiwan_options**：ok，390312 筆，來源 finmind
-- **news.market_events**：ok，98 筆，來源 yahoo_finance_news
+- **derivatives.taiwan_futures_open_interest**：ok，6138 筆，來源 finmind（備援）
+- **derivatives.taiwan_options**：ok，393158 筆，來源 finmind
+- **news.market_events**：ok，99 筆，來源 yahoo_finance_news
+  - 新聞觀察：Wall Street on Fed rate hike: ’As hawkish as it gets’
+  - 新聞觀察：What Would It Take for Investors to Pay More for Toast Stock?
   - 新聞觀察：Dow Jones Futures Rise After Hawkish Fed, Warsh Hit Stocks, Trump Fumes; AMD, Bloom Energy Eye Buy Points
-  - 新聞觀察：Vistra vs. Constellation vs. Talen Energy: Which Nuclear-Heavy Stock Is the Better AI-Power Bet?
-  - 新聞觀察：This Ethereum Treasury Company Is Close to Owning 5% of All ETH in Circulation. Does That Make It a Buy?
 - **price_routes**：ok，16853 筆
