@@ -13,21 +13,21 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Dow Jones Futures Fall After S&P 500, Nasdaq Rebound Above Key Level; Moderna, AMD, SpaceX Flash Buy Signals",
-      "1 Tech Stock That's Too Good to Pass On as We Approach the Fourth Quarter",
-      "Prediction: The Invesco QQQ Trust Beats the S&P 500 Again Over the Next 5 Years"
+      "Karp Says AI Labs May Need Nationalizing to Escape Lawsuits",
+      "Nvidia CEO Delivers Stunning Prediction About Chip Sales",
+      "Dario Amodei Just Admitted \"There Are Real Dangers\" in AI, Right as Anthropic Nears a $2 Trillion IPO With Back-to-Back Profitable Quarters. Should That Change How Investors Value the Listing?"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7285,
+    "rows": 7300,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7285
+        "rows": 7300
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6118,
+    "rows": 6131,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,28 +71,34 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6118
+        "rows": 6131
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
   },
   "derivatives.taiwan_options": {
     "status": "ok",
-    "provider": "finmind",
-    "fallback_used": false,
-    "rows": 396006,
+    "provider": "taifex",
+    "fallback_used": true,
+    "rows": 46,
     "attempts": [
       {
         "provider": "finmind",
+        "status": "error",
+        "rows": 0,
+        "error": "The read operation timed out"
+      },
+      {
+        "provider": "taifex",
         "status": "ok",
-        "rows": 396006
+        "rows": 46
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16854,
+    "rows": 16853,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +239,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1361
             }
           }
         ],
