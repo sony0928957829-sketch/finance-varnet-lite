@@ -13,21 +13,21 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "I've Studied Compound Interest for 10 Years. It's Still the Best Wealth Builder I Know.",
-      "It Takes About $32,000 in This Dividend ETF to Collect $1,000 a Year",
-      "Dow Jones Futures Rise; Can The Market Take Flight? Robinhood, Sandisk, AMD, Moderna Surge Into Buy Areas"
+      "Stock Market Today: Dow Rallies As Nvidia Nears Entry; Oil Dips On Iran Hopes (Live Coverage)",
+      "Stock Market Today: Dow Rallies As Nvidia Nears Entry; Oil Dips On Iran Hopes (Live Coverage)",
+      "Meet the Quantum Computing Stock Growing Faster Than Nvidia"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7255,
+    "rows": 7270,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7255
+        "rows": 7270
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -43,12 +43,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2904,
+    "rows": 2910,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2904
+        "rows": 2910
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6077,
+    "rows": 6087,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6077
+        "rows": 6087
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,12 +80,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 392442,
+    "rows": 395350,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 392442
+        "rows": 395350
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"

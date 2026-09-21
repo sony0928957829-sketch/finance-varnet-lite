@@ -7,20 +7,20 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 偏多
-- **平均風險：** 39.53
+- **平均風險：** 39.66
 - **異常標的：** ^VIX、AMD、TSLA
 - **相對強勢：** BTC-USD、AMD、TAIEX
-- **相對弱勢：** ^VIX、TWD=X、DX-Y.NYB
+- **相對弱勢：** ^VIX、TWD=X、TX
 - **資料品質：** 警告（2 項）
 - **觀察重點：**
   - 優先追蹤 ^VIX 的波動與異常風險是否持續升高。
   - 觀察 ^VIX 能否停止轉弱，並修復短中期動能。
-  - US 與 US_VOLATILITY 單日表現差距約 5.25%，留意跨市場背離。
+  - TW_DERIVATIVES 與 US_VOLATILITY 單日表現差距約 5.47%，留意跨市場背離。
   - 資料健康檢查有警告，解讀訊號時需保留不確定性。
 
 ## 1. 市場總覽
 
-- 平均風險分數：39.53
+- 平均風險分數：39.66
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -31,13 +31,13 @@
 | 2330.TW | 2,460.00 | 1.44% | 2.38% | 100.00 | 59.97 | 40.25 | 26.50 | 偏多/低 |
 | 2382.TW | 343.00 | -0.29% | 6.69% | 85.00 | 62.23 | 61.81 | 37.00 | 偏多/中 |
 | AMD | 559.82 | 2.70% | 19.25% | 80.00 | 95.26 | — | 61.32 | 強勢/高 |
-| BTC-USD | 81,133.50 | -0.12% | 3.29% | 100.00 | 66.08 | — | 43.51 | 強勢/中 |
-| DX-Y.NYB | 100.22 | 0.00% | 1.06% | 65.00 | 52.74 | — | 21.49 | 中性/低 |
+| BTC-USD | 81,142.61 | -0.11% | 3.30% | 100.00 | 66.14 | — | 43.42 | 強勢/中 |
+| DX-Y.NYB | 100.31 | 0.09% | 1.15% | 65.00 | 53.18 | — | 21.61 | 中性/低 |
 | NVDA | 222.27 | 1.34% | 2.61% | 100.00 | 59.29 | — | 49.17 | 偏多/中 |
 | TAIEX | 47,180.75 | 1.93% | 4.33% | 100.00 | 63.50 | — | 34.81 | 強勢/低 |
 | TSLA | 364.27 | -0.53% | 5.55% | 85.00 | 56.82 | — | 57.57 | 偏多/中 |
 | TWD=X | 31.85 | -0.03% | 0.04% | 40.00 | 51.04 | — | 21.02 | 中性/低 |
-| TX | 47,405.00 | -0.03% | 5.90% | 100.00 | 64.01 | — | 34.91 | 偏多/低 |
+| TX | 48,077.00 | 1.39% | 7.41% | 100.00 | 71.09 | — | 36.53 | 中性/中 |
 | ^TNX | 5.00 | 1.03% | 6.43% | 100.00 | 62.38 | — | 31.01 | 強勢/低 |
 | ^VIX | 14.81 | -4.08% | -2.12% | 0.00 | 29.06 | — | 62.80 | 轉弱/高 |
 
@@ -51,13 +51,13 @@
 
 **相對強勢：** BTC-USD、AMD、TAIEX
 
-**相對弱勢：** ^VIX、TWD=X、DX-Y.NYB
+**相對弱勢：** ^VIX、TWD=X、TX
 
 ## 5. 隔日觀察重點
 
 - 優先追蹤 ^VIX 的波動與異常風險是否持續升高。
 - 觀察 ^VIX 能否停止轉弱，並修復短中期動能。
-- US 與 US_VOLATILITY 單日表現差距約 5.25%，留意跨市場背離。
+- TW_DERIVATIVES 與 US_VOLATILITY 單日表現差距約 5.47%，留意跨市場背離。
 - 資料健康檢查有警告，解讀訊號時需保留不確定性。
 
 ## 6. 未來高低區間模型
@@ -84,12 +84,12 @@
 
 ## 7. 外部資料來源狀態
 
-- **chip.taiwan_institutional**：ok，7255 筆，來源 finmind
-- **chip.taiwan_margin_short**：ok，2904 筆，來源 finmind
-- **derivatives.taiwan_futures_open_interest**：ok，6077 筆，來源 finmind（備援）
-- **derivatives.taiwan_options**：ok，392442 筆，來源 finmind
+- **chip.taiwan_institutional**：ok，7270 筆，來源 finmind
+- **chip.taiwan_margin_short**：ok，2910 筆，來源 finmind
+- **derivatives.taiwan_futures_open_interest**：ok，6087 筆，來源 finmind（備援）
+- **derivatives.taiwan_options**：ok，395350 筆，來源 finmind
 - **news.market_events**：ok，98 筆，來源 yahoo_finance_news
-  - 新聞觀察：I've Studied Compound Interest for 10 Years. It's Still the Best Wealth Builder I Know.
-  - 新聞觀察：It Takes About $32,000 in This Dividend ETF to Collect $1,000 a Year
-  - 新聞觀察：Dow Jones Futures Rise; Can The Market Take Flight? Robinhood, Sandisk, AMD, Moderna Surge Into Buy Areas
+  - 新聞觀察：Stock Market Today: Dow Rallies As Nvidia Nears Entry; Oil Dips On Iran Hopes (Live Coverage)
+  - 新聞觀察：Stock Market Today: Dow Rallies As Nvidia Nears Entry; Oil Dips On Iran Hopes (Live Coverage)
+  - 新聞觀察：Meet the Quantum Computing Stock Growing Faster Than Nvidia
 - **price_routes**：ok，16851 筆
