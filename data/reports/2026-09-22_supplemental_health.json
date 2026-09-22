@@ -13,21 +13,21 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Prediction: Here's What a $1,000 Investment in SpaceX Stock Could Be Worth in 2031",
-      "3 AI Chip Equipment Stocks Riding the Semiconductor Rally",
-      "What Could A Space Exploration Technologies (SPCX) Merger Mean For Investors?"
+      "AMD Joins the $1 Trillion Club as AI Chip Rally Accelerates",
+      "Nvidia and AMD Can't Make AI Chips Without This Growth Stock. Here's Why It Could Soar.",
+      "Good News for S&P 500 Earnings: 86% of Companies Beat Expectations in 2026"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7270,
+    "rows": 7285,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7270
+        "rows": 7285
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6099,
+    "rows": 6111,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6099
+        "rows": 6111
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,12 +80,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 391756,
+    "rows": 394786,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 391756
+        "rows": 394786
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"

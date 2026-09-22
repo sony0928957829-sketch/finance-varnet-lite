@@ -7,7 +7,7 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 中性
-- **平均風險：** 40.40
+- **平均風險：** 40.62
 - **異常標的：** BTC-USD、^VIX、AMD
 - **相對強勢：** TX、BTC-USD、AMD
 - **相對弱勢：** ^VIX、TWD=X、DX-Y.NYB
@@ -15,12 +15,12 @@
 - **觀察重點：**
   - 優先追蹤 BTC-USD 的波動與異常風險是否持續升高。
   - 觀察 ^VIX 能否停止轉弱，並修復短中期動能。
-  - CRYPTO 與 US_RATE 單日表現差距約 7.71%，留意跨市場背離。
+  - CRYPTO 與 US_RATE 單日表現差距約 7.43%，留意跨市場背離。
   - 資料健康檢查有警告，解讀訊號時需保留不確定性。
 
 ## 1. 市場總覽
 
-- 平均風險分數：40.40
+- 平均風險分數：40.62
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -31,19 +31,19 @@
 | 2330.TW | 2,480.00 | 0.81% | 4.73% | 100.00 | 65.38 | 40.62 | 27.47 | 中性/低 |
 | 2382.TW | 344.50 | 0.44% | 6.00% | 85.00 | 65.12 | 46.98 | 35.48 | 中性/中 |
 | AMD | 615.52 | 9.95% | 30.06% | 80.00 | 100.00 | — | 62.12 | 偏多/高 |
-| BTC-USD | 86,833.43 | 7.01% | 12.18% | 100.00 | 100.00 | — | 63.81 | 偏多/高 |
-| DX-Y.NYB | 100.43 | 0.12% | 1.28% | 65.00 | 53.30 | — | 19.38 | 轉弱/低 |
+| BTC-USD | 86,602.91 | 6.73% | 11.88% | 100.00 | 100.00 | — | 63.66 | 偏多/高 |
+| DX-Y.NYB | 100.43 | 0.12% | 1.28% | 65.00 | 53.33 | — | 20.08 | 轉弱/低 |
 | NVDA | 227.38 | 2.30% | 6.01% | 100.00 | 75.12 | — | 51.11 | 中性/中 |
 | TAIEX | 47,718.84 | 1.14% | 6.60% | 100.00 | 68.01 | — | 32.19 | 中性/低 |
 | TSLA | 375.30 | 3.03% | 3.43% | 100.00 | 67.96 | — | 51.90 | 中性/中 |
-| TWD=X | 31.69 | -0.39% | -0.40% | 0.00 | 48.49 | — | 22.15 | 轉弱/低 |
-| TX | 48,781.00 | 1.46% | 8.34% | 100.00 | 75.50 | — | 34.34 | 強勢/低 |
+| TWD=X | 31.66 | -0.47% | -0.47% | 0.00 | 48.09 | — | 22.75 | 轉弱/低 |
+| TX | 48,243.00 | 0.35% | 7.14% | 100.00 | 69.91 | — | 35.96 | 強勢/中 |
 | ^TNX | 4.96 | -0.70% | 4.75% | 100.00 | 55.80 | — | 30.54 | 中性/低 |
 | ^VIX | 14.87 | 0.41% | -6.18% | 0.00 | 23.68 | — | 63.07 | 偏弱/高 |
 
 ## 3. 今日異常訊號
 
-- **BTC-USD**：風險分數 63.81，波動風險 100.00，小波異常 27.65，量比 1.43。
+- **BTC-USD**：風險分數 63.66，波動風險 100.00，小波異常 26.37，量比 1.97。
 - **^VIX**：風險分數 63.07，波動風險 100.00，小波異常 26.63，量比 —。
 - **AMD**：風險分數 62.12，波動風險 100.00，小波異常 11.76，量比 2.15。
 
@@ -57,7 +57,7 @@
 
 - 優先追蹤 BTC-USD 的波動與異常風險是否持續升高。
 - 觀察 ^VIX 能否停止轉弱，並修復短中期動能。
-- CRYPTO 與 US_RATE 單日表現差距約 7.71%，留意跨市場背離。
+- CRYPTO 與 US_RATE 單日表現差距約 7.43%，留意跨市場背離。
 - 資料健康檢查有警告，解讀訊號時需保留不確定性。
 
 ## 6. 未來高低區間模型
@@ -84,12 +84,12 @@
 
 ## 7. 外部資料來源狀態
 
-- **chip.taiwan_institutional**：ok，7270 筆，來源 finmind
+- **chip.taiwan_institutional**：ok，7285 筆，來源 finmind
 - **chip.taiwan_margin_short**：ok，2910 筆，來源 finmind
-- **derivatives.taiwan_futures_open_interest**：ok，6099 筆，來源 finmind（備援）
-- **derivatives.taiwan_options**：ok，391756 筆，來源 finmind
+- **derivatives.taiwan_futures_open_interest**：ok，6111 筆，來源 finmind（備援）
+- **derivatives.taiwan_options**：ok，394786 筆，來源 finmind
 - **news.market_events**：ok，99 筆，來源 yahoo_finance_news
-  - 新聞觀察：Prediction: Here's What a $1,000 Investment in SpaceX Stock Could Be Worth in 2031
-  - 新聞觀察：3 AI Chip Equipment Stocks Riding the Semiconductor Rally
-  - 新聞觀察：What Could A Space Exploration Technologies (SPCX) Merger Mean For Investors?
+  - 新聞觀察：AMD Joins the $1 Trillion Club as AI Chip Rally Accelerates
+  - 新聞觀察：Nvidia and AMD Can't Make AI Chips Without This Growth Stock. Here's Why It Could Soar.
+  - 新聞觀察：Good News for S&P 500 Earnings: 86% of Companies Beat Expectations in 2026
 - **price_routes**：ok，16856 筆
