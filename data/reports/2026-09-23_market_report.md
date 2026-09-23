@@ -7,7 +7,7 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 偏多
-- **平均風險：** 39.18
+- **平均風險：** 39.19
 - **異常標的：** AMD、^VIX、TSLA
 - **相對強勢：** AMD、TX、BTC-USD
 - **相對弱勢：** ^VIX、TWD=X、DX-Y.NYB
@@ -20,7 +20,7 @@
 
 ## 1. 市場總覽
 
-- 平均風險分數：39.18
+- 平均風險分數：39.19
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -30,22 +30,22 @@
 | 2317.TW | 253.00 | 1.20% | 4.12% | 100.00 | 62.42 | 40.99 | 29.67 | 偏多/低 |
 | 2330.TW | 2,460.00 | -0.81% | 2.80% | 100.00 | 57.90 | 34.42 | 30.26 | 中性/低 |
 | 2382.TW | 342.00 | -0.73% | 4.11% | 85.00 | 58.79 | 40.96 | 38.41 | 中性/中 |
-| AMD | 623.47 | 1.29% | 36.50% | 100.00 | 100.00 | — | 61.97 | 強勢/高 |
-| BTC-USD | 86,200.99 | -0.46% | 11.51% | 100.00 | 85.99 | — | 48.67 | 強勢/中 |
-| DX-Y.NYB | 100.63 | 0.20% | 0.93% | 65.00 | 52.26 | — | 19.35 | 中性/低 |
-| NVDA | 228.56 | 0.52% | 9.75% | 100.00 | 76.93 | — | 46.88 | 強勢/中 |
+| AMD | 623.47 | 1.29% | 36.50% | 100.00 | 100.00 | — | 62.01 | 強勢/高 |
+| BTC-USD | 86,172.28 | -0.50% | 11.48% | 100.00 | 85.82 | — | 48.65 | 強勢/中 |
+| DX-Y.NYB | 100.72 | 0.29% | 1.02% | 65.00 | 52.73 | — | 20.46 | 中性/低 |
+| NVDA | 228.56 | 0.52% | 9.75% | 100.00 | 76.93 | — | 46.92 | 強勢/中 |
 | TAIEX | 47,842.31 | 0.26% | 5.92% | 100.00 | 66.98 | — | 32.29 | 偏多/低 |
-| TSLA | 379.15 | 1.03% | 8.65% | 85.00 | 74.16 | — | 53.13 | 偏多/中 |
-| TWD=X | 31.67 | -0.22% | -0.55% | 0.00 | 48.24 | — | 23.51 | 轉弱/低 |
-| TX | 48,497.00 | 0.53% | 5.40% | 100.00 | 66.95 | — | 34.94 | 強勢/低 |
-| ^TNX | 4.97 | 0.10% | 5.61% | 100.00 | 57.83 | — | 29.43 | 偏多/低 |
-| ^VIX | 14.21 | -4.44% | -8.03% | 0.00 | 4.16 | — | 60.77 | 偏弱/高 |
+| TSLA | 379.14 | 1.02% | 8.65% | 85.00 | 74.15 | — | 53.17 | 偏多/中 |
+| TWD=X | 31.70 | -0.12% | -0.45% | 25.00 | 48.73 | — | 24.13 | 中性/低 |
+| TX | 48,336.00 | 0.19% | 5.05% | 100.00 | 65.28 | — | 32.33 | 強勢/低 |
+| ^TNX | 4.97 | 0.10% | 5.61% | 100.00 | 57.83 | — | 30.31 | 偏多/低 |
+| ^VIX | 14.21 | -4.44% | -8.03% | 0.00 | 4.16 | — | 60.81 | 偏弱/高 |
 
 ## 3. 今日異常訊號
 
-- **AMD**：風險分數 61.97，波動風險 98.17，小波異常 20.48，量比 1.33。
-- **^VIX**：風險分數 60.77，波動風險 100.00，小波異常 9.06，量比 —。
-- **TSLA**：風險分數 53.13，波動風險 77.90，小波異常 28.38，量比 0.72。
+- **AMD**：風險分數 62.01，波動風險 98.17，小波異常 20.48，量比 1.33。
+- **^VIX**：風險分數 60.81，波動風險 100.00，小波異常 9.06，量比 —。
+- **TSLA**：風險分數 53.17，波動風險 77.90，小波異常 28.38，量比 0.72。
 
 ## 4. 相對強弱排序
 
@@ -84,12 +84,12 @@
 
 ## 7. 外部資料來源狀態
 
-- **chip.taiwan_institutional**：ok，7285 筆，來源 finmind
-- **chip.taiwan_margin_short**：ok，2916 筆，來源 finmind
-- **derivatives.taiwan_futures_open_interest**：ok，6098 筆，來源 finmind（備援）
-- **derivatives.taiwan_options**：ok，390742 筆，來源 finmind
+- **chip.taiwan_institutional**：ok，7300 筆，來源 finmind
+- **chip.taiwan_margin_short**：ok，2922 筆，來源 finmind
+- **derivatives.taiwan_futures_open_interest**：ok，6112 筆，來源 finmind（備援）
+- **derivatives.taiwan_options**：ok，394034 筆，來源 finmind
 - **news.market_events**：ok，99 筆，來源 yahoo_finance_news
-  - 新聞觀察：MSTR Stock Climbs Overnight: This Analyst Sees Upside Of 16.5% From Current Levels
-  - 新聞觀察：If You Buy Monster Beverage With $10,000 Today, Could You Become a Millionaire in 25 Years?
-  - 新聞觀察：Why This Top Automaker's Gamble on V-8 Engines During a Hybrid Boom Actually Makes Sense
-- **price_routes**：ok，16857 筆
+  - 新聞觀察：Stock Market Today: Nasdaq Dips After Hitting Record Highs; Micron, Sandisk Sink In Buy Zones (Live Coverage)
+  - 新聞觀察：How to Invest in Stocks in 2026: Go Beyond Index Funds and Buy These 3 Names
+  - 新聞觀察：Pay Attention, Wall Street Is Actively Re-Rating AMD as It Crosses $1 Trillion
+- **price_routes**：ok，16856 筆

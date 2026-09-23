@@ -13,21 +13,21 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "MSTR Stock Climbs Overnight: This Analyst Sees Upside Of 16.5% From Current Levels",
-      "If You Buy Monster Beverage With $10,000 Today, Could You Become a Millionaire in 25 Years?",
-      "Why This Top Automaker's Gamble on V-8 Engines During a Hybrid Boom Actually Makes Sense"
+      "Stock Market Today: Nasdaq Dips After Hitting Record Highs; Micron, Sandisk Sink In Buy Zones (Live Coverage)",
+      "How to Invest in Stocks in 2026: Go Beyond Index Funds and Buy These 3 Names",
+      "Pay Attention, Wall Street Is Actively Re-Rating AMD as It Crosses $1 Trillion"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7285,
+    "rows": 7300,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7285
+        "rows": 7300
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -43,12 +43,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2916,
+    "rows": 2922,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2916
+        "rows": 2922
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6098,
+    "rows": 6112,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6098
+        "rows": 6112
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 390742,
+    "rows": 394034,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 390742
+        "rows": 394034
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16857,
+    "rows": 16856,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1361
             }
           }
         ],
