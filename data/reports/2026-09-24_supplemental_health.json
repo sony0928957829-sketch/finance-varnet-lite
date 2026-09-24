@@ -3,31 +3,31 @@
     "status": "ok",
     "provider": "yahoo_finance_news",
     "fallback_used": false,
-    "rows": 92,
+    "rows": 100,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
         "status": "ok",
-        "rows": 92
+        "rows": 100
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Tesla Makes Brilliant Supercharger Move but BYD Is Closer in the Mirror Than It Appears",
-      "Trump Has a New Crypto Plan to Reduce America’s $40 Trillion Debt",
-      "AMD Is Up 187% This Year and Nvidia Is Up 22%. Prediction: Nvidia Wins the Next 12 Months."
+      "Nvidia Snaps 5-Day Winning Streak After $300 Million Insider Sale",
+      "Tesla's FSD Just Hit a Major Roadblock Ahead of EU Review",
+      "5 Growth ETFs to Own as the Nasdaq Hits All-Time Highs"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7285,
+    "rows": 7300,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7285
+        "rows": 7300
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6101,
+    "rows": 6113,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6101
+        "rows": 6113
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 390458,
+    "rows": 393504,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 390458
+        "rows": 393504
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16856,
+    "rows": 16857,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1361
+              "DX-Y.NYB": 1362
             }
           }
         ],
