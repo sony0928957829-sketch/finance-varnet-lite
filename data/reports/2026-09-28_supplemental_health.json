@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Dow Jones Futures Fall, Oil Prices Rise Amid Trump Iran Comments; Micron, SpaceX, Tesla Eye Buy Points",
-      "META, GOOGL, NVDA, BB, SPCX: Why Retail Traders Couldn’t Take Their Eyes Off These Stocks Last Week",
-      "Dollar firms as US-Iran tensions lift oil, hawkish Fed bets build"
+      "Stock Market Today: Dow Dives, Gold Stocks Melt; Chips Tumble But Nvidia Rises On This Move (Live Coverage)",
+      "Top Midday Stories: MongoDB CEO Leaves to Lead Meta Enterprise Platform; Nvidia Ups Buyback Program by $150 Billion",
+      "Forget LNG Exporters: EQT Is the Natural Gas Stock I'd Buy Today"
     ]
   },
   "chip.taiwan_institutional": {
@@ -92,7 +92,7 @@
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16849,
+    "rows": 16850,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1361
+              "DX-Y.NYB": 1362
             }
           }
         ],

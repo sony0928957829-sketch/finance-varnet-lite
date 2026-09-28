@@ -7,7 +7,7 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 偏多
-- **平均風險：** 40.35
+- **平均風險：** 40.06
 - **異常標的：** ^VIX、AMD、TSLA
 - **相對強勢：** AMD、^TNX、BTC-USD
 - **相對弱勢：** ^VIX、2317.TW、2382.TW
@@ -20,7 +20,7 @@
 
 ## 1. 市場總覽
 
-- 平均風險分數：40.35
+- 平均風險分數：40.06
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -31,8 +31,8 @@
 | 2330.TW | 2,475.00 | -1.00% | 3.00% | 100.00 | 55.66 | 42.71 | 25.95 | 中性/低 |
 | 2382.TW | 338.50 | -0.88% | 1.50% | 60.00 | 48.15 | 35.21 | 37.39 | 轉弱/中 |
 | AMD | 630.63 | 0.22% | 32.30% | 100.00 | 100.00 | — | 60.59 | 強勢/高 |
-| BTC-USD | 84,462.13 | 0.07% | 6.76% | 100.00 | 57.56 | — | 47.45 | 強勢/中 |
-| DX-Y.NYB | 100.97 | -0.32% | 1.30% | 80.00 | 52.32 | — | 24.87 | 偏多/低 |
+| BTC-USD | 84,458.09 | 0.06% | 6.75% | 100.00 | 57.54 | — | 47.50 | 強勢/中 |
+| DX-Y.NYB | 101.12 | 0.15% | 1.56% | 80.00 | 53.66 | — | 21.05 | 偏多/低 |
 | NVDA | 225.07 | 0.22% | -1.17% | 85.00 | 50.62 | — | 43.40 | 偏多/中 |
 | TAIEX | 48,024.60 | -0.28% | 4.46% | 100.00 | 61.76 | — | 32.85 | 中性/低 |
 | TSLA | 372.11 | -1.54% | 4.88% | 85.00 | 57.54 | — | 60.44 | 偏多/高 |
@@ -71,7 +71,7 @@
 | 2382.TW | -2.38% / 2.82% | -5.50% / 6.34% | -7.98% / 9.60% | 100.00% |
 | AMD | -4.72% / 5.29% | -9.42% / 14.14% | -12.42% / 22.40% | 100.00% |
 | BTC-USD | -2.82% / 2.33% | -5.87% / 5.82% | -8.12% / 8.51% | 100.00% |
-| DX-Y.NYB | -0.37% / 0.38% | -0.86% / 0.91% | -1.23% / 1.24% | 100.00% |
+| DX-Y.NYB | -0.36% / 0.38% | -0.86% / 0.91% | -1.23% / 1.25% | 100.00% |
 | NVDA | -2.83% / 3.06% | -6.15% / 7.10% | -8.00% / 9.34% | 100.00% |
 | TAIEX | -1.65% / 2.02% | -3.72% / 5.26% | -4.82% / 7.57% | 100.00% |
 | TSLA | -3.57% / 3.60% | -7.20% / 6.90% | -9.94% / 10.09% | 100.00% |
@@ -89,7 +89,7 @@
 - **derivatives.taiwan_futures_open_interest**：ok，6038 筆，來源 finmind（備援）
 - **derivatives.taiwan_options**：ok，380212 筆，來源 finmind
 - **news.market_events**：ok，101 筆，來源 yahoo_finance_news
-  - 新聞觀察：Dow Jones Futures Fall, Oil Prices Rise Amid Trump Iran Comments; Micron, SpaceX, Tesla Eye Buy Points
-  - 新聞觀察：META, GOOGL, NVDA, BB, SPCX: Why Retail Traders Couldn’t Take Their Eyes Off These Stocks Last Week
-  - 新聞觀察：Dollar firms as US-Iran tensions lift oil, hawkish Fed bets build
-- **price_routes**：ok，16849 筆
+  - 新聞觀察：Stock Market Today: Dow Dives, Gold Stocks Melt; Chips Tumble But Nvidia Rises On This Move (Live Coverage)
+  - 新聞觀察：Top Midday Stories: MongoDB CEO Leaves to Lead Meta Enterprise Platform; Nvidia Ups Buyback Program by $150 Billion
+  - 新聞觀察：Forget LNG Exporters: EQT Is the Natural Gas Stock I'd Buy Today
+- **price_routes**：ok，16850 筆
