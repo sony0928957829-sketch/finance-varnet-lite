@@ -7,7 +7,7 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 偏多
-- **平均風險：** 41.06
+- **平均風險：** 41.20
 - **異常標的：** AMD、^VIX、TSLA
 - **相對強勢：** AMD、^TNX、^VIX
 - **相對弱勢：** 2317.TW、2382.TW、2330.TW
@@ -20,7 +20,7 @@
 
 ## 1. 市場總覽
 
-- 平均風險分數：41.06
+- 平均風險分數：41.20
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -31,13 +31,13 @@
 | 2330.TW | 2,475.00 | -1.00% | 3.00% | 100.00 | 55.66 | 42.71 | 25.91 | 中性/低 |
 | 2382.TW | 338.50 | -0.88% | 1.50% | 60.00 | 48.15 | 35.21 | 37.30 | 轉弱/中 |
 | AMD | 607.87 | -3.61% | 30.56% | 100.00 | 87.63 | — | 64.43 | 強勢/高 |
-| BTC-USD | 83,456.74 | -1.19% | 6.40% | 100.00 | 55.71 | — | 53.49 | 強勢/中 |
-| DX-Y.NYB | 101.20 | 0.08% | 2.23% | 100.00 | 54.39 | — | 24.13 | 強勢/低 |
-| NVDA | 228.86 | 1.68% | 5.32% | 100.00 | 62.33 | — | 45.14 | 強勢/中 |
+| BTC-USD | 83,502.61 | -1.13% | 6.46% | 100.00 | 55.98 | — | 53.39 | 強勢/中 |
+| DX-Y.NYB | 101.20 | 0.08% | 2.22% | 100.00 | 54.37 | — | 25.00 | 強勢/低 |
+| NVDA | 228.86 | 1.68% | 5.32% | 100.00 | 62.33 | — | 45.13 | 強勢/中 |
 | TAIEX | 48,024.60 | -0.28% | 4.46% | 100.00 | 61.76 | — | 32.70 | 中性/低 |
 | TSLA | 357.45 | -3.94% | 2.49% | 60.00 | 39.17 | — | 58.12 | 中性/中 |
-| TWD=X | 31.81 | 0.08% | 0.37% | 40.00 | 51.03 | — | 25.20 | 中性/低 |
-| TX | 47,956.00 | -0.35% | 3.45% | 100.00 | 56.16 | — | 36.08 | 強勢/中 |
+| TWD=X | 31.79 | 0.04% | 0.33% | 40.00 | 50.83 | — | 25.99 | 中性/低 |
+| TX | 47,767.00 | -0.74% | 3.04% | 100.00 | 54.19 | — | 36.35 | 強勢/中 |
 | ^TNX | 5.24 | 1.08% | 11.02% | 100.00 | 76.48 | — | 34.04 | 強勢/低 |
 | ^VIX | 16.07 | 8.07% | 7.71% | 80.00 | 89.85 | — | 63.71 | 強勢/高 |
 
@@ -84,12 +84,12 @@
 
 ## 7. 外部資料來源狀態
 
-- **chip.taiwan_institutional**：ok，7240 筆，來源 finmind
-- **chip.taiwan_margin_short**：ok，2898 筆，來源 finmind
-- **derivatives.taiwan_futures_open_interest**：ok，6051 筆，來源 finmind（備援）
-- **derivatives.taiwan_options**：ok，376554 筆，來源 finmind
-- **news.market_events**：ok，101 筆，來源 yahoo_finance_news
-  - 新聞觀察：Bank of America resets AMD price target after major milestone
-  - 新聞觀察：Dow Jones Futures: Trump Sparks Stock Market Losses; Elon Musk-Led SpaceX, Tesla Sell Off
-  - 新聞觀察：Dow Jones Futures: Trump Sparks Stock Market Losses; Elon Musk-Led SpaceX, Tesla Sell Off
-- **price_routes**：ok，16847 筆
+- **chip.taiwan_institutional**：ok，7255 筆，來源 finmind
+- **chip.taiwan_margin_short**：ok，2904 筆，來源 finmind
+- **derivatives.taiwan_futures_open_interest**：ok，6062 筆，來源 finmind（備援）
+- **derivatives.taiwan_options**：ok，379854 筆，來源 finmind
+- **news.market_events**：ok，1935 筆，來源 finmind（備援）
+  - 新聞觀察：預言台積電「不只上看5000元」！學者估台股走勢：這時破10萬點 - TVBS新聞網
+  - 新聞觀察：2330 台積電 - 2026教育行動論壇〉不只缺師潮讓老師心累，「連修廁所都要寫計畫」 - 股市爆料同學會 - CMoney
+  - 新聞觀察：2330 台積電 - 2026/09/29 00406A今日操作明細- 股市爆料同學會 - CMoney
+- **price_routes**：ok，16846 筆

@@ -1,33 +1,38 @@
 {
   "news.market_events": {
     "status": "ok",
-    "provider": "yahoo_finance_news",
-    "fallback_used": false,
-    "rows": 101,
+    "provider": "finmind",
+    "fallback_used": true,
+    "rows": 1935,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
+        "status": "empty",
+        "rows": 0
+      },
+      {
+        "provider": "finmind",
         "status": "ok",
-        "rows": 101
+        "rows": 1935
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Bank of America resets AMD price target after major milestone",
-      "Dow Jones Futures: Trump Sparks Stock Market Losses; Elon Musk-Led SpaceX, Tesla Sell Off",
-      "Dow Jones Futures: Trump Sparks Stock Market Losses; Elon Musk-Led SpaceX, Tesla Sell Off"
+      "預言台積電「不只上看5000元」！學者估台股走勢：這時破10萬點 - TVBS新聞網",
+      "2330 台積電 - 2026教育行動論壇〉不只缺師潮讓老師心累，「連修廁所都要寫計畫」 - 股市爆料同學會 - CMoney",
+      "2330 台積電 - 2026/09/29 00406A今日操作明細- 股市爆料同學會 - CMoney"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7240,
+    "rows": 7255,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7240
+        "rows": 7255
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -43,12 +48,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2898,
+    "rows": 2904,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2898
+        "rows": 2904
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -61,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6051,
+    "rows": 6062,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6051
+        "rows": 6062
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +85,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 376554,
+    "rows": 379854,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 376554
+        "rows": 379854
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16847,
+    "rows": 16846,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +238,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1361
             }
           }
         ],
