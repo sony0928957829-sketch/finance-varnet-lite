@@ -1,38 +1,33 @@
 {
   "news.market_events": {
     "status": "ok",
-    "provider": "finmind",
-    "fallback_used": true,
-    "rows": 1954,
+    "provider": "yahoo_finance_news",
+    "fallback_used": false,
+    "rows": 101,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
-        "status": "empty",
-        "rows": 0
-      },
-      {
-        "provider": "finmind",
         "status": "ok",
-        "rows": 1954
+        "rows": 101
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "一早被錢砸醒！鴻海分紅今入帳「員工嗨領百萬元」 靠AI賺翻了 - Yahoo新聞",
-      "外商直接投資年增90%！AI伺服器與平台經濟雙升級，廣達及緯創加速佈局-財經焦點情報站 - CMoney投資網誌",
-      "2330 台積電 - 【美股巨頭】史上最大！輝達1,500億買自家股- 股市爆料同學會 - CMoney"
+      "Nvidia CEO Makes Massive Prediction About American Jobs",
+      "Meta's Stock Has Rocketed Over 30% in the Past Month. Here's How the Embattled \"Magnificent Seven\" Company Completely Flipped the Script",
+      "Stock Market Today: Dow Slips On Surprise Inflation Data; Micron Rallies Ahead Of Earnings (Live Coverage)"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7255,
+    "rows": 7270,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7255
+        "rows": 7270
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -48,12 +43,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2904,
+    "rows": 2910,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2904
+        "rows": 2910
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -66,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6074,
+    "rows": 6085,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6074
+        "rows": 6085
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,12 +80,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 376040,
+    "rows": 379262,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 376040
+        "rows": 379262
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
