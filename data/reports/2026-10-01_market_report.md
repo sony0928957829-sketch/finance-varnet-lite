@@ -7,9 +7,9 @@
 ## 0. 今日自動摘要
 
 - **市場狀態：** 偏多
-- **平均風險：** 41.08
+- **平均風險：** 41.20
 - **異常標的：** ^VIX、AMD、TSLA
-- **相對強勢：** AMD、^TNX、TX
+- **相對強勢：** AMD、TX、^TNX
 - **相對弱勢：** 2382.TW、TSLA、TWD=X
 - **資料品質：** 警告（2 項）
 - **觀察重點：**
@@ -20,7 +20,7 @@
 
 ## 1. 市場總覽
 
-- 平均風險分數：41.08
+- 平均風險分數：41.20
 - 主要目的：找出相對強弱、波動擴大與異常訊號。
 
 ## 2. 標的分數表
@@ -30,26 +30,26 @@
 | 2317.TW | 251.50 | 0.40% | 0.60% | 100.00 | 52.60 | 33.36 | 31.84 | 偏多/低 |
 | 2330.TW | 2,480.00 | 0.20% | 3.42% | 100.00 | 55.54 | 47.47 | 26.06 | 偏多/低 |
 | 2382.TW | 333.50 | -0.89% | -1.48% | 45.00 | 41.23 | 22.98 | 40.60 | 轉弱/中 |
-| AMD | 611.76 | 0.69% | 33.10% | 100.00 | 100.00 | — | 63.62 | 強勢/高 |
-| BTC-USD | 83,593.07 | -0.04% | 9.17% | 100.00 | 62.98 | — | 51.66 | 強勢/中 |
-| DX-Y.NYB | 101.60 | 0.23% | 2.46% | 100.00 | 54.60 | — | 23.00 | 偏多/低 |
-| NVDA | 228.38 | 0.51% | 5.15% | 100.00 | 60.58 | — | 44.53 | 強勢/中 |
+| AMD | 611.76 | 0.69% | 33.10% | 100.00 | 100.00 | — | 63.55 | 強勢/高 |
+| BTC-USD | 83,553.85 | -0.08% | 9.12% | 100.00 | 62.75 | — | 51.57 | 強勢/中 |
+| DX-Y.NYB | 101.45 | 0.08% | 2.30% | 100.00 | 53.85 | — | 24.17 | 偏多/低 |
+| NVDA | 228.38 | 0.51% | 5.15% | 100.00 | 60.58 | — | 44.47 | 強勢/中 |
 | TAIEX | 47,940.13 | 0.65% | 3.93% | 100.00 | 57.86 | — | 34.40 | 強勢/低 |
-| TSLA | 354.81 | 0.56% | -0.36% | 45.00 | 41.38 | — | 54.92 | 中性/中 |
-| TWD=X | 31.90 | 0.17% | 0.56% | 40.00 | 51.72 | — | 26.10 | 中性/低 |
-| TX | 48,298.00 | -0.07% | 2.31% | 100.00 | 53.50 | — | 36.40 | 強勢/中 |
-| ^TNX | 5.29 | 0.72% | 10.36% | 100.00 | 71.83 | — | 36.35 | 強勢/中 |
-| ^VIX | 16.34 | 1.87% | 7.50% | 65.00 | 76.15 | — | 64.58 | 偏多/高 |
+| TSLA | 354.81 | 0.56% | -0.36% | 45.00 | 41.38 | — | 54.86 | 中性/中 |
+| TWD=X | 31.88 | 0.08% | 0.47% | 40.00 | 51.28 | — | 26.27 | 中性/低 |
+| TX | 48,685.00 | 0.73% | 3.13% | 100.00 | 57.50 | — | 36.99 | 強勢/中 |
+| ^TNX | 5.29 | 0.72% | 10.36% | 100.00 | 71.83 | — | 36.29 | 強勢/中 |
+| ^VIX | 16.34 | 1.87% | 7.50% | 65.00 | 76.15 | — | 64.52 | 偏多/高 |
 
 ## 3. 今日異常訊號
 
-- **^VIX**：風險分數 64.58，波動風險 100.00，小波異常 20.25，量比 —。
-- **AMD**：風險分數 63.62，波動風險 96.06，小波異常 18.54，量比 0.75。
-- **TSLA**：風險分數 54.92，波動風險 75.32，小波異常 30.37，量比 1.01。
+- **^VIX**：風險分數 64.52，波動風險 100.00，小波異常 20.25，量比 —。
+- **AMD**：風險分數 63.55，波動風險 96.06，小波異常 18.54，量比 0.75。
+- **TSLA**：風險分數 54.86，波動風險 75.32，小波異常 30.37，量比 1.01。
 
 ## 4. 相對強弱排序
 
-**相對強勢：** AMD、^TNX、TX
+**相對強勢：** AMD、TX、^TNX
 
 **相對弱勢：** 2382.TW、TSLA、TWD=X
 
@@ -84,12 +84,12 @@
 
 ## 7. 外部資料來源狀態
 
-- **chip.taiwan_institutional**：ok，7255 筆，來源 finmind
-- **chip.taiwan_margin_short**：ok，2904 筆，來源 finmind
-- **derivatives.taiwan_futures_open_interest**：ok，6070 筆，來源 finmind（備援）
-- **derivatives.taiwan_options**：ok，376006 筆，來源 finmind
+- **chip.taiwan_institutional**：ok，7270 筆，來源 finmind
+- **chip.taiwan_margin_short**：ok，2910 筆，來源 finmind
+- **derivatives.taiwan_futures_open_interest**：ok，6081 筆，來源 finmind（備援）
+- **derivatives.taiwan_options**：ok，378888 筆，來源 finmind
 - **news.market_events**：ok，101 筆，來源 yahoo_finance_news
-  - 新聞觀察：TSMC weighs investment in Texas to expand U.S. chip production, Reuters reports
-  - 新聞觀察：Elon Musk's Tesla Postpones Roadster Reveal Event to October 15, Cites Severe Weather Conditions
-  - 新聞觀察：Forget Waiting Three Months for SPY’s Dividend. Invesco’s High-Dividend Fund Pays Every Month
+  - 新聞觀察：Quietly, the IRS Gave Crypto Investors Until December 31, 2026 to Rewrite Their Tax Basis. Most Have No Idea.
+  - 新聞觀察：Fresh data suggests upside to Nvidia’s hyperscaler revenue: Barclays
+  - 新聞觀察：Tokenized Assets Hit $34 Billion As Stocks Move Onchain
 - **price_routes**：ok，16847 筆
