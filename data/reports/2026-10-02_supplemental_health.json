@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1929,
+    "rows": 1961,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,26 +13,26 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1929
+        "rows": 1961
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "高盛列「首選」喊400元目標價！鴻海254元還能漲近6成？ AI伺服器一路旺到年底 - FTNN",
-      "AI浪潮無極限！外資齊唱旺台積電股價 稱具有顯著「重新評級」潛力 - udn",
-      "主動式ETF轉進塑化股，台積電(2330)續抱下資金還會賣誰？-子敏左側交易 - cmnews.com.tw"
+      "三大法人買賣超 – 外資買超(1303)南亞、(4958)臻鼎-KY，投信買超(2330)台積電、(2303)聯電，法人合計賣超781.87億元 - sinotrade.com.tw",
+      "【零股排行榜】盤中零股成交量TOP 20｜3481 群創、0050 元大台灣50、2409 友達、2330 台積電、3105 穩懋 - sinotrade.com.tw",
+      "台積電法說10/15登場 外媒看好股價後市 揭關鍵漲價訊號 - Yahoo股市"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7255,
+    "rows": 7270,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7255
+        "rows": 7270
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -48,12 +48,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2904,
+    "rows": 2910,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2904
+        "rows": 2910
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6070,
+    "rows": 6081,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6070
+        "rows": 6081
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,19 +85,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 375346,
+    "rows": 378550,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 375346
+        "rows": 378550
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16846,
+    "rows": 16847,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -238,7 +238,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1361
+              "DX-Y.NYB": 1362
             }
           }
         ],
