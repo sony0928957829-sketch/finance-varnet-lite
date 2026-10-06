@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1874,
+    "rows": 1911,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,14 +13,14 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1874
+        "rows": 1911
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "鴻海9月營收月增25.7% - TechNews 科技新報",
-      "2330 台積電 - 法人一日買超金額排行榜- 股市爆料同學會 - CMoney",
-      "台股5萬點近了？蔡明興：台積電（2330）跳一下就過 AI基建才走一半 - UDN"
+      "鴻海9月營收衝破1.15兆創歷史新高 Q3暴賺3兆寫同期紀錄 - TVBS新聞網",
+      "台股今續噴？台指期夜盤「站穩5萬點」 台積電再創新天價2620元 - TVBS新聞網",
+      "2330 台積電 - 【美股巨頭】AMD押注82億美元、蘇姿丰親訪台灣- 股市爆料同學會 - CMoney"
     ]
   },
   "chip.taiwan_institutional": {
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6050,
+    "rows": 6061,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6050
+        "rows": 6061
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,19 +85,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 372454,
+    "rows": 375356,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 372454
+        "rows": 375356
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16845,
+    "rows": 16847,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -257,7 +257,7 @@
               "TWD=X"
             ],
             "row_counts": {
-              "TWD=X": 1304
+              "TWD=X": 1305
             }
           }
         ],
@@ -282,7 +282,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1213
+              "TX": 1214
             }
           }
         ],
