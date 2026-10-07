@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1985,
+    "rows": 2023,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,26 +13,26 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1985
+        "rows": 2023
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "2330 台積電 - 科技股領銜美股！那指、標普收新高 台指期夜盤跌31點 - 股市爆料同學會 - CMoney",
-      "2317 鴻海 - 【美股巨頭】Q4科技股19強出爐，輝達領銜、台廠供應鏈怎麼接？ - 股市爆料同學會 - CMoney",
-      "2317 鴻海 - 【美股巨頭】馬斯克找上台積電，Intel兩天連跌在怕什麼？ - 股市爆料同學會 - CMoney"
+      "〈電子五哥營收〉廣達Q3營收1.16兆元年增逾1倍創高 新世代伺服器產品明年Q1放量 - 鉅亨網",
+      "2330 台積電 - 台積電投資亞利桑那州創美國史上最大規模，引發中國不滿與警告- 股市爆料同學會 - CMoney",
+      "廣達營收／9月3,523億元 第3季1.12兆元衝新高 - UDN"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7285,
+    "rows": 7300,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7285
+        "rows": 7300
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -48,12 +48,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2916,
+    "rows": 2922,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2916
+        "rows": 2922
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6083,
+    "rows": 6092,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6083
+        "rows": 6092
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,12 +85,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 375542,
+    "rows": 378842,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 375542
+        "rows": 378842
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
