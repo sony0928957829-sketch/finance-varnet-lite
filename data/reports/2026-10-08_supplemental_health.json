@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1921,
+    "rows": 1974,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,26 +13,26 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1921
+        "rows": 1974
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "台積電1815億股利大紅包今入帳！最大股東爽領115億 張忠謀也拿8.75億 - FTNN",
-      "1815億股利活水也沒用！台積電跌35元 獨自拖累大盤280點 - Yahoo股市",
-      "台積電發錢了！張忠謀進帳8.75億 他爽領115億最多 - Yahoo股市"
+      "台積電（2330）9月營收5118億！專家揭「印鈔能力」：每分鐘賺600萬？ - UDN",
+      "2330 台積電 - ⭐️【台積電9月營收出爐！優於預期、老大哥穩如泰山】 - 股市爆料同學會 - CMoney",
+      "2330 台積電 - 2026/10/08 00981A今日操作明細- 股市爆料同學會 - CMoney"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7285,
+    "rows": 7300,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7285
+        "rows": 7300
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -48,12 +48,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2916,
+    "rows": 2922,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2916
+        "rows": 2922
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6079,
+    "rows": 6092,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6079
+        "rows": 6092
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,19 +85,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 375944,
+    "rows": 378898,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 375944
+        "rows": 378898
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16847,
+    "rows": 16846,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -238,7 +238,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1361
             }
           }
         ],
