@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1857,
+    "rows": 1866,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,14 +13,14 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1857
+        "rows": 1866
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "5萬點免驚！杜金龍揭「選後到元宵」操作攻略：卡位台積電與補漲個股 - 三立新聞",
-      "2330 台積電 - 台股外資連三賣套現千億…熱錢節前出走大盤本周攻50K功敗垂成 - 股市爆料同學會 - CMoney",
-      "2330 台積電 - 台積Q3營收1.4兆創新高受惠輝達新平台、蘋果新機挹注- 股市爆料同學會 - CMoney"
+      "《大行》摩通：台積電(TSM.US)第三季銷售額超指引上限 高市場預期2%至3% - Yahoo 財經",
+      "台積電砸639億擴充CoWoS產能！「美晶圓代工廠」接5年大單 2028年產量再提升 - Yahoo股市",
+      "台積電砸639億擴充CoWoS產能！「美晶圓代工廠」接5年大單 2028年產量再提升 - Yahoo股市"
     ]
   },
   "chip.taiwan_institutional": {
@@ -97,7 +97,7 @@
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16843,
+    "rows": 16841,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -238,7 +238,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1360
             }
           }
         ],
