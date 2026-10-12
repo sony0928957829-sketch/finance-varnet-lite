@@ -1,0 +1,293 @@
+{
+  "news.market_events": {
+    "status": "ok",
+    "provider": "finmind",
+    "fallback_used": true,
+    "rows": 1711,
+    "attempts": [
+      {
+        "provider": "yahoo_finance_news",
+        "status": "empty",
+        "rows": 0
+      },
+      {
+        "provider": "finmind",
+        "status": "ok",
+        "rows": 1711
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
+    "latest_titles": [
+      "台積電（2330）鉅額交易於9月24日中秋連假前一天，爆出42張成交均價2,749.27元的歷史新高紀錄後，神隱至今，今（12）日鉅額交易再現10張成交2,670元… - Facebook",
+      "2317 鴻海 - 借券賣出大增9,206(連續4天增21,237） - 股市爆料同學會 - CMoney",
+      "警報解除！ 臻鼎大股東鴻海申讓5544張終於賣完 - Yahoo新聞"
+    ]
+  },
+  "chip.taiwan_institutional": {
+    "status": "ok",
+    "provider": "finmind",
+    "fallback_used": false,
+    "rows": 7270,
+    "attempts": [
+      {
+        "provider": "finmind",
+        "status": "ok",
+        "rows": 7270
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
+    "metrics": [
+      "Foreign_Dealer_Self",
+      "dealer_hedging_net_buy",
+      "dealer_net_buy",
+      "foreign_net_buy",
+      "investment_trust_net_buy"
+    ]
+  },
+  "chip.taiwan_margin_short": {
+    "status": "ok",
+    "provider": "finmind",
+    "fallback_used": false,
+    "rows": 2910,
+    "attempts": [
+      {
+        "provider": "finmind",
+        "status": "ok",
+        "rows": 2910
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
+    "metrics": [
+      "margin_balance",
+      "short_balance"
+    ]
+  },
+  "derivatives.taiwan_futures_open_interest": {
+    "status": "ok",
+    "provider": "finmind",
+    "fallback_used": true,
+    "rows": 6071,
+    "attempts": [
+      {
+        "provider": "taifex",
+        "status": "empty",
+        "rows": 0
+      },
+      {
+        "provider": "finmind",
+        "status": "ok",
+        "rows": 6071
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
+  },
+  "derivatives.taiwan_options": {
+    "status": "ok",
+    "provider": "finmind",
+    "fallback_used": false,
+    "rows": 373282,
+    "attempts": [
+      {
+        "provider": "finmind",
+        "status": "ok",
+        "rows": 373282
+      }
+    ],
+    "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
+  },
+  "price_routes": {
+    "status": "ok",
+    "rows": 16841,
+    "routes": {
+      "prices.us_stock": {
+        "expected_symbols": [
+          "NVDA",
+          "TSLA",
+          "AMD"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "AMD",
+              "NVDA",
+              "TSLA"
+            ],
+            "row_counts": {
+              "NVDA": 1254,
+              "TSLA": 1254,
+              "AMD": 1254
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "prices.crypto": {
+        "expected_symbols": [
+          "BTC-USD"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "BTC-USD"
+            ],
+            "row_counts": {
+              "BTC-USD": 1826
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "prices.taiwan_stock": {
+        "expected_symbols": [
+          "2330.TW",
+          "2317.TW",
+          "2382.TW"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "2317.TW",
+              "2330.TW",
+              "2382.TW"
+            ],
+            "row_counts": {
+              "2330.TW": 1213,
+              "2317.TW": 1213,
+              "2382.TW": 1213
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "prices.taiwan_index": {
+        "expected_symbols": [
+          "TAIEX"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "TAIEX"
+            ],
+            "row_counts": {
+              "TAIEX": 1213
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "macro.vix": {
+        "expected_symbols": [
+          "^VIX"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "^VIX"
+            ],
+            "row_counts": {
+              "^VIX": 1269
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "macro.us_treasury_yield": {
+        "expected_symbols": [
+          "^TNX"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "^TNX"
+            ],
+            "row_counts": {
+              "^TNX": 1254
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "macro.us_dollar_index": {
+        "expected_symbols": [
+          "DX-Y.NYB"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "DX-Y.NYB"
+            ],
+            "row_counts": {
+              "DX-Y.NYB": 1361
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "macro.foreign_exchange": {
+        "expected_symbols": [
+          "TWD=X"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "yfinance",
+            "status": "ok",
+            "symbols": [
+              "TWD=X"
+            ],
+            "row_counts": {
+              "TWD=X": 1304
+            }
+          }
+        ],
+        "status": "ok"
+      },
+      "prices.taiwan_futures": {
+        "expected_symbols": [
+          "TX"
+        ],
+        "missing_symbols": [],
+        "attempts": [
+          {
+            "provider": "taifex",
+            "status": "empty",
+            "symbols": [],
+            "row_counts": {}
+          },
+          {
+            "provider": "finmind",
+            "status": "ok",
+            "symbols": [
+              "TX"
+            ],
+            "row_counts": {
+              "TX": 1213
+            }
+          }
+        ],
+        "status": "ok"
+      }
+    }
+  }
+}
