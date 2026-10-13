@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T16:54:44.820779+00:00",
+  "generated_at": "2026-10-13T03:48:10.747214+00:00",
   "as_of": "2026-10-13",
   "primary_source": "yfinance",
   "status": "warning",
@@ -242,8 +242,8 @@
       "market": "FX",
       "row_count": 1304,
       "first_datetime": "2021-10-13T00:00:00",
-      "latest_datetime": "2026-10-12T00:00:00",
-      "age_days": 1,
+      "latest_datetime": "2026-10-13T00:00:00",
+      "age_days": 0,
       "sources": [
         "yfinance"
       ],
@@ -255,15 +255,15 @@
       "null_volume_count": 0,
       "negative_volume_count": 0,
       "long_gap_count": 0,
-      "max_gap_days": 3,
+      "max_gap_days": 4,
       "status": "healthy"
     },
     "TX": {
       "market": "TW_DERIVATIVES",
-      "row_count": 1213,
+      "row_count": 1214,
       "first_datetime": "2021-10-13T00:00:00",
-      "latest_datetime": "2026-10-12T00:00:00",
-      "age_days": 1,
+      "latest_datetime": "2026-10-13T00:00:00",
+      "age_days": 0,
       "sources": [
         "finmind"
       ],

@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1711,
+    "rows": 1731,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,14 +13,14 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1711
+        "rows": 1731
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "台積電（2330）鉅額交易於9月24日中秋連假前一天，爆出42張成交均價2,749.27元的歷史新高紀錄後，神隱至今，今（12）日鉅額交易再現10張成交2,670元… - Facebook",
-      "2317 鴻海 - 借券賣出大增9,206(連續4天增21,237） - 股市爆料同學會 - CMoney",
-      "警報解除！ 臻鼎大股東鴻海申讓5544張終於賣完 - Yahoo新聞"
+      "鴻海(2317)股價卡250元被嫌「真的廢」？孫慶龍卻砸880萬大買50張...比買台積電CP值高！最新目標價曝光 - 今周刊",
+      "台股早盤下殺9百點！大盤持續震盪 台積電開2500元、下跌40元 - Yahoo股市",
+      "鴻海(2317)賣臻鼎-KY(4958)持股入帳近27億，PCB族群資金會轉向誰？-葉博金融研究院 - CMoney投資網誌"
     ]
   },
   "chip.taiwan_institutional": {
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6071,
+    "rows": 6082,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6071
+        "rows": 6082
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,19 +85,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 373282,
+    "rows": 376164,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 373282
+        "rows": 376164
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16841,
+    "rows": 16842,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -282,7 +282,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1213
+              "TX": 1214
             }
           }
         ],
