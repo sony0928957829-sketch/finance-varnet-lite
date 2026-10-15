@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1681,
+    "rows": 1774,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,26 +13,26 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1681
+        "rows": 1774
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "個股：鴻海(2317)10/20參與投資人說明會 - 富聯網",
-      "2330 台積電 - 〈美股盤後〉美CPI升溫、AI融資疑慮夾擊費半重摔超4% 台積電ADR跌逾3% - 股市爆料同學會 - CMoney",
-      "2330 台積電 - 台股押寶買盤進場搶短！小摩建議買進12月到期的台積買權價差- 股市爆料同學會 - CMoney"
+      "台積電(2330)第三季每股賺29.43元創高，2奈米占比能否續增？-林彥廷看盤室 - CMoney投資網誌",
+      "2330 台積電 - 台積法說前跌什麼？CPI爆表、博通發言與長鑫進逼一次看- 股市爆料同學會 - CMoney",
+      "2330 台積電 - 〈毅嘉法說〉【毅嘉法說會AI摘要】2026/10/15 - 股市爆料同學會 - CMoney"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7285,
+    "rows": 7300,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7285
+        "rows": 7300
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6077,
+    "rows": 6090,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6077
+        "rows": 6090
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,12 +85,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 376448,
+    "rows": 379300,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 376448
+        "rows": 379300
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
