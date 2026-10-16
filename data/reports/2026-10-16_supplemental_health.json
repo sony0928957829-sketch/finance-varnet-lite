@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1706,
+    "rows": 1758,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,26 +13,26 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1706
+        "rows": 1758
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "台積電宣布3奈米破例再擴1廠！為何不是2奈米？魏哲家背後算盤曝光 - Yahoo股市",
-      "台積電(2330)上修第四季展望，海外擴產能否跟上AI需求？-林彥廷看盤室 - CMoney投資網誌",
-      "2330 台積電 - 每天至少10通電話追產能！AI大廠搶台積電擴張計畫恐受限- 股市爆料同學會 - CMoney"
+      "台積電魏哲家：法說會後股價真的跌了 心情不太好 - 自由財經",
+      "外資續砍台股461億！台積電賣最多　買賣前10大個股一次看 - ETtoday財經雲",
+      "台新投顧剛剛發布了一份台積電(2330)的券商報告，目標價為3550.00，多空評等為看多 - CMoney"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7285,
+    "rows": 7300,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7285
+        "rows": 7300
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6071,
+    "rows": 6084,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6071
+        "rows": 6084
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,12 +85,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 376092,
+    "rows": 379374,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 376092
+        "rows": 379374
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
