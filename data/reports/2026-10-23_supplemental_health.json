@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1606,
+    "rows": 1631,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,14 +13,14 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1606
+        "rows": 1631
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "2330 台積電 - 〈美股盤後〉Meta重燃AI交易恐慌費半狂瀉近7% 台積電ADR跌超4.5% - 股市爆料同學會 - CMoney",
-      "鴻海、廣達、緯創、緯穎、英業達...5檔老AI撿誰才香？法人狠砍價1成 仍看漲4成 - 旺得富理財網",
-      "鴻海AI伺服器產線再進化 新產品導入拚縮至10週 - 自由時報"
+      "首度因颱風喊卡！台積電宣布取消運動會 魏哲家發信公布每人加碼發3萬元特別獎金 - Yahoo股市",
+      "台積電(2330)吃下雲端巨頭擴產，先進封裝能否接住下一波-林彥廷看盤室 - CMoney投資網誌",
+      "台積電(2330)再度上修 AI 展望，先進製程需求全面爆發 - CMoney"
     ]
   },
   "chip.taiwan_institutional": {
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6082,
+    "rows": 6068,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6082
+        "rows": 6068
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,19 +85,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 373502,
+    "rows": 370532,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 373502
+        "rows": 370532
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16843,
+    "rows": 16842,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -282,7 +282,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1214
+              "TX": 1213
             }
           }
         ],
