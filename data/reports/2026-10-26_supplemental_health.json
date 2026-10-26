@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1545,
+    "rows": 1560,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,14 +13,14 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1545
+        "rows": 1560
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "2330 台積電 - 【點靈週更｜勿猜何時止跌, 尊重市場, 等待轉折】 - 股市爆料同學會 - CMoney",
-      "颱風襲台逾28萬戶停電，台積電與零售通路誰更扛得住-林彥廷看盤室 - CMoney投資網誌",
-      "台積電目標價喊5000元！投信豪撒184億掃貨 「記憶體這檔」入列00935、00881狂搶2萬張封王 - Yahoo股市"
+      "每月存3000元「該買0050還台積電？」 眾狂推這檔：會感謝自己 | 蔣季容 | 新聞 - 風傳媒",
+      "2330 台積電 - NATEA Seattle 串聯台美產業交流聚焦AI 人才與產品轉型成- 股市爆料同學會 - CMoney",
+      "2317 鴻海 - https://youtu.be/sf2yZHtRhOk?s... - 股市爆料同學會 - CMoney"
     ]
   },
   "chip.taiwan_institutional": {
@@ -97,7 +97,7 @@
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16840,
+    "rows": 16839,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -238,7 +238,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1361
+              "DX-Y.NYB": 1360
             }
           }
         ],
