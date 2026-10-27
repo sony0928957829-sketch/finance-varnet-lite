@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1554,
+    "rows": 1593,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,26 +13,26 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1554
+        "rows": 1593
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "【神山護國軍2】散戶跟外資大玩你丟我撿！16萬螞蟻雄兵二周花1300億元「保護」台積電 - Yahoo股市",
-      "【神山護國軍1】睽違3個月！台積電股東人數再寫316萬人歷史新高 - Yahoo股市",
-      "台積電、聯發科怎麼撿？杜金龍教戰「零股買法」：這檔大跌就買開盤價 - FTNN 新聞網"
+      "2330 台積電 - 【最新消息】HBM買盤回溫，「3檔概念股」同步創2日新高！ - 股市爆料同學會 - CMoney",
+      "鴻海(2317) 個股概覽 | 個股 - 股市 - CMoney",
+      "零股交易衝32年新高！杜金龍曝台積電「私房買法」：沒在看月季線 - 三立新聞"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7240,
+    "rows": 7255,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7240
+        "rows": 7255
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -48,12 +48,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2898,
+    "rows": 2904,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2898
+        "rows": 2904
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6074,
+    "rows": 6072,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6074
+        "rows": 6072
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,12 +85,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 364010,
+    "rows": 364296,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 364010
+        "rows": 364296
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
@@ -238,7 +238,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1360
+              "DX-Y.NYB": 1361
             }
           }
         ],
@@ -282,7 +282,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1213
+              "TX": 1212
             }
           }
         ],
