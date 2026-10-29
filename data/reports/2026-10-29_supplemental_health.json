@@ -3,7 +3,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1572,
+    "rows": 1626,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
@@ -13,26 +13,26 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1572
+        "rows": 1626
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "台積電跌10元至2415　台股跌129點來到46906點 - ETtoday財經雲",
-      "父母送10張台積電（2330）！兒子離婚不用分給媳婦 律師曝1例外 - UDN",
-      "台積電追上聯發科靠這招？股民見股價崩潰：不是叫你把發哥往下拉 - UDN"
+      "友達售廠一成一停！388億元賣中科廠給台積電、估賺185億元！華亞廠案交易終止，廣達：AI產能規劃不受影響 - Yahoo新聞",
+      "2330 台積電 - 一塊基板決定算力生死：先進封裝悄悄綁架AI產業晶片做得出卻「裝不下」怎麼辦？ - 股市爆料同學會 - CMoney",
+      "台積電有新動作！豪砸388億買下友達中科廠房 - Yahoo新聞"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7255,
+    "rows": 7270,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7255
+        "rows": 7270
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -48,12 +48,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2904,
+    "rows": 2910,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2904
+        "rows": 2910
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -66,7 +66,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6063,
+    "rows": 6074,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +76,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6063
+        "rows": 6074
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,12 +85,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 359648,
+    "rows": 362504,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 359648
+        "rows": 362504
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
