@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T02:50:56.662885+00:00",
+  "generated_at": "2026-10-30T14:27:18.853412+00:00",
   "as_of": "2026-10-30",
   "primary_source": "yfinance",
   "status": "warning",
@@ -220,7 +220,7 @@
     },
     "DX-Y.NYB": {
       "market": "US_DOLLAR",
-      "row_count": 1360,
+      "row_count": 1361,
       "first_datetime": "2021-11-01T00:00:00",
       "latest_datetime": "2026-10-29T00:00:00",
       "age_days": 1,
