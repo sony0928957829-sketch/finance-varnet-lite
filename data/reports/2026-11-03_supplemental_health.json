@@ -3,24 +3,25 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 1657,
+    "rows": 1682,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
-        "status": "empty",
-        "rows": 0
+        "status": "error",
+        "rows": 0,
+        "error": "*** YAHOO! FINANCE IS CURRENTLY DOWN! ***"
       },
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 1657
+        "rows": 1682
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "單日再砍349億元！台積電外資持股比創20年新低 鉅額交易卻驚現漲停價 - Yahoo新聞",
-      "2330 台積電 - 大同：千金難買早知道‘’但是就是有人先知道“” - 股市爆料同學會 - CMoney",
-      "2330 台積電 - 台積電供應鏈迅得對半導體設備出貨走揚10月營收改寫歷史次高- 股市爆料同學會 - CMoney"
+      "【即時新聞】鴻海最新獲外資狂掃逾2.4萬張，AI發酵高檔震盪還能追嗎？ - CMoney投資網誌",
+      "【即時新聞】台積電近日砸388億擴產，外資狂倒1.5萬張還能追嗎？ - CMoney投資網誌",
+      "擁瑞昱、聯詠、廣達、至上！00946連15配0.058元今最後買進日 「這檔」年化配息率突破8% - FTNN 新聞網"
     ]
   },
   "chip.taiwan_institutional": {
@@ -66,7 +67,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6046,
+    "rows": 6056,
     "attempts": [
       {
         "provider": "taifex",
@@ -76,7 +77,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6046
+        "rows": 6056
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -85,19 +86,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 353312,
+    "rows": 356292,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 353312
+        "rows": 356292
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16833,
+    "rows": 16835,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -238,7 +239,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1360
+              "DX-Y.NYB": 1361
             }
           }
         ],
@@ -282,7 +283,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1211
+              "TX": 1212
             }
           }
         ],
