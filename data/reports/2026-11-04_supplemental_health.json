@@ -13,21 +13,21 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Tom Lee says AI investors may be selling at the wrong time",
-      "Analysts react to US midterm election results",
-      "Stock Market Election Night: Dow Futures Fall, Techs Tumble In Blue Wave; AMD, Arista Rise On Earnings"
+      "Tesla, SpaceX Dive As Elon Musk's Big GOP Election Bet Fails",
+      "Amazon Soars 7% as Tech Shrugs Off Data Center Bans: “Can Buy Its Way Into New Towns”",
+      "Apple, Microsoft hit all-time highs as Nasdaq surges 2% in post-election rally: AlphaCheck"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7270,
+    "rows": 7285,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7270
+        "rows": 7285
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -43,12 +43,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2910,
+    "rows": 2916,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2910
+        "rows": 2916
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6056,
+    "rows": 6069,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6056
+        "rows": 6069
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 355304,
+    "rows": 358708,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 355304
+        "rows": 358708
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16835,
+    "rows": 16834,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1361
+              "DX-Y.NYB": 1360
             }
           }
         ],
