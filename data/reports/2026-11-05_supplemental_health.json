@@ -13,21 +13,21 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Ionic Digital Q3 Earnings Call Highlights",
-      "Dow, S&P 500, Nasdaq Futures Mixed After A Democratic Sweep In Midterms: NVDA, MU, SNDK, NBIS, IREN In Focus",
-      "Trump to Pardon Elon Musk Soon? Crypto Punters Bet as Ross Gerber Calls GOP Midterm Loss 'Worst Possible Outcome' for SpaceX CEO"
+      "Fed’s Hammack backs restrictive rates, cites persistent inflation pressures",
+      "This Is the Number That Could Change Nvidia Stock’s Outlook for 2027",
+      "SpaceX, Tesla stocks tumble as Democratic sweep raises questions on merger prospects, AI buildout"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7270,
+    "rows": 7285,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7270
+        "rows": 7285
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -43,12 +43,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2910,
+    "rows": 2916,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2910
+        "rows": 2916
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6057,
+    "rows": 6070,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6057
+        "rows": 6070
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,12 +80,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 355344,
+    "rows": 358422,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 355344
+        "rows": 358422
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
