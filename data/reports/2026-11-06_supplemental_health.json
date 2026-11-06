@@ -3,31 +3,31 @@
     "status": "ok",
     "provider": "yahoo_finance_news",
     "fallback_used": false,
-    "rows": 97,
+    "rows": 98,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
         "status": "ok",
-        "rows": 97
+        "rows": 98
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Dow Jones Futures Fall, Techs Bounce After Nasdaq Dives 5.5%; Nvidia, Sandisk, CoreWeave, SpaceX Plunge",
-      "The Nasdaq Plunges 5%. What the Data Center Crash Means for Investors",
-      "U.S. Stock Market Will Likely Struggle to Regain October Peak"
+      "Chip stocks lead tech rebound as SpaceX, Tesla jump: AlphaCheck",
+      "Chip stocks lead tech rebound as SpaceX, Tesla jump: AlphaCheck",
+      "Chip stocks lead tech rebound as SpaceX, Tesla jump: AlphaCheck"
     ]
   },
   "chip.taiwan_institutional": {
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 7270,
+    "rows": 7285,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 7270
+        "rows": 7285
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_institutional.parquet",
@@ -43,12 +43,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 2910,
+    "rows": 2916,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 2910
+        "rows": 2916
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/chip_taiwan_margin_short.parquet",
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6057,
+    "rows": 6071,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6057
+        "rows": 6071
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,12 +80,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 354762,
+    "rows": 358314,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 354762
+        "rows": 358314
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
