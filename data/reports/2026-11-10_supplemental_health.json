@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "What Coinbase's final federal trust charter actually changes",
-      "Dollar weakens against euro, yen as Iran talks lift risk appetite",
-      "Tesla offered $5,000 to a homeowner whose $110K Solar Roof never produced power. A judge has deemed it liable for fraud"
+      "Why Firefly Stock Soared Today",
+      "Asia stocks rally as Korean chips surge and oil retreat lifts sentiment",
+      "China's trade surplus soars past $1 trillion as AI boom powers exports"
     ]
   },
   "chip.taiwan_institutional": {
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6049,
+    "rows": 6063,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6049
+        "rows": 6063
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 352518,
+    "rows": 355964,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 352518
+        "rows": 355964
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16834,
+    "rows": 16835,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -277,7 +277,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1211
+              "TX": 1212
             }
           }
         ],

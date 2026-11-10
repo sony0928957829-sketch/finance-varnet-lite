@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T17:45:00.684754+00:00",
+  "generated_at": "2026-11-10T04:45:46.685011+00:00",
   "as_of": "2026-11-10",
   "primary_source": "yfinance",
   "status": "warning",
@@ -260,10 +260,10 @@
     },
     "TX": {
       "market": "TW_DERIVATIVES",
-      "row_count": 1211,
+      "row_count": 1212,
       "first_datetime": "2021-11-10T00:00:00",
-      "latest_datetime": "2026-11-09T00:00:00",
-      "age_days": 1,
+      "latest_datetime": "2026-11-10T00:00:00",
+      "age_days": 0,
       "sources": [
         "finmind"
       ],
