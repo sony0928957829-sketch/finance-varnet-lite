@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Advanced Micro Devices' Management Confident About CPU Revenue Doubling in 2027, RBC Says",
-      "Jensen Huang resigns: What now for Nvidia after spying scandal turmoil?",
-      "It’s Official: Michael Saylor’s Strategy Is Out of the MSCI Indexes"
+      "NVDA Stock Heads for Worst Week In Over A Year As Jensen Huang’s CEO Saga Ends: Are Retail Traders Still Buying The Dip?",
+      "Dow Jones Futures Rise After Market Weathers Nvidia CEO Huang's Exit, Surging Yields",
+      "Dow Jones Futures Rise After Market Weathers Nvidia CEO Huang's Exit, Surging Yields"
     ]
   },
   "chip.taiwan_institutional": {
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6056,
+    "rows": 6070,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6056
+        "rows": 6070
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,12 +80,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 354224,
+    "rows": 357574,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 354224
+        "rows": 357574
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1361
+              "DX-Y.NYB": 1360
             }
           }
         ],
@@ -277,7 +277,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1211
+              "TX": 1212
             }
           }
         ],
