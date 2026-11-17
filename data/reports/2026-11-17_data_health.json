@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T17:16:59.342152+00:00",
+  "generated_at": "2026-11-17T05:12:55.490266+00:00",
   "as_of": "2026-11-17",
   "primary_source": "yfinance",
   "status": "warning",
@@ -220,7 +220,7 @@
     },
     "DX-Y.NYB": {
       "market": "US_DOLLAR",
-      "row_count": 1361,
+      "row_count": 1360,
       "first_datetime": "2021-11-17T00:00:00",
       "latest_datetime": "2026-11-16T00:00:00",
       "age_days": 1,
@@ -260,10 +260,10 @@
     },
     "TX": {
       "market": "TW_DERIVATIVES",
-      "row_count": 1211,
+      "row_count": 1212,
       "first_datetime": "2021-11-17T00:00:00",
-      "latest_datetime": "2026-11-16T00:00:00",
-      "age_days": 1,
+      "latest_datetime": "2026-11-17T00:00:00",
+      "age_days": 0,
       "sources": [
         "finmind"
       ],
