@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "David Tepper Just Made a $518 Million SpaceX Bet — But Dumped AMD and Broadcom",
-      "Former Nvidia CEO Jensen Huang says he'd be 'honored' to return to the company",
-      "What far cheaper AI compute in space could mean for Elon Musk"
+      "BE Stock Rises Overnight After Nvidia Earnings: Insiders Report $1.3M In Share Sales, Retail Sees $200 Ahead",
+      "Nvidia’s earnings call names two former crypto miners",
+      "Bitcoin's RSI Drops To 24: VanEck's Matthew Sigel Spots A Bullish Signal In Its 12-Month Track Record"
     ]
   },
   "chip.taiwan_institutional": {
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6060,
+    "rows": 6074,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6060
+        "rows": 6074
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,12 +80,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 356106,
+    "rows": 359352,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 356106
+        "rows": 359352
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1361
+              "DX-Y.NYB": 1360
             }
           }
         ],
@@ -277,7 +277,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1211
+              "TX": 1212
             }
           }
         ],
