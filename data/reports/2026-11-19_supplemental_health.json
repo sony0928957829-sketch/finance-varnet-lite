@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Bitcoin ETFs Are Bleeding Cash. What IBIT Holders Should Watch Next",
-      "Copper at Lowest Since April Amid AI Market Turmoil, Chinese Demand Concerns",
-      "AI trade under pressure: Why investors should think differently"
+      "Bitcoin support levels: key floors to watch as price tests $62,100",
+      "Anthropic, Nvidia And The Next AI Trade: Michael Burry Explains What Could Break The Bull Case",
+      "4 Things the Headlines Missed in Nvidia's First Post-Jensen Earnings Report"
     ]
   },
   "chip.taiwan_institutional": {
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6053,
+    "rows": 6060,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6053
+        "rows": 6060
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 357312,
+    "rows": 360228,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 357312
+        "rows": 360228
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16833,
+    "rows": 16834,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -277,7 +277,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1211
+              "TX": 1212
             }
           }
         ],
