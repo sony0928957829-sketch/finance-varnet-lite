@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Wells Fargo doubles bitcoin ETF exposure as institutions pile in",
-      "Tesla proposes $3.1 billion Texas polysilicon refinery",
-      "Nvidia falls below Alphabet to become fourth most valuable U.S. company"
+      "The S&P 500 Just Entered Correction Territory. Here's What It Means for Investors Right Now.",
+      "Is CoreWeave (CRWV) Fairly Valued After Fresh MLPerf Results?",
+      "Photronics (PLAB) Stock Could Be 29% Undervalued Despite Fresh AI Supply Chain Uncertainty"
     ]
   },
   "chip.taiwan_institutional": {
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6057,
+    "rows": 6043,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6057
+        "rows": 6043
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 367072,
+    "rows": 364102,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 367072
+        "rows": 364102
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16847,
+    "rows": 16831,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -195,7 +195,7 @@
               "^VIX"
             ],
             "row_counts": {
-              "^VIX": 1270
+              "^VIX": 1255
             }
           }
         ],
@@ -277,7 +277,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1213
+              "TX": 1212
             }
           }
         ],

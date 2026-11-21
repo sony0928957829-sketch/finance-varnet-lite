@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T16:19:30.478344+00:00",
+  "generated_at": "2026-11-21T04:14:04.392954+00:00",
   "as_of": "2026-11-21",
   "primary_source": "yfinance",
   "status": "warning",
@@ -180,7 +180,7 @@
     },
     "^VIX": {
       "market": "US_VOLATILITY",
-      "row_count": 1270,
+      "row_count": 1255,
       "first_datetime": "2021-11-22T00:00:00",
       "latest_datetime": "2026-11-20T00:00:00",
       "age_days": 1,
@@ -260,7 +260,7 @@
     },
     "TX": {
       "market": "TW_DERIVATIVES",
-      "row_count": 1213,
+      "row_count": 1212,
       "first_datetime": "2021-11-22T00:00:00",
       "latest_datetime": "2026-11-20T00:00:00",
       "age_days": 1,
@@ -274,7 +274,7 @@
       "invalid_ohlc_count": 0,
       "null_volume_count": 0,
       "negative_volume_count": 0,
-      "long_gap_count": 14,
+      "long_gap_count": 15,
       "max_gap_days": 13,
       "status": "warning"
     }
@@ -283,7 +283,7 @@
     {
       "code": "long_gap",
       "severity": "warning",
-      "message": "14 gaps exceed 4 days; maximum is 13.",
+      "message": "15 gaps exceed 4 days; maximum is 13.",
       "symbol": "TX"
     },
     {
