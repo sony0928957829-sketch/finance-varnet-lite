@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Huang's Nvidia Return Tests a Rule Breaker Trait",
-      "Here's the 1 Stock I'd Most Want to Buy If the Market Crashes",
-      "President Donald Trump Just Took Credit for Jensen Huang’s Return as Nvidia CEO. Is the Trump Put Now Back in Play?"
+      "Bitcoin And Stocks Are Moving In Different Directions: Arthur Hayes Says Nvidia's Rally Is The 'Worst Thing' For Crypto",
+      "Bitcoin And Stocks Are Moving In Different Directions: Arthur Hayes Says Nvidia's Rally Is The 'Worst Thing' For Crypto",
+      "Bitcoin hovers around $60k amid little relief from rate, regulatory jitters"
     ]
   },
   "chip.taiwan_institutional": {
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6042,
+    "rows": 6069,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6042
+        "rows": 6069
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 359464,
+    "rows": 366906,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 359464
+        "rows": 366906
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16833,
+    "rows": 16834,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -277,7 +277,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1211
+              "TX": 1212
             }
           }
         ],
