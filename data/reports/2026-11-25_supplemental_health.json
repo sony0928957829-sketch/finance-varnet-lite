@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Micron Just Hit a $700 Ceiling, Caught a Downgrade, and Is Down 10% Today. Is MU a Toxic Stock or a Prime Bargain?",
-      "Solana Foundation DeFi head says utility is what makes tokenized stocks matter",
-      "AMDL 2X AMD ETF Drops from $90 to $30: Will This Leveraged AMD Fund Be an ‘Easy Triple’ from Here?"
+      "Why Investors Are Suddenly Turning Against AXT Inc. (AXTI)?",
+      "Jensen Huang's second coming offers little relief to AI credits",
+      "Morning Bid: Who's afraid of Jamieson Greer?"
     ]
   },
   "chip.taiwan_institutional": {
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6043,
+    "rows": 6058,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6043
+        "rows": 6058
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,12 +80,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 360850,
+    "rows": 364572,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 360850
+        "rows": 364572
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1361
+              "DX-Y.NYB": 1360
             }
           }
         ],
@@ -277,7 +277,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1211
+              "TX": 1212
             }
           }
         ],
