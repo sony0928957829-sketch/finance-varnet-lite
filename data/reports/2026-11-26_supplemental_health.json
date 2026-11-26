@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Can XRP Reach Standard Chartered’s $12.60 Target by 2028?",
-      "China added nearly 10 times more power capacity than the US in 2025 as the AI race heats up",
-      "AMD stock could reward patient investors enormously"
+      "Stocks rally in Asia, US tariffs not as dire as feared",
+      "Bitcoin Reclaims $60,000: Michaël Van De Poppe Eyes ‘Great First Quarter Of 2027’, While Cathie Wood Trims Crypto Exposure",
+      "Global markets rebound as tech shares recover and tariff fears ease"
     ]
   },
   "chip.taiwan_institutional": {
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6050,
+    "rows": 6065,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6050
+        "rows": 6065
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,19 +80,19 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 362774,
+    "rows": 366240,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 362774
+        "rows": 366240
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16840,
+    "rows": 16841,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -277,7 +277,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1211
+              "TX": 1212
             }
           }
         ],
