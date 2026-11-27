@@ -3,19 +3,19 @@
     "status": "ok",
     "provider": "yahoo_finance_news",
     "fallback_used": false,
-    "rows": 102,
+    "rows": 103,
     "attempts": [
       {
         "provider": "yahoo_finance_news",
         "status": "ok",
-        "rows": 102
+        "rows": 103
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Why Strategy Can Rebound to $175 in 2027 Even If Bitcoin Stays Below Peak",
-      "Should You Buy Nvidia After Its Sharp Decline? Warren Buffett’s Long-Held Investment Philosophy Provides a Clear Answer",
-      "Gold Rises But Big Moves Seen as Unlikely for Now"
+      "Asia FX weakens as high oil prices weigh; dollar edges lower in holiday trade",
+      "Asia FX weakens as high oil prices weigh; dollar edges lower in holiday trade",
+      "Dow Jones Futures Rise; Look For This Bullish Market Signal On Black Friday"
     ]
   },
   "chip.taiwan_institutional": {
@@ -61,7 +61,7 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": true,
-    "rows": 6053,
+    "rows": 6066,
     "attempts": [
       {
         "provider": "taifex",
@@ -71,7 +71,7 @@
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 6053
+        "rows": 6066
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_futures_open_interest.parquet"
@@ -80,12 +80,12 @@
     "status": "ok",
     "provider": "finmind",
     "fallback_used": false,
-    "rows": 363620,
+    "rows": 367160,
     "attempts": [
       {
         "provider": "finmind",
         "status": "ok",
-        "rows": 363620
+        "rows": 367160
       }
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/derivatives_taiwan_options.parquet"
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1361
             }
           }
         ],
@@ -277,7 +277,7 @@
               "TX"
             ],
             "row_counts": {
-              "TX": 1211
+              "TX": 1212
             }
           }
         ],
