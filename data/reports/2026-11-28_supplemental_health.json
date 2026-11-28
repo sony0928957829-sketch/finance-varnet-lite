@@ -13,9 +13,9 @@
     ],
     "path": "/home/runner/work/finance-varnet-lite/finance-varnet-lite/data/alternative/news_market_events.parquet",
     "latest_titles": [
-      "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
-      "Is Cipher Digital (CIFR) Undervalued After Its Texas Policy Scare?",
-      "How Much Will 1 Bitcoin Be Worth in 2035?"
+      "Chamath Palihapitiya Warns AI’s ‘Alien Mathematics’ Could Break Bitcoin As AI Tackles 167-Year-Old Riemann Hypothesis",
+      "Veteran economist says Bitcoin holders have little to brag about this Thanksgiving",
+      "Zero To Sixty: Tesla Cybercab Fleet Tops 1,000 In Texas, Lucid Starts Fully Driverless Tests And Chinese EV Maker Posts Stronger Margins"
     ]
   },
   "chip.taiwan_institutional": {
@@ -92,7 +92,7 @@
   },
   "price_routes": {
     "status": "ok",
-    "rows": 16846,
+    "rows": 16845,
     "routes": {
       "prices.us_stock": {
         "expected_symbols": [
@@ -233,7 +233,7 @@
               "DX-Y.NYB"
             ],
             "row_counts": {
-              "DX-Y.NYB": 1362
+              "DX-Y.NYB": 1361
             }
           }
         ],
